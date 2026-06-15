@@ -1,0 +1,77 @@
+name: Update Avito report
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_avito:
+        description: "Force Avito API refresh"
+        required: false
+        default: "false"
+  schedule:
+    # 08:00, 13:00, 16:00 Asia/Yekaterinburg = 03:00, 08:00, 11:00 UTC
+    - cron: "0 3,8,11 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-report:
+    runs-on: ubuntu-latest
+    env:
+      AVITO_ENABLE_API: ${{ secrets.AVITO_ENABLE_API }}
+      AVITO_CLIENT_ID: ${{ secrets.AVITO_CLIENT_ID }}
+      AVITO_CLIENT_SECRET: ${{ secrets.AVITO_CLIENT_SECRET }}
+      AVITO_ACCOUNT_ID: ${{ secrets.AVITO_ACCOUNT_ID }}
+      AVITO_CAMPAIGN_ID: ${{ secrets.AVITO_CAMPAIGN_ID }}
+      AVITO_CAMPAIGN_NAME: ${{ secrets.AVITO_CAMPAIGN_NAME }}
+      AVITO_STATS_METHOD: ${{ secrets.AVITO_STATS_METHOD }}
+      AVITO_STATS_PATH_TEMPLATE: ${{ secrets.AVITO_STATS_PATH_TEMPLATE }}
+      AVITO_STATS_BODY_JSON: ${{ secrets.AVITO_STATS_BODY_JSON }}
+      AVITO_GROUP_BY: ${{ secrets.AVITO_GROUP_BY }}
+      AVITO_LOOKBACK_DAYS: ${{ secrets.AVITO_LOOKBACK_DAYS }}
+      BITRIX_WEBHOOK_URL: ${{ secrets.BITRIX_WEBHOOK_URL }}
+      BITRIX_ENTITY_TYPE: deal
+      BITRIX_DATE_FIELD: ${{ secrets.BITRIX_DATE_FIELD }}
+      BITRIX_UTM_SOURCE_FIELD: UTM_SOURCE
+      BITRIX_UTM_MEDIUM_FIELD: UTM_MEDIUM
+      BITRIX_UTM_CAMPAIGN_FIELD: UTM_CAMPAIGN
+      BITRIX_UTM_GROUPS_JSON: >-
+        [{"source":"avito_media","medium":"banner","campaigns":["psk_druzheskiy-pv1750000","psk_druzheskiy-7na7","psk_druzheskiy-pv1500000"]},{"source":"avito_reklama","medium":"cpc","campaigns":["psk_druzheskiy-pv1750000_druzh","psk_druzheskiy-7na7_druzh","psk_druzheskiy-pv1500000_druzh"]}]
+      BITRIX_DEAL_CATEGORY_ID: ${{ secrets.BITRIX_DEAL_CATEGORY_ID }}
+      BITRIX_DEAL_CATEGORY_NAME: "Комфорт: прямые продажи"
+      BITRIX_STAGE_FIELD: STAGE_ID
+      BITRIX_COMMENT_FIELD: COMMENTS
+      BITRIX_EXCLUDED_STAGE_NAMES: "Дубль. Создана новая сделка,Наш сотрудник"
+      BITRIX_EXCLUDED_COMMENT_PHONES: "71111111111"
+      REPORT_START_DATE: ${{ secrets.REPORT_START_DATE }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Update cached data and build report
+        run: |
+          if [ "${{ github.event.inputs.force_avito }}" = "true" ]; then
+            python update_report.py --force
+          else
+            python update_report.py
+          fi
+
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html avito_report.html
+          if [ -f data/avito/druzheskiy.json ]; then
+            git add data/avito/druzheskiy.json
+          fi
+          if git diff --cached --quiet; then
+            echo "No report changes"
+          else
+            git commit -m "Update Avito report"
+            git push
+          fi

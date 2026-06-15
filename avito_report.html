@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Авито Реклама</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-raised: #1c2128;
+      --surface-soft: #21262d;
+      --ink: #e6edf3;
+      --ink-soft: #c9d1d9;
+      --muted: #8b949e;
+      --paper: var(--surface);
+      --paper-warm: var(--bg);
+      --mist: #1f6feb;
+      --mist-strong: #30363d;
+      --blue: #79c0ff;
+      --blue-strong: #58a6ff;
+      --green: #3fb950;
+      --amber: #d29922;
+      --red: #f85149;
+      --violet: #a371f7;
+      --lime: #7ee787;
+      --line: rgba(240, 246, 252, 0.10);
+      --line-strong: rgba(240, 246, 252, 0.18);
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+      --font-main: "Segoe UI", Arial, sans-serif;
+      --max: 1320px;
+      --radius: 6px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-main);
+      color: var(--ink);
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+    ::selection { background: rgba(88, 166, 255, 0.28); }
+    a { color: inherit; text-decoration: none; }
+    .section-anchor { scroll-margin-top: 94px; }
+    .site-header {
+      position: fixed;
+      z-index: 80;
+      inset: 0 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 18px clamp(20px, 4vw, 60px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(13, 17, 23, 0.84);
+      backdrop-filter: blur(18px) saturate(120%);
+    }
+    .brand { display: inline-flex; align-items: baseline; min-width: max-content; }
+    .brand__main { font-size: clamp(24px, 2.1vw, 34px); line-height: 1; font-weight: 400; }
+    .site-nav { display: flex; justify-content: center; align-items: center; gap: 6px; }
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .site-nav a:hover,
+    .site-nav a.is-active { color: var(--ink); border-color: var(--line-strong); background: rgba(88, 166, 255, 0.12); }
+    .header-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      color: var(--ink-soft);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    .overview-strip {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 104px auto 0;
+      padding: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      background: linear-gradient(112deg, #161b22 0%, #1c2128 60%, #161b22 100%);
+    }
+    .eyebrow { margin: 0 0 10px; color: var(--muted); font-size: 12px; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; letter-spacing: 0; }
+    .overview-strip h1 { margin: 0; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.02; font-weight: 500; }
+    .overview-summary-row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(130px, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .overview-stat, .kpi-card, .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .overview-stat { min-height: 76px; padding: 12px 14px; box-shadow: none; background: var(--surface-raised); }
+    .overview-stat span, .kpi-label { display: block; color: var(--muted); font-size: 12px; }
+    .overview-stat strong { display: block; margin-top: 5px; color: var(--ink); font-size: clamp(16px, 1.45vw, 22px); line-height: 1.1; overflow-wrap: anywhere; }
+    .overview-stat--period { min-width: 210px; }
+    .period-value {
+      display: flex !important;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 4px 8px;
+      color: var(--ink);
+      font-size: 18px !important;
+      line-height: 1.18 !important;
+    }
+    .period-value span { color: inherit; font-size: inherit; white-space: nowrap; }
+    .period-separator { color: var(--muted) !important; }
+    .page-shell { width: min(var(--max), calc(100% - 40px)); margin: 20px auto 32px; }
+    .filters-band, .kpi-grid, .chart-grid, .table-grid { margin-top: 20px; }
+    .filters-band {
+      display: grid;
+      grid-template-columns: minmax(140px, 170px) minmax(140px, 170px) minmax(260px, 1fr) auto;
+      gap: 12px;
+      align-items: end;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .field { display: grid; gap: 6px; min-width: 0; }
+    .field span { color: var(--muted); font-size: 12px; }
+    .field input {
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      color: var(--ink);
+      color-scheme: dark;
+      padding: 0 12px;
+      min-width: 0;
+    }
+    .field input::placeholder { color: #6e7681; }
+    .field input:focus {
+      outline: none;
+      border-color: rgba(88, 166, 255, 0.56);
+      box-shadow: 0 0 0 4px rgba(88, 166, 255, 0.16);
+    }
+    .ghost-button {
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--surface-soft);
+      color: var(--ink);
+      cursor: pointer;
+    }
+    .ghost-button:hover { border-color: rgba(88, 166, 255, 0.5); background: rgba(88, 166, 255, 0.14); }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .kpi-card {
+      min-height: 124px;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      position: relative;
+      overflow: hidden;
+    }
+    .kpi-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: currentColor;
+    }
+    .kpi-card small { color: var(--muted); min-height: 16px; }
+    .kpi-value { color: var(--ink); font-size: clamp(26px, 2.3vw, 34px); line-height: 1; font-weight: 700; }
+    .accent-cyan { color: var(--blue-strong); }
+    .accent-emerald { color: var(--green); }
+    .accent-amber { color: var(--amber); }
+    .accent-coral { color: var(--red); }
+    .accent-lime { color: var(--lime); }
+    .accent-violet { color: var(--violet); }
+    .chart-grid, .table-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 20px;
+    }
+    .panel { grid-column: span 6; padding: 18px; min-width: 0; }
+    .panel-wide { grid-column: span 12; }
+    .panel-inner { box-shadow: none; margin-top: 16px; }
+    .panel-head { margin-bottom: 16px; }
+    .panel-head h2, .panel-head h3 { margin: 0; font-size: 19px; font-weight: 500; }
+    .panel-head h3 { font-size: 17px; }
+    .panel-head p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+    .panel-head-outside { margin: 24px 0 12px; }
+    .chart-frame { position: relative; width: 100%; }
+    .chart-tooltip {
+      position: fixed;
+      z-index: 120;
+      display: grid;
+      gap: 4px;
+      max-width: min(280px, calc(100vw - 24px));
+      padding: 10px 12px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: #0d1117;
+      color: var(--ink-soft);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.42);
+      font-size: 12px;
+      line-height: 1.35;
+      pointer-events: none;
+    }
+    .chart-tooltip[hidden] { display: none; }
+    .chart-tooltip strong { color: var(--ink); font-size: 13px; }
+    .chart-tooltip span { color: var(--ink-soft); }
+    .forecast-grid, .mini-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .mini-kpis { grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 16px 0; }
+    .funnel-row {
+      display: grid;
+      grid-template-columns: 84px minmax(140px, 1fr) 126px;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .funnel-row:last-child { border-bottom: 0; }
+    .funnel-name { font-size: 14px; font-weight: 650; }
+    .funnel-track { height: 13px; border-radius: 999px; background: var(--surface-soft); overflow: hidden; }
+    .funnel-track span { display: block; height: 100%; border-radius: 999px; background: var(--blue-strong); }
+    .funnel-row:nth-child(2) .funnel-track span { background: var(--green); }
+    .funnel-row:nth-child(3) .funnel-track span { background: var(--amber); }
+    .funnel-row.muted .funnel-track span { background: #6e7681; }
+    .funnel-value strong { display: block; font-size: 15px; }
+    .funnel-value small { color: var(--muted); font-size: 12px; }
+    .quality-list { display: grid; gap: 10px; }
+    .quality-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto auto;
+      gap: 12px;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .quality-row:last-child { border-bottom: 0; }
+    .quality-row span { color: var(--ink-soft); font-weight: 650; }
+    .quality-row strong { color: var(--ink); font-size: 18px; }
+    .quality-row small { color: var(--muted); min-width: 54px; text-align: right; }
+    .quality-good strong { color: var(--lime); }
+    .quality-bad strong { color: var(--red); }
+    .quality-empty { color: var(--muted); padding: 8px 0; }
+    .quality-stages {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+    .quality-stage-title { color: var(--muted); font-size: 12px; }
+    .quality-stage {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 4px 12px;
+      align-items: baseline;
+    }
+    .quality-stage span { color: var(--ink-soft); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .quality-stage strong { color: var(--ink); }
+    .quality-stage small { grid-column: 1 / -1; color: var(--muted); font-size: 12px; }
+    .table-wrap { overflow: auto; }
+    .data-table { width: 100%; border-collapse: collapse; min-width: 760px; }
+    .data-table th, .data-table td { padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: middle; white-space: nowrap; }
+    .data-table th { position: sticky; top: 0; z-index: 1; background: var(--surface-raised); color: var(--muted); font-size: 12px; text-align: left; }
+    .data-table td { font-size: 14px; }
+    .data-table tbody tr:hover { background: rgba(88, 166, 255, 0.08); }
+    .is-hidden { display: none !important; }
+    .num { text-align: right; }
+    .empty-row td { padding: 28px 12px; color: var(--muted); text-align: center; }
+    svg { display: block; width: 100%; height: auto; }
+    .grid-line { stroke: rgba(240, 246, 252, 0.10); stroke-width: 1; }
+    .axis-label, .axis-title, .bar-label, .bar-value, .svg-muted, .chart-legend text { fill: var(--muted); font-size: 12px; }
+    .axis-title { fill: var(--ink-soft); font-weight: 650; }
+    .bar-label { fill: var(--ink-soft); }
+    .bar-value { fill: var(--ink); font-weight: 650; }
+    .bar-clicks, .bar-blue { fill: var(--blue-strong); }
+    .bar-green { fill: var(--green); }
+    .line-ctr { stroke: var(--violet); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .dot-ctr { fill: var(--violet); }
+    .chart-hover { fill: transparent; pointer-events: all; cursor: crosshair; }
+    .campaign {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .campaign summary {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 18px;
+      list-style: none;
+    }
+    .campaign summary::-webkit-details-marker { display: none; }
+    .campaign-title { font-weight: 650; }
+    .campaign-title em { color: var(--muted); font-style: normal; font-weight: 400; margin-left: 6px; }
+    .campaign summary > span:last-child { color: var(--muted); text-align: right; }
+    .campaign-body { padding: 0 18px 18px; border-top: 1px solid var(--line); }
+    footer { width: min(var(--max), calc(100% - 40px)); margin: 24px auto 34px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 1240px) {
+      .kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .panel, .panel-wide { grid-column: span 12; }
+      .mini-kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 860px) {
+      .site-header { grid-template-columns: 1fr; justify-items: start; gap: 12px; position: static; }
+      .site-nav { flex-wrap: wrap; justify-content: flex-start; }
+      .filters-band { grid-template-columns: 1fr; }
+      .overview-strip { margin-top: 20px; }
+      .overview-summary-row { grid-auto-columns: minmax(150px, 1fr); }
+      .page-shell, .overview-strip, footer { width: min(100% - 20px, var(--max)); }
+      .funnel-row { grid-template-columns: 1fr; gap: 6px; }
+    }
+    @media (max-width: 720px) {
+      .overview-strip { padding: 18px; }
+      .overview-summary-row { grid-auto-flow: row; grid-auto-columns: unset; overflow-x: visible; }
+      .kpi-grid, .forecast-grid, .mini-kpis { grid-template-columns: 1fr; }
+      .kpi-value { font-size: 30px; }
+      .campaign summary { display: block; }
+      .campaign summary > span:last-child { display: block; margin-top: 6px; text-align: left; }
+    }
+    @media print {
+      .site-header { position: static; }
+      .panel, .campaign, .kpi-card, .overview-strip { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top"><span class="brand__main">Авито Реклама</span></a>
+    <nav class="site-nav" aria-label="Разделы">
+      <a href="#overview">Обзор</a>
+      <a href="#campaigns">Кампании</a>
+      <a href="#details">Детализация</a>
+    </nav>
+    <div class="header-pill">Лиды подключены</div>
+  </header>
+
+  <main id="top">
+    <section class="overview-strip section-anchor" id="overview">
+      <p class="eyebrow">Внутренний отчет</p>
+      <h1>Сводка Авито Реклама</h1>
+      <div class="overview-summary-row" aria-label="Краткая сводка">
+        <article class="overview-stat" data-overview="campaigns"><span>Кампаний</span><strong id="overview-campaigns">1</strong></article>
+        <article class="overview-stat overview-stat--period" data-overview="period"><span>Период</span><strong id="overview-period" class="period-value"><span id="overview-period-start">09.06.2026</span><span class="period-separator">—</span><span id="overview-period-end">10.06.2026</span></strong></article>
+        <article class="overview-stat" data-overview="active-days"><span>Активных дней</span><strong id="overview-active-days">1</strong></article>
+        <article class="overview-stat" data-overview="impressions"><span>Показы</span><strong id="overview-impressions">76 395</strong></article>
+        <article class="overview-stat" data-overview="clicks"><span>Клики</span><strong id="overview-clicks">124</strong></article>
+        <article class="overview-stat" data-overview="ctr"><span>Показ → клик</span><strong id="overview-ctr">0,16%</strong></article>
+        <article class="overview-stat" data-overview="click-to-lead"><span>Клик → лид</span><strong id="overview-click-to-lead">1,61%</strong></article>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      
+        <section id="summary-kpis" class="kpi-grid" aria-label="Ключевые показатели">
+          <article class="kpi-card accent-cyan" data-kpi="impressions"><span class="kpi-label">Показы</span><strong class="kpi-value" id="kpi-impressions">76 395</strong><small id="kpi-impressions-note"></small></article>
+          <article class="kpi-card accent-coral" data-kpi="clicks"><span class="kpi-label">Клики</span><strong class="kpi-value" id="kpi-clicks">124</strong><small id="kpi-clicks-note"></small></article>
+          <article class="kpi-card accent-violet" data-kpi="ctr"><span class="kpi-label">Показ → клик</span><strong class="kpi-value" id="kpi-ctr">0,16%</strong><small id="kpi-ctr-note"></small></article>
+          <article class="kpi-card accent-lime" data-kpi="leads"><span class="kpi-label">Лиды</span><strong class="kpi-value" id="kpi-leads">2</strong><small id="kpi-leads-note"></small></article>
+          <article class="kpi-card accent-amber" data-kpi="click-to-lead"><span class="kpi-label">Клик → лид</span><strong class="kpi-value" id="kpi-click-to-lead">1,61%</strong><small id="kpi-click-to-lead-note"></small></article>
+          <article class="kpi-card accent-emerald" data-kpi="spend"><span class="kpi-label">Расход</span><strong class="kpi-value" id="kpi-spend">1 584 ₽</strong><small id="kpi-spend-note">CPC 13 ₽</small></article>
+        </section>
+
+        <section class="filters-band" aria-label="Управление отчетом">
+          <label class="field">
+            <span>С даты</span>
+            <input id="date-from" type="date" value="2026-06-09" min="2026-06-09" max="2026-06-10">
+          </label>
+          <label class="field">
+            <span>По дату</span>
+            <input id="date-to" type="date" value="2026-06-10" min="2026-06-09" max="2026-06-10">
+          </label>
+          <label class="field field-search">
+            <span>Поиск</span>
+            <input id="table-search" type="search" placeholder="Кампания, группа, креатив, UTM">
+          </label>
+          <button id="reset-period" class="ghost-button" type="button">Весь период</button>
+        </section>
+
+        <section class="chart-grid chart-grid--primary">
+          <article class="panel panel-wide">
+            <div class="panel-head"><h2>Динамика по дням</h2><p>Столбцы — клики, линия — CTR</p></div>
+            <div id="daily-chart" class="chart-frame">
+    <svg viewBox="0 0 980 285" role="img" aria-label="Клики и CTR по дням">
+      <line x1="58" x2="918" y1="233.0" y2="233.0" class="grid-line" /><text x="49" y="237.0" text-anchor="end" class="axis-label">0</text><line x1="58" x2="918" y1="166.7" y2="166.7" class="grid-line" /><text x="49" y="170.7" text-anchor="end" class="axis-label">48</text><line x1="58" x2="918" y1="100.3" y2="100.3" class="grid-line" /><text x="49" y="104.3" text-anchor="end" class="axis-label">95</text><line x1="58" x2="918" y1="34.0" y2="34.0" class="grid-line" /><text x="49" y="38.0" text-anchor="end" class="axis-label">143</text><text x="58" y="18" class="axis-title">Клики</text><text x="918" y="18" text-anchor="end" class="axis-title">CTR</text><text x="926" y="38" class="axis-label">0,20%</text><text x="926" y="237" class="axis-label">0%</text>
+      <rect x="259.0" y="60.0" width="28.0" height="173.0" rx="4" class="bar-clicks" data-chart-tooltip="&lt;strong&gt;09.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 124&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,16%&lt;/span&gt;&lt;span&gt;Показы — 76 395&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" /><rect x="689.0" y="233.0" width="28.0" height="0.0" rx="4" class="bar-clicks" data-chart-tooltip="&lt;strong&gt;10.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 0&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,00%&lt;/span&gt;&lt;span&gt;Показы — 0&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" />
+      <polyline points="273.0,73.8 703.0,233.0" fill="none" class="line-ctr" />
+      <circle cx="273.0" cy="73.8" r="3" class="dot-ctr" data-chart-tooltip="&lt;strong&gt;09.06.2026&lt;/strong&gt;&lt;span&gt;CTR — 0,16%&lt;/span&gt;&lt;span&gt;Клики — 124&lt;/span&gt;&lt;span&gt;Показы — 76 395&lt;/span&gt;" />
+      <rect x="58.0" y="34" width="430.0" height="199" class="chart-hover" data-chart-tooltip="&lt;strong&gt;09.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 124&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,16%&lt;/span&gt;&lt;span&gt;Показы — 76 395&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" /><rect x="488.0" y="34" width="430.0" height="199" class="chart-hover" data-chart-tooltip="&lt;strong&gt;10.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 0&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,00%&lt;/span&gt;&lt;span&gt;Показы — 0&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" />
+      <text x="273.0" y="269" text-anchor="middle" class="axis-label">09.06</text><text x="703.0" y="269" text-anchor="middle" class="axis-label">10.06</text>
+      
+      <g class="chart-legend" transform="translate(58 268)">
+        <rect width="10" height="10" rx="2" class="bar-clicks"></rect><text x="16" y="10">Клики</text>
+        <circle cx="82" cy="5" r="4" class="dot-ctr"></circle><text x="92" y="10">CTR</text>
+      </g>
+    
+    </svg>
+    </div>
+          </article>
+        </section>
+
+        <section class="table-grid" id="campaigns">
+          <article class="panel panel-wide">
+            <div class="panel-head"><h2>Кампании</h2></div>
+            <div id="campaign-table"><div class="table-wrap"><table class="data-table"><thead><tr><th>Кампания</th><th>ID</th><th>Показы</th><th>Клики</th><th>Показ → клик</th><th>Лиды</th><th>Клик → лид</th><th>Расход</th><th>CPC</th></tr></thead><tbody><tr><td>Дружеский</td><td>843568278</td><td class="num">76 395</td><td class="num">124</td><td class="num">0,16%</td><td class="num">2</td><td class="num">1,61%</td><td class="num">1 584 ₽</td><td class="num">13 ₽</td></tr></tbody></table></div></div>
+          </article>
+        </section>
+
+        <section class="chart-grid chart-grid--secondary">
+          <article class="panel">
+            <div class="panel-head"><h2>Воронка</h2></div>
+            <div id="funnel"><div class="funnel-row"><div class="funnel-name">Показы</div><div class="funnel-track"><span style="width:100.00%"></span></div><div class="funnel-value"><strong>76 395</strong><small>100%</small></div></div><div class="funnel-row"><div class="funnel-name">Клики</div><div class="funnel-track"><span style="width:1.00%"></span></div><div class="funnel-value"><strong>124</strong><small>0,16%</small></div></div><div class="funnel-row"><div class="funnel-name">Лиды</div><div class="funnel-track"><span style="width:1.00%"></span></div><div class="funnel-value"><strong>2</strong><small>1,61%</small></div></div></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h2>Качество лидов</h2><p>По стадиям Bitrix</p></div>
+            <div id="lead-quality" class="quality-list"><div class="quality-row quality-good"><span>Качественные</span><strong>1</strong><small>50,0%</small></div><div class="quality-row quality-bad"><span>Некачественные</span><strong>1</strong><small>50,0%</small></div><div class="quality-stages"><div class="quality-stage-title">Стадии</div><div class="quality-stage quality-good"><span>Дожать на показ</span><strong>1</strong><small>качественный</small></div><div class="quality-stage quality-bad"><span>Заявка на проигрыш</span><strong>1</strong><small>некачественный</small></div></div></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h2>Прогноз</h2><p id="forecast-confidence">Надежность прогноза: низкая</p></div>
+            <div id="forecast-grid" class="forecast-grid">
+              <article class="kpi-card accent-coral"><span class="kpi-label">7 дней</span><strong class="kpi-value">868 кликов</strong><small>11 088 ₽</small></article>
+              <article class="kpi-card accent-cyan"><span class="kpi-label">30 дней</span><strong class="kpi-value">3 720 кликов</strong><small>47 520 ₽</small></article>
+              <article class="kpi-card accent-lime"><span class="kpi-label">Лиды 30 дней</span><strong class="kpi-value">30</strong><small></small></article>
+            </div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h2>Группы</h2><p>Топ по кликам</p></div>
+            <div id="groups-chart"><svg viewBox="0 0 820 90" role="img"><text x="208" y="33" text-anchor="end" class="bar-label" data-chart-tooltip="&lt;strong&gt;843568278 · 483086264750&lt;/strong&gt;&lt;span&gt;Клики — 124&lt;/span&gt;">843568278 · 483086264750</text><rect x="220" y="19" width="514.0" height="14" rx="4" class="bar-blue" data-chart-tooltip="&lt;strong&gt;843568278 · 483086264750&lt;/strong&gt;&lt;span&gt;Клики — 124&lt;/span&gt;" /><text x="742.0" y="33" class="bar-value" data-chart-tooltip="&lt;strong&gt;843568278 · 483086264750&lt;/strong&gt;&lt;span&gt;Клики — 124&lt;/span&gt;">124</text></svg></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h2>Креативы</h2><p>Топ по кликам</p></div>
+            <div id="creatives-chart"><svg viewBox="0 0 820 126" role="img"><text x="208" y="33" text-anchor="end" class="bar-label" data-chart-tooltip="&lt;strong&gt;843568278 · 927364795302213&lt;/strong&gt;&lt;span&gt;Клики — 49&lt;/span&gt;">843568278 · 92736479530…</text><rect x="220" y="19" width="514.0" height="14" rx="4" class="bar-green" data-chart-tooltip="&lt;strong&gt;843568278 · 927364795302213&lt;/strong&gt;&lt;span&gt;Клики — 49&lt;/span&gt;" /><text x="742.0" y="33" class="bar-value" data-chart-tooltip="&lt;strong&gt;843568278 · 927364795302213&lt;/strong&gt;&lt;span&gt;Клики — 49&lt;/span&gt;">49</text><text x="208" y="67" text-anchor="end" class="bar-label" data-chart-tooltip="&lt;strong&gt;843568278 · 406336302007612&lt;/strong&gt;&lt;span&gt;Клики — 38&lt;/span&gt;">843568278 · 40633630200…</text><rect x="220" y="53" width="398.6" height="14" rx="4" class="bar-green" data-chart-tooltip="&lt;strong&gt;843568278 · 406336302007612&lt;/strong&gt;&lt;span&gt;Клики — 38&lt;/span&gt;" /><text x="626.6" y="67" class="bar-value" data-chart-tooltip="&lt;strong&gt;843568278 · 406336302007612&lt;/strong&gt;&lt;span&gt;Клики — 38&lt;/span&gt;">38</text><text x="208" y="101" text-anchor="end" class="bar-label" data-chart-tooltip="&lt;strong&gt;843568278 · 404874360426499&lt;/strong&gt;&lt;span&gt;Клики — 37&lt;/span&gt;">843568278 · 40487436042…</text><rect x="220" y="87" width="388.1" height="14" rx="4" class="bar-green" data-chart-tooltip="&lt;strong&gt;843568278 · 404874360426499&lt;/strong&gt;&lt;span&gt;Клики — 37&lt;/span&gt;" /><text x="616.1" y="101" class="bar-value" data-chart-tooltip="&lt;strong&gt;843568278 · 404874360426499&lt;/strong&gt;&lt;span&gt;Клики — 37&lt;/span&gt;">37</text></svg></div>
+          </article>
+        </section>
+
+        <section id="details" class="details-section">
+          <div class="panel-head panel-head-outside"><h2>Детализация</h2></div>
+          
+    <details class="campaign" open>
+      <summary>
+        <span class="campaign-title">Дружеский <em>843568278</em></span>
+        <span>124 кликов · 0,16% · 1 584 ₽</span>
+      </summary>
+      <div class="campaign-body">
+        <div class="mini-kpis">
+          <article class="kpi-card accent-cyan"><span class="kpi-label">Показы</span><strong class="kpi-value">76 395</strong><small></small></article>
+          <article class="kpi-card accent-coral"><span class="kpi-label">Клики</span><strong class="kpi-value">124</strong><small></small></article>
+          <article class="kpi-card accent-violet"><span class="kpi-label">Показ → клик</span><strong class="kpi-value">0,16%</strong><small></small></article>
+          <article class="kpi-card accent-lime"><span class="kpi-label">Лиды</span><strong class="kpi-value">2</strong><small></small></article>
+          <article class="kpi-card accent-amber"><span class="kpi-label">Клик → лид</span><strong class="kpi-value">1,61%</strong><small></small></article>
+          <article class="kpi-card accent-emerald"><span class="kpi-label">Расход</span><strong class="kpi-value">1 584 ₽</strong><small></small></article>
+        </div>
+        <section class="panel panel-inner">
+          <div class="panel-head"><h3>Динамика</h3><p>Столбцы — клики, линия — CTR</p></div>
+          
+    <svg viewBox="0 0 980 250" role="img" aria-label="Клики и CTR по дням">
+      <line x1="58" x2="918" y1="198.0" y2="198.0" class="grid-line" /><text x="49" y="202.0" text-anchor="end" class="axis-label">0</text><line x1="58" x2="918" y1="143.3" y2="143.3" class="grid-line" /><text x="49" y="147.3" text-anchor="end" class="axis-label">48</text><line x1="58" x2="918" y1="88.7" y2="88.7" class="grid-line" /><text x="49" y="92.7" text-anchor="end" class="axis-label">95</text><line x1="58" x2="918" y1="34.0" y2="34.0" class="grid-line" /><text x="49" y="38.0" text-anchor="end" class="axis-label">143</text><text x="58" y="18" class="axis-title">Клики</text><text x="918" y="18" text-anchor="end" class="axis-title">CTR</text><text x="926" y="38" class="axis-label">0,20%</text><text x="926" y="202" class="axis-label">0%</text>
+      <rect x="259.0" y="55.4" width="28.0" height="142.6" rx="4" class="bar-clicks" data-chart-tooltip="&lt;strong&gt;09.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 124&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,16%&lt;/span&gt;&lt;span&gt;Показы — 76 395&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" /><rect x="689.0" y="198.0" width="28.0" height="0.0" rx="4" class="bar-clicks" data-chart-tooltip="&lt;strong&gt;10.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 0&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,00%&lt;/span&gt;&lt;span&gt;Показы — 0&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" />
+      <polyline points="273.0,66.8 703.0,198.0" fill="none" class="line-ctr" />
+      <circle cx="273.0" cy="66.8" r="3" class="dot-ctr" data-chart-tooltip="&lt;strong&gt;09.06.2026&lt;/strong&gt;&lt;span&gt;CTR — 0,16%&lt;/span&gt;&lt;span&gt;Клики — 124&lt;/span&gt;&lt;span&gt;Показы — 76 395&lt;/span&gt;" />
+      <rect x="58.0" y="34" width="430.0" height="164" class="chart-hover" data-chart-tooltip="&lt;strong&gt;09.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 124&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,16%&lt;/span&gt;&lt;span&gt;Показы — 76 395&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" /><rect x="488.0" y="34" width="430.0" height="164" class="chart-hover" data-chart-tooltip="&lt;strong&gt;10.06.2026&lt;/strong&gt;&lt;span&gt;Столбец: клики за день — 0&lt;/span&gt;&lt;span&gt;Линия: CTR — 0,00%&lt;/span&gt;&lt;span&gt;Показы — 0&lt;/span&gt;&lt;span&gt;Лиды — 1&lt;/span&gt;" />
+      <text x="273.0" y="234" text-anchor="middle" class="axis-label">09.06</text><text x="703.0" y="234" text-anchor="middle" class="axis-label">10.06</text>
+      
+      <g class="chart-legend" transform="translate(58 268)">
+        <rect width="10" height="10" rx="2" class="bar-clicks"></rect><text x="16" y="10">Клики</text>
+        <circle cx="82" cy="5" r="4" class="dot-ctr"></circle><text x="92" y="10">CTR</text>
+      </g>
+    
+    </svg>
+    
+        </section>
+        <div class="table-grid">
+          <article class="panel">
+            <div class="panel-head"><h3>Группы</h3></div>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th>Группа</th><th>Показы</th><th>Клики</th><th>Показ → клик</th><th>Расход</th><th>CPC</th></tr></thead><tbody><tr><td>483086264750</td><td class="num">76 395</td><td class="num">124</td><td class="num">0,16%</td><td class="num">1 584 ₽</td><td class="num">13 ₽</td></tr></tbody></table></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h3>Креативы</h3></div>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th>Креатив</th><th>Показы</th><th>Клики</th><th>Показ → клик</th><th>Расход</th><th>CPC</th></tr></thead><tbody><tr><td>927364795302213</td><td class="num">25 393</td><td class="num">49</td><td class="num">0,19%</td><td class="num">632 ₽</td><td class="num">13 ₽</td></tr><tr><td>406336302007612</td><td class="num">25 560</td><td class="num">38</td><td class="num">0,15%</td><td class="num">475 ₽</td><td class="num">12 ₽</td></tr><tr><td>404874360426499</td><td class="num">25 442</td><td class="num">37</td><td class="num">0,15%</td><td class="num">475 ₽</td><td class="num">13 ₽</td></tr></tbody></table></div>
+          </article>
+        </div>
+        <div class="table-grid">
+          <article class="panel">
+            <div class="panel-head"><h3>Аудитория</h3></div>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th>Пол</th><th>Клики</th><th>Доля</th></tr></thead><tbody><tr class="empty-row"><td colspan="3">Нет данных</td></tr></tbody></table></div>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th>Доход</th><th>Клики</th><th>Доля</th></tr></thead><tbody><tr class="empty-row"><td colspan="3">Нет данных</td></tr></tbody></table></div>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h3>География</h3></div>
+            <div class="table-wrap"><table class="data-table"><thead><tr><th>Регион</th><th>Клики</th><th>Доля</th></tr></thead><tbody><tr class="empty-row"><td colspan="3">Нет данных</td></tr></tbody></table></div>
+          </article>
+        </div>
+      </div>
+    </details>
+    
+        </section>
+        
+    </div>
+  </main>
+
+  <footer>Сгенерировано 2026-06-11 10:08</footer>
+  <div id="chart-tooltip" class="chart-tooltip" hidden></div>
+  <script id="report-data" type="application/json">{"leadEnabled": true, "dataStart": "2026-06-09", "dataEnd": "2026-06-10", "leadStages": [{"id": "C8:UC_ECML9U", "name": "Дожать на показ", "quality": "quality", "daily": [{"date": "2026-06-09", "count": 1.0}]}, {"id": "C8:20", "name": "Заявка на проигрыш", "quality": "bad", "daily": [{"date": "2026-06-10", "count": 1.0}]}], "campaigns": [{"id": "843568278", "name": "Дружеский", "daily": [{"date": "2026-06-09", "impressions": 76395.0, "clicks": 124.0, "spend": 1584.0, "bonus_spend": 0.0, "leads": 1.0, "quality_leads": 1.0, "bad_leads": 0.0}, {"date": "2026-06-10", "impressions": 0.0, "clicks": 0.0, "spend": 0.0, "bonus_spend": 0.0, "leads": 1.0, "quality_leads": 0.0, "bad_leads": 1.0}], "groups": [{"id": "483086264750", "label": "Группа – 1", "daily": [{"date": "2026-06-09", "impressions": 76395.0, "clicks": 124.0, "spend": 1584.0, "bonus_spend": 0.0, "leads": 0.0, "quality_leads": 0.0, "bad_leads": 0.0}], "impressions": 76395.0, "clicks": 124.0, "spend": 1584.0, "bonus_spend": 0.0}], "creatives": [{"id": "927364795302213", "label": "7 на 7", "daily": [{"date": "2026-06-09", "impressions": 25393.0, "clicks": 49.0, "spend": 632.0, "bonus_spend": 0.0, "leads": 0.0, "quality_leads": 0.0, "bad_leads": 0.0}], "impressions": 25393.0, "clicks": 49.0, "spend": 632.0, "bonus_spend": 0.0}, {"id": "406336302007612", "label": "2-евро за 35 973 ₽/мес", "daily": [{"date": "2026-06-09", "impressions": 25560.0, "clicks": 38.0, "spend": 475.0, "bonus_spend": 0.0, "leads": 0.0, "quality_leads": 0.0, "bad_leads": 0.0}], "impressions": 25560.0, "clicks": 38.0, "spend": 475.0, "bonus_spend": 0.0}, {"id": "404874360426499", "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес", "daily": [{"date": "2026-06-09", "impressions": 25442.0, "clicks": 37.0, "spend": 475.0, "bonus_spend": 0.0, "leads": 0.0, "quality_leads": 0.0, "bad_leads": 0.0}], "impressions": 25442.0, "clicks": 37.0, "spend": 475.0, "bonus_spend": 0.0}]}]}</script>
+  <script>
+
+    const reportData = JSON.parse(document.getElementById('report-data').textContent);
+    const searchInput = document.getElementById('table-search');
+    const dateFromInput = document.getElementById('date-from');
+    const dateToInput = document.getElementById('date-to');
+    const navLinks = [...document.querySelectorAll('.site-nav a')];
+    const sections = navLinks.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const leadEnabled = Boolean(reportData.leadEnabled);
+    const chartTooltip = document.getElementById('chart-tooltip');
+
+    const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    }[char]));
+    const toNum = (value) => Number(value) || 0;
+    const number = (value) => Math.round(toNum(value)).toLocaleString('ru-RU');
+    const money = (value) => `${number(value)} ₽`;
+    const decimal = (value, digits = 2) => toNum(value).toLocaleString('ru-RU', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+    const pct = (value, digits = 2) => value === null || value === undefined ? 'нет данных' : `${decimal(value, digits)}%`;
+    const ruDate = (iso) => {
+      if (!iso) return '';
+      const [year, month, day] = iso.slice(0, 10).split('-');
+      return year && month && day ? `${day}.${month}.${year}` : iso;
+    };
+
+    function hideChartTooltip() {
+      if (!chartTooltip) return;
+      chartTooltip.hidden = true;
+      chartTooltip.classList.remove('is-visible');
+    }
+
+    function showChartTooltip(event, target) {
+      if (!chartTooltip || !target?.dataset?.chartTooltip) return;
+      chartTooltip.innerHTML = target.dataset.chartTooltip;
+      chartTooltip.hidden = false;
+      chartTooltip.classList.add('is-visible');
+      const gap = 14;
+      const margin = 12;
+      const rect = chartTooltip.getBoundingClientRect();
+      let left = event.clientX + gap;
+      let top = event.clientY + gap;
+      if (left + rect.width + margin > window.innerWidth) left = event.clientX - rect.width - gap;
+      if (top + rect.height + margin > window.innerHeight) top = event.clientY - rect.height - gap;
+      chartTooltip.style.left = `${Math.max(margin, left)}px`;
+      chartTooltip.style.top = `${Math.max(margin, top)}px`;
+    }
+
+    document.addEventListener('pointermove', (event) => {
+      const target = event.target instanceof Element ? event.target.closest('[data-chart-tooltip]') : null;
+      if (!target) {
+        hideChartTooltip();
+        return;
+      }
+      showChartTooltip(event, target);
+    });
+    document.addEventListener('pointerleave', hideChartTooltip);
+
+    function rowsInPeriod(rows, from, to) {
+      return (rows || []).filter((row) => (!from || row.date >= from) && (!to || row.date <= to));
+    }
+
+    function complete(total) {
+      total.quality_leads = toNum(total.quality_leads ?? total.qualityLeads);
+      total.bad_leads = toNum(total.bad_leads ?? total.badLeads);
+      total.ctr = total.impressions ? total.clicks / total.impressions * 100 : 0;
+      total.cpc = total.clicks ? total.spend / total.clicks : 0;
+      total.cpm = total.impressions ? total.spend / total.impressions * 1000 : 0;
+      total.clickToLead = leadEnabled && total.clicks ? total.leads / total.clicks * 100 : null;
+      total.impressionToLead = leadEnabled && total.impressions ? total.leads / total.impressions * 100 : null;
+      const qualityBase = total.quality_leads + total.bad_leads;
+      total.leadQualityRate = leadEnabled && qualityBase ? total.quality_leads / qualityBase * 100 : null;
+      return total;
+    }
+
+    function sumRows(rows) {
+      const total = rows.reduce((acc, row) => {
+        acc.impressions += toNum(row.impressions);
+        acc.clicks += toNum(row.clicks);
+        acc.spend += toNum(row.spend);
+        acc.bonus_spend += toNum(row.bonus_spend);
+        acc.leads += toNum(row.leads);
+        acc.quality_leads += toNum(row.quality_leads);
+        acc.bad_leads += toNum(row.bad_leads);
+        return acc;
+      }, { impressions: 0, clicks: 0, spend: 0, bonus_spend: 0, leads: 0, quality_leads: 0, bad_leads: 0 });
+      return complete(total);
+    }
+
+    function mergeDaily(campaigns, from, to) {
+      const byDate = new Map();
+      for (const campaign of campaigns) {
+        for (const row of rowsInPeriod(campaign.daily, from, to)) {
+          if (!byDate.has(row.date)) byDate.set(row.date, { date: row.date, impressions: 0, clicks: 0, spend: 0, bonus_spend: 0, leads: 0, quality_leads: 0, bad_leads: 0 });
+          const target = byDate.get(row.date);
+          target.impressions += toNum(row.impressions);
+          target.clicks += toNum(row.clicks);
+          target.spend += toNum(row.spend);
+          target.bonus_spend += toNum(row.bonus_spend);
+          target.leads += toNum(row.leads);
+          target.quality_leads += toNum(row.quality_leads);
+          target.bad_leads += toNum(row.bad_leads);
+        }
+      }
+      return [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date)).map(complete);
+    }
+
+    function activeRows(rows) {
+      return rows.filter((row) => toNum(row.impressions) > 0 || toNum(row.clicks) > 0 || toNum(row.spend) > 0);
+    }
+
+    function forecast(rows) {
+      const active = activeRows(rows);
+      const avg = (key) => active.length ? active.reduce((sum, row) => sum + toNum(row[key]), 0) / active.length : 0;
+      const clicks = avg('clicks');
+      const spend = avg('spend');
+      const leads = avg('leads');
+      return {
+        confidence: active.length < 7 ? 'низкая' : active.length < 14 ? 'средняя' : 'нормальная',
+        projections: {
+          7: { clicks: clicks * 7, spend: spend * 7, leads: leads * 7 },
+          30: { clicks: clicks * 30, spend: spend * 30, leads: leads * 30 },
+        },
+      };
+    }
+
+    function setText(id, value) {
+      const node = document.getElementById(id);
+      if (node) node.textContent = value;
+    }
+
+    function dailyTooltip(row) {
+      return `<strong>${escapeHtml(ruDate(row.date) || row.date)}</strong><span>Столбец: клики за день — ${number(row.clicks)}</span><span>Линия: CTR — ${pct(row.ctr, 2)}</span><span>Показы — ${number(row.impressions)}</span><span>Лиды — ${number(row.leads)}</span>`;
+    }
+
+    function svgDaily(rows) {
+      const width = 980;
+      const height = 285;
+      const left = 58;
+      const right = 62;
+      const top = 34;
+      const bottom = 52;
+      const chartW = width - left - right;
+      const chartH = height - top - bottom;
+      if (!rows.length) return `<svg viewBox="0 0 ${width} ${height}"><text x="24" y="56" class="svg-muted">Нет данных</text></svg>`;
+      const maxClickValue = Math.max(...rows.map((row) => toNum(row.clicks)), 0);
+      const maxCtrValue = Math.max(...rows.map((row) => toNum(row.ctr)), 0);
+      const maxClicks = Math.max(maxClickValue * 1.15, 1);
+      const maxCtr = maxCtrValue ? Math.max(maxCtrValue * 1.25, 0.1) : 1;
+      const slot = chartW / Math.max(1, rows.length);
+      const barW = Math.min(28, Math.max(8, slot * 0.58));
+      const xCenter = (idx) => left + slot * idx + slot / 2;
+      const yClick = (value) => top + chartH - chartH * value / maxClicks;
+      const yCtr = (value) => top + chartH - chartH * value / maxCtr;
+      let grid = '';
+      for (let step = 0; step < 4; step += 1) {
+        const value = maxClicks * step / 3;
+        const y = yClick(value);
+        grid += `<line x1="${left}" x2="${width - right}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}" class="grid-line" />`;
+        grid += `<text x="${left - 9}" y="${(y + 4).toFixed(1)}" text-anchor="end" class="axis-label">${number(value)}</text>`;
+      }
+      grid += `<text x="${left}" y="18" class="axis-title">Клики</text>`;
+      grid += `<text x="${width - right}" y="18" text-anchor="end" class="axis-title">CTR</text>`;
+      grid += `<text x="${width - right + 8}" y="${top + 4}" class="axis-label">${pct(maxCtr, 2)}</text>`;
+      grid += `<text x="${width - right + 8}" y="${top + chartH + 4}" class="axis-label">0%</text>`;
+      const bars = rows.map((row, idx) => {
+        const value = toNum(row.clicks);
+        const h = chartH * value / maxClicks;
+        const x = xCenter(idx) - barW / 2;
+        const y = top + chartH - h;
+        return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${h.toFixed(1)}" rx="4" class="bar-clicks" data-chart-tooltip="${escapeHtml(dailyTooltip(row))}" />`;
+      }).join('');
+      const hovers = rows.map((row, idx) => `<rect x="${(left + slot * idx).toFixed(1)}" y="${top}" width="${slot.toFixed(1)}" height="${chartH}" class="chart-hover" data-chart-tooltip="${escapeHtml(dailyTooltip(row))}" />`).join('');
+      const points = rows.map((row, idx) => `${xCenter(idx).toFixed(1)},${yCtr(toNum(row.ctr)).toFixed(1)}`).join(' ');
+      const dots = rows.map((row, idx) => {
+        if (toNum(row.ctr) <= 0) return '';
+        return `<circle cx="${xCenter(idx).toFixed(1)}" cy="${yCtr(toNum(row.ctr)).toFixed(1)}" r="3" class="dot-ctr" data-chart-tooltip="${escapeHtml(dailyTooltip(row))}" />`;
+      }).join('');
+      const labelIndexes = [...new Set([0, Math.floor(rows.length / 2), rows.length - 1])].sort((a, b) => a - b);
+      const labels = labelIndexes.map((idx) => `<text x="${xCenter(idx).toFixed(1)}" y="${height - 16}" text-anchor="middle" class="axis-label">${escapeHtml(ruDate(rows[idx].date).slice(0, 5))}</text>`).join('');
+      const legend = `<g class="chart-legend" transform="translate(58 268)"><rect width="10" height="10" rx="2" class="bar-clicks"></rect><text x="16" y="10">Клики</text><circle cx="82" cy="5" r="4" class="dot-ctr"></circle><text x="92" y="10">CTR</text></g>`;
+      return `<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="Клики и CTR по дням">${grid}${bars}<polyline points="${points}" fill="none" class="line-ctr" />${dots}${hovers}${labels}${legend}</svg>`;
+    }
+
+    function svgBar(items, colorClass, limit = 7) {
+      const data = items.filter((item) => toNum(item.clicks) > 0).slice(0, limit);
+      const width = 820;
+      const rowH = 34;
+      const left = 220;
+      const right = 86;
+      const top = 12;
+      const height = Math.max(90, top * 2 + rowH * data.length);
+      const chartW = width - left - right;
+      const maxValue = Math.max(...data.map((item) => toNum(item.clicks)), 1);
+      if (!data.length) return `<svg viewBox="0 0 ${width} ${height}" role="img"><text x="20" y="48" class="svg-muted">Нет данных</text></svg>`;
+      const rows = data.map((item, idx) => {
+        const y = top + idx * rowH;
+        const value = toNum(item.clicks);
+        const barW = chartW * value / maxValue;
+        const label = String(item.label || item.id || '');
+        const clipped = label.length <= 24 ? label : `${label.slice(0, 23)}…`;
+        const tooltip = `<strong>${escapeHtml(label)}</strong><span>Клики — ${number(value)}</span>`;
+        return `<text x="${left - 12}" y="${y + 21}" text-anchor="end" class="bar-label" data-chart-tooltip="${escapeHtml(tooltip)}">${escapeHtml(clipped)}</text><rect x="${left}" y="${y + 7}" width="${barW.toFixed(1)}" height="14" rx="4" class="${colorClass}" data-chart-tooltip="${escapeHtml(tooltip)}" /><text x="${(left + barW + 8).toFixed(1)}" y="${y + 21}" class="bar-value" data-chart-tooltip="${escapeHtml(tooltip)}">${number(value)}</text>`;
+      }).join('');
+      return `<svg viewBox="0 0 ${width} ${height}" role="img">${rows}</svg>`;
+    }
+
+    function entityTotals(campaigns, key, from, to) {
+      const result = [];
+      for (const campaign of campaigns) {
+        for (const item of campaign[key] || []) {
+          const total = item.daily && item.daily.length ? sumRows(rowsInPeriod(item.daily, from, to)) : complete({ impressions: toNum(item.impressions), clicks: toNum(item.clicks), spend: toNum(item.spend), bonus_spend: toNum(item.bonus_spend), leads: 0 });
+          result.push({ ...total, id: item.id, label: `${campaign.id} · ${item.label || item.id}` });
+        }
+      }
+      return result.sort((a, b) => toNum(b.clicks) - toNum(a.clicks));
+    }
+
+    function renderCampaignTable(campaigns) {
+      const rows = campaigns.map((campaign) => {
+        const total = campaign.total;
+        return `<tr><td>${escapeHtml(campaign.name)}</td><td>${escapeHtml(campaign.id)}</td><td class="num">${number(total.impressions)}</td><td class="num">${number(total.clicks)}</td><td class="num">${pct(total.ctr, 2)}</td><td class="num">${leadEnabled ? number(total.leads) : 'нет данных'}</td><td class="num">${leadEnabled ? pct(total.clickToLead, 2) : 'нет данных'}</td><td class="num">${money(total.spend)}</td><td class="num">${money(total.cpc)}</td></tr>`;
+      }).join('') || '<tr class="empty-row"><td colspan="9">Нет данных</td></tr>';
+      document.getElementById('campaign-table').innerHTML = `<div class="table-wrap"><table class="data-table"><thead><tr><th>Кампания</th><th>ID</th><th>Показы</th><th>Клики</th><th>Показ → клик</th><th>Лиды</th><th>Клик → лид</th><th>Расход</th><th>CPC</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+
+    function renderFunnel(total) {
+      const maxValue = Math.max(total.impressions, total.clicks, total.leads, 1);
+      const stages = [
+        ['Показы', total.impressions, '100%'],
+        ['Клики', total.clicks, pct(total.ctr, 2)],
+        ['Лиды', total.leads, leadEnabled ? pct(total.clickToLead, 2) : 'нет данных'],
+      ];
+      document.getElementById('funnel').innerHTML = stages.map(([label, value, rate], idx) => {
+        const width = Math.max(1, toNum(value) / maxValue * 100);
+        const muted = label === 'Лиды' && !leadEnabled ? ' muted' : '';
+        return `<div class="funnel-row${muted}"><div class="funnel-name">${label}</div><div class="funnel-track"><span style="width:${width.toFixed(2)}%"></span></div><div class="funnel-value"><strong>${label !== 'Лиды' || leadEnabled ? number(value) : 'нет данных'}</strong><small>${rate}</small></div></div>`;
+      }).join('');
+    }
+
+    function renderLeadQuality(total, from, to) {
+      const holder = document.getElementById('lead-quality');
+      if (!holder) return;
+      if (!leadEnabled) {
+        holder.innerHTML = '<div class="quality-empty">нет данных</div>';
+        return;
+      }
+      const quality = toNum(total.quality_leads);
+      const bad = toNum(total.bad_leads);
+      const base = quality + bad;
+      if (!base) {
+        holder.innerHTML = '<div class="quality-empty">Лидов за период нет</div>';
+        return;
+      }
+      const rows = [
+        ['Качественные', quality, quality / base * 100, 'quality-good'],
+        ['Некачественные', bad, bad / base * 100, 'quality-bad'],
+      ];
+      const summary = rows.map(([label, value, rate, cls]) => `<div class="quality-row ${cls}"><span>${label}</span><strong>${number(value)}</strong><small>${pct(rate, 1)}</small></div>`).join('');
+      const stages = (reportData.leadStages || []).map((stage) => {
+        const count = rowsInPeriod(stage.daily || [], from, to).reduce((sum, row) => sum + toNum(row.count), 0);
+        return { ...stage, count };
+      }).filter((stage) => stage.count > 0).sort((a, b) => toNum(b.count) - toNum(a.count));
+      const stageHtml = stages.length
+        ? `<div class="quality-stages"><div class="quality-stage-title">Стадии</div>${stages.slice(0, 6).map((stage) => {
+            const cls = stage.quality === 'bad' ? 'quality-bad' : 'quality-good';
+            const label = stage.quality === 'bad' ? 'некачественный' : 'качественный';
+            return `<div class="quality-stage ${cls}"><span>${escapeHtml(stage.name || stage.id)}</span><strong>${number(stage.count)}</strong><small>${label}</small></div>`;
+          }).join('')}</div>`
+        : '';
+      holder.innerHTML = summary + stageHtml;
+    }
+
+    function renderForecast(rows) {
+      const result = forecast(rows);
+      setText('forecast-confidence', `Надежность прогноза: ${result.confidence}`);
+      const leadCard = leadEnabled ? number(result.projections[30].leads) : 'нет данных';
+      document.getElementById('forecast-grid').innerHTML = `<article class="kpi-card accent-coral"><span class="kpi-label">7 дней</span><strong class="kpi-value">${number(result.projections[7].clicks)} кликов</strong><small>${money(result.projections[7].spend)}</small></article><article class="kpi-card accent-cyan"><span class="kpi-label">30 дней</span><strong class="kpi-value">${number(result.projections[30].clicks)} кликов</strong><small>${money(result.projections[30].spend)}</small></article><article class="kpi-card accent-lime"><span class="kpi-label">Лиды 30 дней</span><strong class="kpi-value">${leadCard}</strong><small></small></article>`;
+    }
+
+    function updatePeriodDisplay(from, to, rows) {
+      const first = from || rows[0]?.date || reportData.dataStart;
+      const last = to || rows[rows.length - 1]?.date || reportData.dataEnd;
+      setText('overview-period-start', ruDate(first) || 'нет данных');
+      setText('overview-period-end', ruDate(last));
+    }
+
+    function applySearch() {
+      const query = (searchInput?.value || '').trim().toLowerCase();
+      for (const row of document.querySelectorAll('.data-table tbody tr')) {
+        row.classList.toggle('is-hidden', Boolean(query) && !row.textContent.toLowerCase().includes(query));
+      }
+    }
+
+    function applyDateFilter() {
+      let from = dateFromInput?.value || reportData.dataStart;
+      let to = dateToInput?.value || reportData.dataEnd;
+      if (from && to && from > to) [from, to] = [to, from];
+      const campaigns = reportData.campaigns.map((campaign) => {
+        const daily = rowsInPeriod(campaign.daily, from, to).map(complete);
+        return { ...campaign, filteredDaily: daily, total: sumRows(daily) };
+      }).sort((a, b) => toNum(b.total.clicks) - toNum(a.total.clicks));
+      const daily = mergeDaily(reportData.campaigns, from, to);
+      const total = sumRows(daily);
+
+      updatePeriodDisplay(from, to, daily);
+      setText('overview-active-days', number(activeRows(daily).length));
+      setText('overview-impressions', number(total.impressions));
+      setText('overview-clicks', number(total.clicks));
+      setText('overview-ctr', pct(total.ctr, 2));
+      setText('overview-click-to-lead', leadEnabled ? pct(total.clickToLead, 2) : 'нет данных');
+      setText('kpi-impressions', number(total.impressions));
+      setText('kpi-clicks', number(total.clicks));
+      setText('kpi-ctr', pct(total.ctr, 2));
+      setText('kpi-leads', leadEnabled ? number(total.leads) : 'нет данных');
+      setText('kpi-click-to-lead', leadEnabled ? pct(total.clickToLead, 2) : 'нет данных');
+      setText('kpi-spend', money(total.spend));
+      setText('kpi-spend-note', `CPC ${money(total.cpc)}`);
+
+      document.getElementById('daily-chart').innerHTML = svgDaily(daily);
+      renderCampaignTable(campaigns);
+      renderFunnel(total);
+      renderLeadQuality(total, from, to);
+      renderForecast(daily);
+      document.getElementById('groups-chart').innerHTML = svgBar(entityTotals(reportData.campaigns, 'groups', from, to), 'bar-blue', 7);
+      document.getElementById('creatives-chart').innerHTML = svgBar(entityTotals(reportData.campaigns, 'creatives', from, to), 'bar-green', 7);
+      applySearch();
+    }
+
+    searchInput?.addEventListener('input', applySearch);
+    dateFromInput?.addEventListener('change', applyDateFilter);
+    dateToInput?.addEventListener('change', applyDateFilter);
+    document.getElementById('reset-period')?.addEventListener('click', () => {
+      if (dateFromInput) dateFromInput.value = reportData.dataStart || '';
+      if (dateToInput) dateToInput.value = reportData.dataEnd || '';
+      applyDateFilter();
+    });
+
+    function syncNav() {
+      const checkpoint = window.scrollY + 130;
+      let active = sections[0];
+      for (const section of sections) {
+        if (section.offsetTop <= checkpoint) active = section;
+      }
+      for (const link of navLinks) {
+        link.classList.toggle('is-active', active && `#${active.id}` === link.getAttribute('href'));
+      }
+    }
+
+    applyDateFilter();
+    syncNav();
+    window.addEventListener('scroll', syncNav, { passive: true });
+    window.addEventListener('scroll', hideChartTooltip, { passive: true });
+    
+  </script>
+</body>
+</html>

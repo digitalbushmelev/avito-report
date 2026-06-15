@@ -1,0 +1,99 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-06-10T15:04:45.775240+05:00",
+  "api_point_balance": "14990",
+  "period": {
+    "start": "2026-03-12",
+    "end": "2026-06-09"
+  },
+  "campaign": {
+    "id": "843568278",
+    "name": "Дружеский"
+  },
+  "daily": [
+    {
+      "date": "2026-06-09",
+      "impressions": 76395.0,
+      "clicks": 124.0,
+      "spend": 1584.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "483086264750",
+      "label": "Группа – 1",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-06-09",
+          "impressions": 76395.0,
+          "clicks": 124.0,
+          "spend": 1584.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 76395.0,
+      "clicks": 124.0,
+      "spend": 1584.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "406336302007612",
+      "label": "2-евро за 35 973 ₽/мес",
+      "group_id": "483086264750",
+      "daily": [
+        {
+          "date": "2026-06-09",
+          "impressions": 25560.0,
+          "clicks": 38.0,
+          "spend": 475.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 25560.0,
+      "clicks": 38.0,
+      "spend": 475.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "404874360426499",
+      "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес",
+      "group_id": "483086264750",
+      "daily": [
+        {
+          "date": "2026-06-09",
+          "impressions": 25442.0,
+          "clicks": 37.0,
+          "spend": 475.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 25442.0,
+      "clicks": 37.0,
+      "spend": 475.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "927364795302213",
+      "label": "7 на 7",
+      "group_id": "483086264750",
+      "daily": [
+        {
+          "date": "2026-06-09",
+          "impressions": 25393.0,
+          "clicks": 49.0,
+          "spend": 632.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 25393.0,
+      "clicks": 49.0,
+      "spend": 632.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}
