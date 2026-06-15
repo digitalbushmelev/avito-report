@@ -55,7 +55,7 @@ jobs:
 
       - name: Update cached data and build report
         run: |
-          if [ "${{ github.event.inputs.force_avito }}" = "true" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.force_avito }}" = "true" ]; then
             python update_report.py --force
           else
             python update_report.py
