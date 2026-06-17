@@ -9,21 +9,11 @@
   "utm_groups": [
     {
       "source": "avito_media",
-      "medium": "banner",
-      "campaigns": [
-        "psk_druzheskiy-pv1750000",
-        "psk_druzheskiy-7na7",
-        "psk_druzheskiy-pv1500000"
-      ]
+      "medium": "banner"
     },
     {
       "source": "avito_reklama",
-      "medium": "cpc",
-      "campaigns": [
-        "psk_druzheskiy-pv1750000_druzh",
-        "psk_druzheskiy-7na7_druzh",
-        "psk_druzheskiy-pv1500000_druzh"
-      ]
+      "medium": "cpc"
     }
   ],
   "deal_category_name": "Комфорт: прямые продажи",

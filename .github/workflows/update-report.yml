@@ -36,7 +36,7 @@ jobs:
       BITRIX_UTM_MEDIUM_FIELD: UTM_MEDIUM
       BITRIX_UTM_CAMPAIGN_FIELD: UTM_CAMPAIGN
       BITRIX_UTM_GROUPS_JSON: >-
-        [{"source":"avito_media","medium":"banner","campaigns":["psk_druzheskiy-pv1750000","psk_druzheskiy-7na7","psk_druzheskiy-pv1500000"]},{"source":"avito_reklama","medium":"cpc","campaigns":["psk_druzheskiy-pv1750000_druzh","psk_druzheskiy-7na7_druzh","psk_druzheskiy-pv1500000_druzh"]}]
+        [{"source":"avito_media","medium":"banner"},{"source":"avito_reklama","medium":"cpc"}]
       BITRIX_DEAL_CATEGORY_ID: ${{ secrets.BITRIX_DEAL_CATEGORY_ID }}
       BITRIX_DEAL_CATEGORY_NAME: "Комфорт: прямые продажи"
       BITRIX_STAGE_FIELD: STAGE_ID

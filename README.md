@@ -90,21 +90,13 @@ python update_report.py --force
 Группа 1:
   utm_source = avito_media
   utm_medium = banner
-  utm_campaign in:
-    psk_druzheskiy-pv1750000
-    psk_druzheskiy-7na7
-    psk_druzheskiy-pv1500000
 
 Группа 2:
   utm_source = avito_reklama
   utm_medium = cpc
-  utm_campaign in:
-    psk_druzheskiy-pv1750000_druzh
-    psk_druzheskiy-7na7_druzh
-    psk_druzheskiy-pv1500000_druzh
 ```
 
-В REST API Bitrix эти поля запрашиваются как `UTM_SOURCE`, `UTM_MEDIUM`, `UTM_CAMPAIGN`. Для `utm_campaign` дефис и подчеркивание считаются одинаковыми, потому что в сделках Bitrix значения могут приходить как `psk_druzheskiy_7na7`.
+В REST API Bitrix эти поля запрашиваются как `UTM_SOURCE`, `UTM_MEDIUM`, `UTM_CAMPAIGN`. Сделка попадает в отчет только по паре `utm_source + utm_medium`; `utm_campaign` не фильтрует сделки и сохраняется отдельно для будущей привязки лида к конкретному креативу.
 
 Не учитываются:
 

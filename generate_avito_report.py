@@ -40,16 +40,10 @@ DEFAULT_BITRIX_UTM_GROUPS = (
     {
         "source": "avito_media",
         "medium": "banner",
-        "campaigns": DEFAULT_BITRIX_UTM_CAMPAIGNS,
     },
     {
         "source": "avito_reklama",
         "medium": "cpc",
-        "campaigns": (
-            "psk_druzheskiy-pv1750000_druzh",
-            "psk_druzheskiy-7na7_druzh",
-            "psk_druzheskiy-pv1500000_druzh",
-        ),
     },
 )
 DEFAULT_BITRIX_DEAL_CATEGORY_NAME = "Комфорт: прямые продажи"
@@ -302,6 +296,7 @@ class LeadData:
     by_campaign: dict[str, dict[str, int]]
     quality_by_campaign: dict[str, dict[str, dict[str, int]]] = field(default_factory=dict)
     stage_summary: dict[str, dict[str, object]] = field(default_factory=dict)
+    by_utm_campaign: dict[str, dict[str, int]] = field(default_factory=dict)
 
 
 def read_info(rows: list[list[str]]) -> dict[str, str]:
@@ -959,7 +954,6 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
             ("BITRIX_DATE_FIELD", date_field),
             ("BITRIX_UTM_SOURCE_FIELD", utm_source_field),
             ("BITRIX_UTM_MEDIUM_FIELD", utm_medium_field),
-            ("BITRIX_UTM_CAMPAIGN_FIELD", campaign_field),
         )
         if not value
     ]
@@ -1001,6 +995,7 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
     ]
 
     by_campaign: dict[str, dict[str, int]] = {}
+    by_utm_campaign: dict[str, dict[str, int]] = {}
     quality_by_campaign: dict[str, dict[str, dict[str, int]]] = {}
     stage_summary: dict[str, dict[str, object]] = {}
     matched_count = 0
@@ -1009,8 +1004,9 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
     excluded_phone_only = 0
     excluded_stage_and_phone = 0
     seen_deals: set[str] = set()
+    utm_campaign_count = 0
+    unknown_utm_campaign_count = 0
     for group in utm_groups:
-        campaign_values = {normalize_utm_value(value) for value in as_list(group.get("campaigns")) if text(value)}
         filters = {"=CATEGORY_ID": deal_category_id}
         if text(group.get("source")):
             filters[f"={utm_source_field}"] = text(group.get("source"))
@@ -1026,10 +1022,8 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
             return LeadData(False, "Bitrix", f"Bitrix не ответил: {error}", {})
 
         for row in rows:
-            campaign_key = normalize_utm_value(row.get(campaign_field))
-            if campaign_values and campaign_key not in campaign_values:
-                continue
-            deal_id = text(row.get("ID")) or f"{campaign_key}:{text(row.get(date_field))}:{text(row.get(comment_field))}"
+            utm_campaign_key = normalize_utm_value(row.get(campaign_field))
+            deal_id = text(row.get("ID")) or f"{utm_campaign_key}:{text(row.get(date_field))}:{text(row.get(comment_field))}"
             if deal_id in seen_deals:
                 continue
             seen_deals.add(deal_id)
@@ -1055,14 +1049,22 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
             stage_semantics = text(stage_info.get("semantics")).upper()
             quality_key = "bad" if stage_semantics == "F" else "quality"
             stage_name = text(stage_info.get("name") or row_stage_id or "Без стадии")
-            add_leads(by_campaign, campaign_key, date_key, lead_count)
             add_leads(by_campaign, ALL_LEADS_KEY, date_key, lead_count)
-            add_lead_quality(quality_by_campaign, campaign_key, date_key, quality_key, lead_count)
             add_lead_quality(quality_by_campaign, ALL_LEADS_KEY, date_key, quality_key, lead_count)
+            if utm_campaign_key:
+                add_leads(by_campaign, utm_campaign_key, date_key, lead_count)
+                add_leads(by_utm_campaign, utm_campaign_key, date_key, lead_count)
+                add_lead_quality(quality_by_campaign, utm_campaign_key, date_key, quality_key, lead_count)
+                utm_campaign_count += lead_count
+            else:
+                unknown_utm_campaign_count += lead_count
             add_stage_summary(stage_summary, row_stage_id, stage_name, quality_key, date_key, lead_count)
             matched_count += lead_count
 
-    status = f"Сделки из воронки «{deal_category_name or deal_category_id}»: {matched_count} шт.; UTM-групп: {len(utm_groups)}"
+    status = (
+        f"Сделки из воронки «{deal_category_name or deal_category_id}»: {matched_count} шт.; "
+        f"отбор по utm_source + utm_medium; UTM-групп: {len(utm_groups)}"
+    )
     if excluded_count:
         status += f"; исключено: {excluded_count} шт."
         reason_parts = []
@@ -1077,6 +1079,10 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
         status += "; не найдены стадии: " + ", ".join(missing_stage_names)
     if stage_map_error:
         status += f"; качество стадий: не удалось получить справочник ({stage_map_error})"
+    if matched_count:
+        status += f"; utm_campaign для креативов: {utm_campaign_count} шт."
+        if unknown_utm_campaign_count:
+            status += f", без utm_campaign: {unknown_utm_campaign_count} шт."
     all_quality = quality_by_campaign.get(ALL_LEADS_KEY, {})
     quality_total = sum(to_int(item.get("quality")) for item in all_quality.values())
     bad_total = sum(to_int(item.get("bad")) for item in all_quality.values())
@@ -1090,6 +1096,7 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
         by_campaign,
         quality_by_campaign,
         stage_summary,
+        by_utm_campaign,
     )
 
 
@@ -1741,6 +1748,24 @@ def lead_stage_rows(stage_summary: dict[str, dict[str, object]]) -> list[dict[st
     return sorted(rows, key=lambda item: to_int(item.get("count")), reverse=True)
 
 
+def lead_utm_campaign_rows(by_utm_campaign: dict[str, dict[str, int]]) -> list[dict[str, object]]:
+    rows = []
+    for campaign, by_day in by_utm_campaign.items():
+        if campaign == ALL_LEADS_KEY or not text(campaign):
+            continue
+        count = sum(to_int(value) for value in by_day.values())
+        if count <= 0:
+            continue
+        rows.append(
+            {
+                "utm_campaign": campaign,
+                "count": count,
+                "daily": [{"date": day, "count": to_float(value)} for day, value in sorted(by_day.items())],
+            }
+        )
+    return sorted(rows, key=lambda item: to_int(item.get("count")), reverse=True)
+
+
 def lead_quality(
     total: dict[str, float | None],
     lead_enabled: bool,
@@ -1930,6 +1955,7 @@ def client_report_payload(report: dict[str, object]) -> dict[str, object]:
             }
             for item in lead_stage_rows(report["lead_data"].stage_summary)
         ],
+        "leadUtmCampaigns": lead_utm_campaign_rows(report["lead_data"].by_utm_campaign),
         "campaigns": [
             {
                 "id": text(campaign.get("id")),
