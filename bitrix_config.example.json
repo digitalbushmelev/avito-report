@@ -16,6 +16,15 @@
       "medium": "cpc"
     }
   ],
+  "campaign_utm_map": {
+    "843568278": [
+      "psk_druzheskiy_7na7"
+    ],
+    "460053704": [
+      "psk_druzheskiy_7na7_druzh",
+      "psk_druzheskiy_pv332_druzh"
+    ]
+  },
   "deal_category_name": "Комфорт: прямые продажи",
   "deal_category_id": "",
   "stage_field": "STAGE_ID",

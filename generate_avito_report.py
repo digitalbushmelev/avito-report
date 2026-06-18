@@ -1108,11 +1108,22 @@ def load_leads(date_from: date | None = None, date_to: date | None = None) -> Le
     )
 
 
-def campaign_leads(info: dict[str, str], lead_data: LeadData, fallback_all: bool = False) -> dict[str, int]:
-    keys = [
-        normalize_key(info.get("campaign_id")),
-        normalize_key(info.get("campaign_name")),
-    ]
+def lead_lookup_keys(info: dict[str, str], extra_keys: Iterable[str] | None = None) -> list[str]:
+    result: list[str] = []
+    for value in [info.get("campaign_id"), info.get("campaign_name"), *(extra_keys or [])]:
+        for key in (normalize_key(value), normalize_utm_value(value)):
+            if key and key not in result:
+                result.append(key)
+    return result
+
+
+def campaign_leads(
+    info: dict[str, str],
+    lead_data: LeadData,
+    fallback_all: bool = False,
+    extra_keys: Iterable[str] | None = None,
+) -> dict[str, int]:
+    keys = lead_lookup_keys(info, extra_keys)
     result: dict[str, int] = {}
     for key in keys:
         if key and key in lead_data.by_campaign:
@@ -1128,12 +1139,72 @@ def campaign_lead_quality(
     info: dict[str, str],
     lead_data: LeadData,
     fallback_all: bool = False,
+    extra_keys: Iterable[str] | None = None,
 ) -> dict[str, dict[str, int]]:
-    keys = [
-        normalize_key(info.get("campaign_id")),
-        normalize_key(info.get("campaign_name")),
-    ]
+    keys = lead_lookup_keys(info, extra_keys)
     return merge_lead_quality(lead_data.quality_by_campaign, keys, fallback_all)
+
+
+def add_campaign_utm_mapping(target: dict[str, list[str]], campaign_key: object, utm_values: object) -> None:
+    values = [normalize_utm_value(value) for value in as_list(utm_values)]
+    values = [value for value in values if value]
+    if not values:
+        return
+    for key in (normalize_key(campaign_key), normalize_utm_value(campaign_key)):
+        if not key:
+            continue
+        bucket = target.setdefault(key, [])
+        for value in values:
+            if value not in bucket:
+                bucket.append(value)
+
+
+def parse_campaign_utm_map(parsed: object) -> dict[str, list[str]]:
+    result: dict[str, list[str]] = {}
+    if isinstance(parsed, dict):
+        for campaign_key, utm_values in parsed.items():
+            add_campaign_utm_mapping(result, campaign_key, utm_values)
+        return result
+
+    for item in parsed if isinstance(parsed, list) else []:
+        if not isinstance(item, dict):
+            continue
+        utm_values = item.get("utm_campaigns") or item.get("utm_campaign") or item.get("campaigns")
+        for campaign_key in (
+            item.get("campaign_id"),
+            item.get("id"),
+            item.get("campaign_name"),
+            item.get("name"),
+        ):
+            add_campaign_utm_mapping(result, campaign_key, utm_values)
+    return result
+
+
+def campaign_utm_map_from_env() -> dict[str, list[str]]:
+    env = read_env_file(BITRIX_ENV_FILE)
+    raw = text(env.get("BITRIX_CAMPAIGN_UTM_MAP_JSON") or env.get("REPORT_CAMPAIGN_UTM_MAP_JSON"))
+    if raw:
+        try:
+            return parse_campaign_utm_map(json.loads(raw))
+        except json.JSONDecodeError:
+            return {}
+
+    if BITRIX_CONFIG_FILE.exists():
+        try:
+            config = json.loads(BITRIX_CONFIG_FILE.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            return {}
+        return parse_campaign_utm_map(config.get("campaign_utm_map") or config.get("campaign_utm_map_json"))
+    return {}
+
+
+def mapped_utm_keys(info: dict[str, str], campaign_utm_map: dict[str, list[str]]) -> list[str]:
+    result: list[str] = []
+    for key in lead_lookup_keys(info):
+        for value in campaign_utm_map.get(key, []):
+            if value and value not in result:
+                result.append(value)
+    return result
 
 
 def attach_leads(
@@ -1424,8 +1495,17 @@ def normalize_metric_row(row: dict[str, object]) -> dict[str, object]:
     return complete_rates(metrics)
 
 
-def campaign_from_api_data(payload: dict[str, object], lead_data: LeadData) -> dict[str, object]:
+def campaign_from_api_data(
+    payload: dict[str, object],
+    lead_data: LeadData,
+    owns_all_leads: bool = False,
+    campaign_utm_map: dict[str, list[str]] | None = None,
+) -> dict[str, object]:
     campaign = payload.get("campaign") if isinstance(payload.get("campaign"), dict) else {}
+    campaign_id = text(campaign.get("id") or payload.get("campaign_id") or "druzheskiy")
+    campaign_name = text(campaign.get("name") or payload.get("campaign_name") or REPORT_CAMPAIGN_NAME)
+    campaign_info = {"campaign_id": campaign_id, "campaign_name": campaign_name}
+    utm_keys = mapped_utm_keys(campaign_info, campaign_utm_map or {})
     daily = []
     for row in payload.get("daily", []) if isinstance(payload.get("daily"), list) else []:
         if not isinstance(row, dict):
@@ -1436,8 +1516,8 @@ def campaign_from_api_data(payload: dict[str, object], lead_data: LeadData) -> d
         daily.append({"date": day.isoformat(), **normalize_metric_row(row)})
     daily.sort(key=lambda row: text(row.get("date")))
     total = sum_metric_rows(daily)
-    leads_by_day = lead_data.by_campaign.get(ALL_LEADS_KEY, {})
-    quality_by_day = lead_data.quality_by_campaign.get(ALL_LEADS_KEY, {})
+    leads_by_day = campaign_leads(campaign_info, lead_data, fallback_all=owns_all_leads, extra_keys=utm_keys)
+    quality_by_day = campaign_lead_quality(campaign_info, lead_data, fallback_all=owns_all_leads, extra_keys=utm_keys)
     attach_leads(daily, total, leads_by_day, lead_data.enabled, quality_by_day)
 
     def normalize_entities(items: object) -> list[dict[str, object]]:
@@ -1464,10 +1544,10 @@ def campaign_from_api_data(payload: dict[str, object], lead_data: LeadData) -> d
     geography = payload.get("geography") if isinstance(payload.get("geography"), dict) else {}
     dates = [parse_date(row["date"]) for row in daily if parse_date(row["date"])]
     return {
-        "id": text(campaign.get("id") or payload.get("campaign_id") or "druzheskiy"),
-        "name": text(campaign.get("name") or payload.get("campaign_name") or REPORT_CAMPAIGN_NAME),
+        "id": campaign_id,
+        "name": campaign_name,
         "source_name": text(campaign.get("source_name") or ""),
-        "info": {"campaign_id": text(campaign.get("id") or payload.get("campaign_id")), "campaign_name": REPORT_CAMPAIGN_NAME},
+        "info": campaign_info,
         "files": {"api": text(payload.get("source") or "Avito API")},
         "daily": daily,
         "total": total,
@@ -1524,16 +1604,20 @@ def placeholder_campaign(lead_data: LeadData, date_from: date | None, date_to: d
     }
 
 
-def load_api_campaigns(lead_data: LeadData) -> list[dict[str, object]]:
-    campaigns = []
+def load_api_campaigns(lead_data: LeadData, campaign_utm_map: dict[str, list[str]]) -> list[dict[str, object]]:
+    payloads = []
     for path in api_data_files():
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             continue
         if isinstance(payload, dict):
-            campaigns.append(campaign_from_api_data(payload, lead_data))
-    return campaigns
+            payloads.append(payload)
+    owns_all_leads = len(payloads) == 1
+    return [
+        campaign_from_api_data(payload, lead_data, owns_all_leads=owns_all_leads, campaign_utm_map=campaign_utm_map)
+        for payload in payloads
+    ]
 
 
 def env_report_period() -> tuple[date | None, date | None]:
@@ -1546,7 +1630,7 @@ def env_report_period() -> tuple[date | None, date | None]:
 def build_report() -> dict[str, object]:
     date_from, date_to = env_report_period()
     lead_data = load_leads(date_from, date_to)
-    campaigns = load_api_campaigns(lead_data)
+    campaigns = load_api_campaigns(lead_data, campaign_utm_map_from_env())
     if not campaigns:
         campaigns = [placeholder_campaign(lead_data, date_from, date_to)]
     campaigns.sort(key=lambda item: to_float(item["total"].get("clicks")), reverse=True)

@@ -83,6 +83,7 @@ python update_report.py --force
 - `AVITO_CAMPAIGN_LIST_PATH_TEMPLATE` — опционально, если Avito изменит endpoint списка кампаний;
 - `BITRIX_WEBHOOK_URL`;
 - `BITRIX_DATE_FIELD`;
+- `BITRIX_CAMPAIGN_UTM_MAP_JSON` — опционально, если нужно раскладывать сделки по конкретным Avito-кампаниям через `utm_campaign`;
 - `BITRIX_DEAL_CATEGORY_ID` — необязательно, если название воронки резолвится через API;
 - `REPORT_START_DATE`.
 
@@ -110,6 +111,17 @@ python update_report.py --force
 ```
 
 В REST API Bitrix эти поля запрашиваются как `UTM_SOURCE`, `UTM_MEDIUM`, `UTM_CAMPAIGN`. Сделка попадает в отчет только по паре `utm_source + utm_medium`; `utm_campaign` не фильтрует сделки и сохраняется отдельно для будущей привязки лида к конкретному креативу.
+
+Если в отчете несколько Avito-кампаний, сделки можно привязать к конкретной строке кампании через `BITRIX_CAMPAIGN_UTM_MAP_JSON`:
+
+```json
+{
+  "843568278": ["psk_druzheskiy_7na7"],
+  "460053704": ["psk_druzheskiy_7na7_druzh", "psk_druzheskiy_pv332_druzh"]
+}
+```
+
+Без этого маппинга сделки остаются в общем итоге и в разбивке по `utm_campaign`, но не приписываются к конкретной Avito-кампании.
 
 Не учитываются:
 

@@ -44,6 +44,7 @@ jobs:
       BITRIX_UTM_CAMPAIGN_FIELD: UTM_CAMPAIGN
       BITRIX_UTM_GROUPS_JSON: >-
         [{"source":"avito_media","medium":"banner"},{"source":"avito_reklama","medium":"cpc"}]
+      BITRIX_CAMPAIGN_UTM_MAP_JSON: ${{ secrets.BITRIX_CAMPAIGN_UTM_MAP_JSON }}
       BITRIX_DEAL_CATEGORY_ID: ${{ secrets.BITRIX_DEAL_CATEGORY_ID }}
       BITRIX_DEAL_CATEGORY_NAME: "Комфорт: прямые продажи"
       BITRIX_STAGE_FIELD: STAGE_ID
