@@ -49,6 +49,7 @@ DEFAULT_BITRIX_UTM_GROUPS = (
 DEFAULT_BITRIX_DEAL_CATEGORY_NAME = "Комфорт: прямые продажи"
 DEFAULT_BITRIX_EXCLUDED_COMMENT_PHONES = ("71111111111",)
 DEFAULT_BITRIX_EXCLUDED_STAGE_NAMES = ("Дубль. Создана новая сделка", "Наш сотрудник")
+DEFAULT_BITRIX_UNTOUCHED_STAGE_NAMES = ("ЛИДГЕН", "Совершить первый контакт")
 
 XLSX_NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 REL_ID = "{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id"
@@ -164,6 +165,14 @@ def pct(value: object, digits: int = 2) -> str:
     if value is None:
         return "нет данных"
     return decimal(value, digits) + "%"
+
+
+def qualified_leads(total: dict[str, object]) -> float:
+    return to_float(total.get("quality_leads"))
+
+
+def appeal_count(total: dict[str, object]) -> float:
+    return max(0.0, to_float(total.get("leads")) - qualified_leads(total))
 
 
 def parse_date(value: object) -> date | None:
@@ -878,6 +887,7 @@ def bitrix_settings_from_env() -> dict[str, object] | None:
         )
     excluded_phones = split_list(env.get("BITRIX_EXCLUDED_COMMENT_PHONES") or env.get("BITRIX_EXCLUDED_PHONE"))
     excluded_stage_names = split_list(env.get("BITRIX_EXCLUDED_STAGE_NAMES"))
+    untouched_stage_names = split_list(env.get("BITRIX_UNTOUCHED_STAGE_NAMES"))
     return {
         "source": "bitrix.env",
         "webhook_url": text(env.get("BITRIX_WEBHOOK_URL")),
@@ -897,6 +907,7 @@ def bitrix_settings_from_env() -> dict[str, object] | None:
         "comment_field": text(env.get("BITRIX_COMMENT_FIELD") or "COMMENTS"),
         "excluded_stage_ids": split_list(env.get("BITRIX_EXCLUDED_STAGE_IDS")),
         "excluded_stage_names": excluded_stage_names or list(DEFAULT_BITRIX_EXCLUDED_STAGE_NAMES),
+        "untouched_stage_names": untouched_stage_names or list(DEFAULT_BITRIX_UNTOUCHED_STAGE_NAMES),
         "excluded_comment_phones": excluded_phones or list(DEFAULT_BITRIX_EXCLUDED_COMMENT_PHONES),
         "lead_count_field": text(env.get("BITRIX_LEAD_COUNT_FIELD") or ""),
         "campaign_date_rules": campaign_date_rules_from_json(
@@ -934,6 +945,7 @@ def bitrix_settings_from_config() -> dict[str, object] | None:
         "comment_field": text(config.get("comment_field") or "COMMENTS"),
         "excluded_stage_ids": config.get("excluded_stage_ids") or [],
         "excluded_stage_names": config.get("excluded_stage_names") or list(DEFAULT_BITRIX_EXCLUDED_STAGE_NAMES),
+        "untouched_stage_names": config.get("untouched_stage_names") or list(DEFAULT_BITRIX_UNTOUCHED_STAGE_NAMES),
         "excluded_comment_phones": config.get("excluded_comment_phones") or list(DEFAULT_BITRIX_EXCLUDED_COMMENT_PHONES),
         "lead_count_field": text(config.get("lead_count_field")),
         "campaign_date_rules": campaign_date_rules_from_config(
@@ -1002,6 +1014,7 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
     comment_field = text(settings.get("comment_field") or "COMMENTS")
     excluded_stage_ids = {text(value) for value in as_list(settings.get("excluded_stage_ids", [])) if text(value)}
     excluded_stage_names = as_list(settings.get("excluded_stage_names", []))
+    untouched_stage_names = {normalize_key(value) for value in as_list(settings.get("untouched_stage_names", [])) if text(value)}
     excluded_comment_phones = {
         normalize_phone(value)
         for value in as_list(settings.get("excluded_comment_phones", []))
@@ -1114,8 +1127,9 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
             date_key = day.isoformat() if day else "unknown"
             stage_info = stage_map.get(row_stage_id, {})
             stage_semantics = text(stage_info.get("semantics")).upper()
-            quality_key = "bad" if stage_semantics == "F" else "quality"
             stage_name = text(stage_info.get("name") or row_stage_id or "Без стадии")
+            stage_lookup = {normalize_key(row_stage_id), normalize_key(stage_name)}
+            quality_key = "bad" if stage_semantics == "F" or bool(stage_lookup & untouched_stage_names) else "quality"
             add_leads(by_campaign, ALL_LEADS_KEY, date_key, lead_count)
             add_lead_quality(quality_by_campaign, ALL_LEADS_KEY, date_key, quality_key, lead_count)
             date_campaign_key = campaign_key_for_date(campaign_date_rules, day)
@@ -1161,7 +1175,7 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
     quality_total = sum(to_int(item.get("quality")) for item in all_quality.values())
     bad_total = sum(to_int(item.get("bad")) for item in all_quality.values())
     if quality_total or bad_total:
-        status += f"; качество: {quality_total} качественных, {bad_total} некачественных"
+        status += f"; качество: {quality_total} лидов, {bad_total} обращений"
 
     return LeadData(
         True,
@@ -1254,14 +1268,14 @@ def attach_leads(
             row["quality_leads"] = row["leads"]
         quality_base = to_float(row.get("quality_leads")) + to_float(row.get("bad_leads"))
         row["lead_quality_rate"] = to_float(row.get("quality_leads")) / quality_base * 100 if enabled and quality_base else None
-        row["click_to_lead"] = to_float(row["leads"]) / to_float(row.get("clicks")) * 100 if enabled and to_float(row.get("clicks")) else None
+        row["click_to_lead"] = qualified_leads(row) / to_float(row.get("clicks")) * 100 if enabled and to_float(row.get("clicks")) else None
     total["leads"] = float(total_leads)
-    total["click_to_lead"] = total_leads / total["clicks"] * 100 if enabled and total["clicks"] else None
-    total["impression_to_lead"] = total_leads / total["impressions"] * 100 if enabled and total["impressions"] else None
     total["quality_leads"] = float(sum(to_int(item.get("quality")) for item in quality_by_day.values()))
     total["bad_leads"] = float(sum(to_int(item.get("bad")) for item in quality_by_day.values()))
     if enabled and not quality_by_day:
         total["quality_leads"] = float(total_leads)
+    total["click_to_lead"] = qualified_leads(total) / total["clicks"] * 100 if enabled and total["clicks"] else None
+    total["impression_to_lead"] = qualified_leads(total) / total["impressions"] * 100 if enabled and total["impressions"] else None
     quality_total = to_float(total.get("quality_leads")) + to_float(total.get("bad_leads"))
     total["lead_quality_rate"] = to_float(total.get("quality_leads")) / quality_total * 100 if enabled and quality_total else None
 
@@ -1372,7 +1386,7 @@ def merge_daily(campaigns: list[dict[str, object]], lead_enabled: bool) -> list[
     for day in sorted(by_day):
         row = by_day[day]
         complete_rates(row)
-        row["click_to_lead"] = to_float(row.get("leads")) / to_float(row.get("clicks")) * 100 if lead_enabled and to_float(row.get("clicks")) else None
+        row["click_to_lead"] = qualified_leads(row) / to_float(row.get("clicks")) * 100 if lead_enabled and to_float(row.get("clicks")) else None
         quality_base = to_float(row.get("quality_leads")) + to_float(row.get("bad_leads"))
         row["lead_quality_rate"] = to_float(row.get("quality_leads")) / quality_base * 100 if lead_enabled and quality_base else None
         result.append(row)
@@ -1393,10 +1407,10 @@ def summarize_totals(campaigns: list[dict[str, object]], lead_enabled: bool) -> 
         bad_total += to_float(campaign_total.get("bad_leads"))
     complete_rates(total)
     total["leads"] = lead_total
-    total["click_to_lead"] = lead_total / total["clicks"] * 100 if lead_enabled and total["clicks"] else None
-    total["impression_to_lead"] = lead_total / total["impressions"] * 100 if lead_enabled and total["impressions"] else None
     total["quality_leads"] = quality_total
     total["bad_leads"] = bad_total
+    total["click_to_lead"] = quality_total / total["clicks"] * 100 if lead_enabled and total["clicks"] else None
+    total["impression_to_lead"] = quality_total / total["impressions"] * 100 if lead_enabled and total["impressions"] else None
     quality_base = quality_total + bad_total
     total["lead_quality_rate"] = quality_total / quality_base * 100 if lead_enabled and quality_base else None
     return total
@@ -1417,7 +1431,7 @@ def apply_overall_leads(daily: list[dict[str, object]], total: dict[str, float |
         row["quality_leads"] = to_int(quality.get("quality"))
         row["bad_leads"] = to_int(quality.get("bad"))
         row["click_to_lead"] = (
-            to_float(row.get("leads")) / to_float(row.get("clicks")) * 100
+            qualified_leads(row) / to_float(row.get("clicks")) * 100
             if to_float(row.get("clicks"))
             else None
         )
@@ -1428,9 +1442,9 @@ def apply_overall_leads(daily: list[dict[str, object]], total: dict[str, float |
     total_quality = float(sum(to_int(item.get("quality")) for item in quality_by_day.values()))
     total_bad = float(sum(to_int(item.get("bad")) for item in quality_by_day.values()))
     total["leads"] = total_leads
-    total["click_to_lead"] = total_leads / to_float(total.get("clicks")) * 100 if to_float(total.get("clicks")) else None
+    total["click_to_lead"] = total_quality / to_float(total.get("clicks")) * 100 if to_float(total.get("clicks")) else None
     total["impression_to_lead"] = (
-        total_leads / to_float(total.get("impressions")) * 100
+        total_quality / to_float(total.get("impressions")) * 100
         if to_float(total.get("impressions"))
         else None
     )
@@ -1455,8 +1469,11 @@ def stddev(rows: list[dict[str, object]], key: str) -> float:
 
 def forecast(rows: list[dict[str, object]], lead_enabled: bool) -> dict[str, object]:
     active = active_rows(rows)
-    avg = {key: average(active, key) for key in ("impressions", "clicks", "spend", "leads")}
-    sd = {key: stddev(active, key) for key in ("clicks", "spend", "leads")}
+    lead_key = "quality_leads" if lead_enabled else "leads"
+    avg = {key: average(active, key) for key in ("impressions", "clicks", "spend")}
+    avg["leads"] = average(active, lead_key)
+    sd = {key: stddev(active, key) for key in ("clicks", "spend")}
+    sd["leads"] = stddev(active, lead_key)
     projections = {}
     for horizon in (7, 30):
         item = {
@@ -1722,7 +1739,8 @@ def svg_daily_combo(rows: list[dict[str, object]], height: int = 285) -> str:
                 f"Столбец: клики за день — {number(value)}",
                 f"Линия: CTR — {pct(row.get('ctr'), 2)}",
                 f"Показы — {number(row.get('impressions'))}",
-                f"Лиды — {number(row.get('leads'))}",
+                f"Лиды — {number(qualified_leads(row))}",
+                f"Обращения — {number(appeal_count(row))}",
             ],
         )
         bars.append(
@@ -1802,7 +1820,7 @@ def funnel(total: dict[str, float | None], lead_enabled: bool) -> str:
     stages = [
         ("Показы", to_float(total.get("impressions")), "100%"),
         ("Клики", to_float(total.get("clicks")), pct(total.get("ctr"), 2)),
-        ("Лиды", to_float(total.get("leads")), pct(total.get("click_to_lead"), 2) if lead_enabled else "нет данных"),
+        ("Лиды", qualified_leads(total), pct(total.get("click_to_lead"), 2) if lead_enabled else "нет данных"),
     ]
     max_value = max(max((stage[1] for stage in stages), default=0), 1)
     rows = []
@@ -1870,8 +1888,8 @@ def lead_quality(
     if not base:
         return '<div class="quality-empty">Лидов за период нет</div>'
     rows = [
-        ("Качественные", quality, quality / base * 100, "quality-good"),
-        ("Некачественные", bad, bad / base * 100, "quality-bad"),
+        ("Лиды", quality, quality / base * 100, "quality-good"),
+        ("Обращения", bad, bad / base * 100, "quality-bad"),
     ]
     summary = "".join(
         f'<div class="quality-row {esc(cls)}">'
@@ -1887,7 +1905,7 @@ def lead_quality(
             f'<div class="quality-stage {esc("quality-bad" if item["quality"] == "bad" else "quality-good")}">'
             f'<span>{esc(item["name"])}</span>'
             f'<strong>{esc(number(item["count"]))}</strong>'
-            f'<small>{esc("некачественный" if item["quality"] == "bad" else "качественный")}</small>'
+            f'<small>{esc("обращение" if item["quality"] == "bad" else "лид")}</small>'
             f'</div>'
             for item in stage_rows[:6]
         )
@@ -1921,16 +1939,17 @@ def campaign_table(campaigns: list[dict[str, object]], lead_enabled: bool) -> st
                 number(total["impressions"]),
                 number(total["clicks"]),
                 pct(total["ctr"], 2),
-                number(total["leads"]) if lead_enabled else "нет данных",
+                number(qualified_leads(total)) if lead_enabled else "нет данных",
+                number(appeal_count(total)) if lead_enabled else "нет данных",
                 pct(total["click_to_lead"], 2) if lead_enabled else "нет данных",
                 money(total["spend"]),
                 money(total["cpc"]),
             ]
         )
     return table(
-        ["Кампания", "ID", "Показы", "Клики", "Показ → клик", "Лиды", "Клик → лид", "Расход", "CPC"],
+        ["Кампания", "ID", "Показы", "Клики", "Показ → клик", "Лиды", "Обращения", "Клик → лид", "Расход", "CPC"],
         rows,
-        numeric={2, 3, 4, 5, 6, 7, 8},
+        numeric={2, 3, 4, 5, 6, 7, 8, 9},
     )
 
 
@@ -2080,7 +2099,8 @@ def render_campaign(campaign: dict[str, object], lead_enabled: bool, total_count
           {kpi("Показы", number(total["impressions"]), accent="accent-cyan")}
           {kpi("Клики", number(total["clicks"]), accent="accent-coral")}
           {kpi("Показ → клик", pct(total["ctr"], 2), accent="accent-violet")}
-          {kpi("Лиды", number(total["leads"]) if lead_enabled else "нет данных", accent="accent-lime")}
+          {kpi("Лиды", number(qualified_leads(total)) if lead_enabled else "нет данных", accent="accent-lime")}
+          {kpi("Обращения", number(appeal_count(total)) if lead_enabled else "нет данных", accent="accent-coral")}
           {kpi("Клик → лид", pct(total["click_to_lead"], 2) if lead_enabled else "нет данных", accent="accent-amber")}
           {kpi("Расход", money(total["spend"]), accent="accent-emerald")}
         </div>
@@ -2134,7 +2154,8 @@ def render_html(report: dict[str, object]) -> str:
           {kpi("Показы", number(total["impressions"]), accent="accent-cyan", key="impressions")}
           {kpi("Клики", number(total["clicks"]), accent="accent-coral", key="clicks")}
           {kpi("Показ → клик", pct(total["ctr"], 2), accent="accent-violet", key="ctr")}
-          {kpi("Лиды", number(total["leads"]) if lead_enabled else "нет данных", accent="accent-lime", key="leads")}
+          {kpi("Лиды", number(qualified_leads(total)) if lead_enabled else "нет данных", accent="accent-lime", key="leads")}
+          {kpi("Обращения", number(appeal_count(total)) if lead_enabled else "нет данных", accent="accent-coral", key="appeals")}
           {kpi("Клик → лид", pct(total["click_to_lead"], 2) if lead_enabled else "нет данных", accent="accent-amber", key="click-to-lead")}
           {kpi("Расход", money(total["spend"]), "CPC " + money(total["cpc"]), "accent-emerald", key="spend")}
         </section>
@@ -2272,11 +2293,15 @@ def render_html(report: dict[str, object]) -> str:
       total.ctr = total.impressions ? total.clicks / total.impressions * 100 : 0;
       total.cpc = total.clicks ? total.spend / total.clicks : 0;
       total.cpm = total.impressions ? total.spend / total.impressions * 1000 : 0;
-      total.clickToLead = leadEnabled && total.clicks ? total.leads / total.clicks * 100 : null;
-      total.impressionToLead = leadEnabled && total.impressions ? total.leads / total.impressions * 100 : null;
+      total.clickToLead = leadEnabled && total.clicks ? total.quality_leads / total.clicks * 100 : null;
+      total.impressionToLead = leadEnabled && total.impressions ? total.quality_leads / total.impressions * 100 : null;
       const qualityBase = total.quality_leads + total.bad_leads;
       total.leadQualityRate = leadEnabled && qualityBase ? total.quality_leads / qualityBase * 100 : null;
       return total;
+    }
+
+    function appealCount(total) {
+      return Math.max(0, toNum(total.leads) - toNum(total.quality_leads));
     }
 
     function sumRows(rows) {
@@ -2320,7 +2345,7 @@ def render_html(report: dict[str, object]) -> str:
       const avg = (key) => active.length ? active.reduce((sum, row) => sum + toNum(row[key]), 0) / active.length : 0;
       const clicks = avg('clicks');
       const spend = avg('spend');
-      const leads = avg('leads');
+      const leads = leadEnabled ? avg('quality_leads') : avg('leads');
       return {
         confidence: active.length < 7 ? 'низкая' : active.length < 14 ? 'средняя' : 'нормальная',
         projections: {
@@ -2336,7 +2361,7 @@ def render_html(report: dict[str, object]) -> str:
     }
 
     function dailyTooltip(row) {
-      return `<strong>${escapeHtml(ruDate(row.date) || row.date)}</strong><span>Столбец: клики за день — ${number(row.clicks)}</span><span>Линия: CTR — ${pct(row.ctr, 2)}</span><span>Показы — ${number(row.impressions)}</span><span>Лиды — ${number(row.leads)}</span>`;
+      return `<strong>${escapeHtml(ruDate(row.date) || row.date)}</strong><span>Столбец: клики за день — ${number(row.clicks)}</span><span>Линия: CTR — ${pct(row.ctr, 2)}</span><span>Показы — ${number(row.impressions)}</span><span>Лиды — ${number(row.quality_leads)}</span><span>Обращения — ${number(appealCount(row))}</span>`;
     }
 
     function svgDaily(rows) {
@@ -2425,17 +2450,17 @@ def render_html(report: dict[str, object]) -> str:
     function renderCampaignTable(campaigns) {
       const rows = campaigns.map((campaign) => {
         const total = campaign.total;
-        return `<tr><td>${escapeHtml(campaign.name)}</td><td>${escapeHtml(campaign.id)}</td><td class="num">${number(total.impressions)}</td><td class="num">${number(total.clicks)}</td><td class="num">${pct(total.ctr, 2)}</td><td class="num">${leadEnabled ? number(total.leads) : 'нет данных'}</td><td class="num">${leadEnabled ? pct(total.clickToLead, 2) : 'нет данных'}</td><td class="num">${money(total.spend)}</td><td class="num">${money(total.cpc)}</td></tr>`;
-      }).join('') || '<tr class="empty-row"><td colspan="9">Нет данных</td></tr>';
-      document.getElementById('campaign-table').innerHTML = `<div class="table-wrap"><table class="data-table"><thead><tr><th>Кампания</th><th>ID</th><th>Показы</th><th>Клики</th><th>Показ → клик</th><th>Лиды</th><th>Клик → лид</th><th>Расход</th><th>CPC</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+        return `<tr><td>${escapeHtml(campaign.name)}</td><td>${escapeHtml(campaign.id)}</td><td class="num">${number(total.impressions)}</td><td class="num">${number(total.clicks)}</td><td class="num">${pct(total.ctr, 2)}</td><td class="num">${leadEnabled ? number(total.quality_leads) : 'нет данных'}</td><td class="num">${leadEnabled ? number(appealCount(total)) : 'нет данных'}</td><td class="num">${leadEnabled ? pct(total.clickToLead, 2) : 'нет данных'}</td><td class="num">${money(total.spend)}</td><td class="num">${money(total.cpc)}</td></tr>`;
+      }).join('') || '<tr class="empty-row"><td colspan="10">Нет данных</td></tr>';
+      document.getElementById('campaign-table').innerHTML = `<div class="table-wrap"><table class="data-table"><thead><tr><th>Кампания</th><th>ID</th><th>Показы</th><th>Клики</th><th>Показ → клик</th><th>Лиды</th><th>Обращения</th><th>Клик → лид</th><th>Расход</th><th>CPC</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     }
 
     function renderFunnel(total) {
-      const maxValue = Math.max(total.impressions, total.clicks, total.leads, 1);
+      const maxValue = Math.max(total.impressions, total.clicks, total.quality_leads, 1);
       const stages = [
         ['Показы', total.impressions, '100%'],
         ['Клики', total.clicks, pct(total.ctr, 2)],
-        ['Лиды', total.leads, leadEnabled ? pct(total.clickToLead, 2) : 'нет данных'],
+        ['Лиды', total.quality_leads, leadEnabled ? pct(total.clickToLead, 2) : 'нет данных'],
       ];
       document.getElementById('funnel').innerHTML = stages.map(([label, value, rate], idx) => {
         const width = Math.max(1, toNum(value) / maxValue * 100);
@@ -2459,8 +2484,8 @@ def render_html(report: dict[str, object]) -> str:
         return;
       }
       const rows = [
-        ['Качественные', quality, quality / base * 100, 'quality-good'],
-        ['Некачественные', bad, bad / base * 100, 'quality-bad'],
+        ['Лиды', quality, quality / base * 100, 'quality-good'],
+        ['Обращения', bad, bad / base * 100, 'quality-bad'],
       ];
       const summary = rows.map(([label, value, rate, cls]) => `<div class="quality-row ${cls}"><span>${label}</span><strong>${number(value)}</strong><small>${pct(rate, 1)}</small></div>`).join('');
       const stages = (reportData.leadStages || []).map((stage) => {
@@ -2470,7 +2495,7 @@ def render_html(report: dict[str, object]) -> str:
       const stageHtml = stages.length
         ? `<div class="quality-stages"><div class="quality-stage-title">Стадии</div>${stages.slice(0, 6).map((stage) => {
             const cls = stage.quality === 'bad' ? 'quality-bad' : 'quality-good';
-            const label = stage.quality === 'bad' ? 'некачественный' : 'качественный';
+            const label = stage.quality === 'bad' ? 'обращение' : 'лид';
             return `<div class="quality-stage ${cls}"><span>${escapeHtml(stage.name || stage.id)}</span><strong>${number(stage.count)}</strong><small>${label}</small></div>`;
           }).join('')}</div>`
         : '';
@@ -2513,12 +2538,15 @@ def render_html(report: dict[str, object]) -> str:
       setText('overview-active-days', number(activeRows(daily).length));
       setText('overview-impressions', number(total.impressions));
       setText('overview-clicks', number(total.clicks));
+      setText('overview-leads', leadEnabled ? number(total.quality_leads) : 'нет данных');
+      setText('overview-appeals', leadEnabled ? number(appealCount(total)) : 'нет данных');
       setText('overview-ctr', pct(total.ctr, 2));
       setText('overview-click-to-lead', leadEnabled ? pct(total.clickToLead, 2) : 'нет данных');
       setText('kpi-impressions', number(total.impressions));
       setText('kpi-clicks', number(total.clicks));
       setText('kpi-ctr', pct(total.ctr, 2));
-      setText('kpi-leads', leadEnabled ? number(total.leads) : 'нет данных');
+      setText('kpi-leads', leadEnabled ? number(total.quality_leads) : 'нет данных');
+      setText('kpi-appeals', leadEnabled ? number(appealCount(total)) : 'нет данных');
       setText('kpi-click-to-lead', leadEnabled ? pct(total.clickToLead, 2) : 'нет данных');
       setText('kpi-spend', money(total.spend));
       setText('kpi-spend-note', `CPC ${money(total.cpc)}`);
@@ -2731,7 +2759,7 @@ def render_html(report: dict[str, object]) -> str:
     .ghost-button:hover {{ border-color: rgba(88, 166, 255, 0.5); background: rgba(88, 166, 255, 0.14); }}
     .kpi-grid {{
       display: grid;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 14px;
     }}
     .kpi-card {{
@@ -2797,7 +2825,7 @@ def render_html(report: dict[str, object]) -> str:
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
     }}
-    .mini-kpis {{ grid-template-columns: repeat(6, minmax(0, 1fr)); margin: 16px 0; }}
+    .mini-kpis {{ grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin: 16px 0; }}
     .funnel-row {{
       display: grid;
       grid-template-columns: 84px minmax(140px, 1fr) 126px;
@@ -2940,6 +2968,8 @@ def render_html(report: dict[str, object]) -> str:
         {overview_stat("Активных дней", number(report["active_days"]), "active-days")}
         {overview_stat("Показы", number(total["impressions"]), "impressions")}
         {overview_stat("Клики", number(total["clicks"]), "clicks")}
+        {overview_stat("Лиды", number(qualified_leads(total)) if lead_enabled else "нет данных", "leads")}
+        {overview_stat("Обращения", number(appeal_count(total)) if lead_enabled else "нет данных", "appeals")}
         {overview_stat("Показ → клик", pct(total["ctr"], 2), "ctr")}
         {overview_stat("Клик → лид", pct(total["click_to_lead"], 2) if lead_enabled else "нет данных", "click-to-lead")}
       </div>
