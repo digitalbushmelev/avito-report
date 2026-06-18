@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import datetime, timedelta
@@ -16,14 +17,60 @@ ROOT = Path(__file__).resolve().parent
 AVITO_ENV_FILE = ROOT / "avito.env"
 AVITO_DATA_DIR = ROOT / "data" / "avito"
 AVITO_RAW_DIR = AVITO_DATA_DIR / "raw"
-AVITO_DATA_FILE = AVITO_DATA_DIR / "druzheskiy.json"
 REPORT_SCRIPT = ROOT / "generate_avito_report.py"
 REPORT_TIMEZONE = "Asia/Yekaterinburg"
 DEFAULT_AVITO_STATS_PATH = "/ads/v1/account/{account_id}/campaigns/{campaign_id}/stats"
+DEFAULT_AVITO_CAMPAIGN_LIST_PATH = "/ads/v1/account/{account_id}/campaigns"
 
 
 def text(value: object) -> str:
     return "" if value is None else str(value).strip()
+
+
+def split_list(value: object) -> list[str]:
+    return [item.strip() for item in text(value).split(",") if item.strip()]
+
+
+def slugify(value: object, fallback: str = "campaign") -> str:
+    translit = {
+        "а": "a",
+        "б": "b",
+        "в": "v",
+        "г": "g",
+        "д": "d",
+        "е": "e",
+        "ё": "e",
+        "ж": "zh",
+        "з": "z",
+        "и": "i",
+        "й": "y",
+        "к": "k",
+        "л": "l",
+        "м": "m",
+        "н": "n",
+        "о": "o",
+        "п": "p",
+        "р": "r",
+        "с": "s",
+        "т": "t",
+        "у": "u",
+        "ф": "f",
+        "х": "h",
+        "ц": "c",
+        "ч": "ch",
+        "ш": "sh",
+        "щ": "sch",
+        "ъ": "",
+        "ы": "y",
+        "ь": "",
+        "э": "e",
+        "ю": "yu",
+        "я": "ya",
+    }
+    raw = text(value).lower()
+    latin = "".join(translit.get(char, char) for char in raw)
+    slug = re.sub(r"[^a-z0-9]+", "-", latin).strip("-")
+    return slug or fallback
 
 
 def read_env_file(path: Path) -> dict[str, str]:
@@ -85,30 +132,44 @@ def avito_token(env: dict[str, str]) -> str:
     return token
 
 
-def format_template(value: str, env: dict[str, str], date_from: str, date_to: str) -> str:
+def format_template(
+    value: str,
+    env: dict[str, str],
+    date_from: str = "",
+    date_to: str = "",
+    campaign: dict[str, str] | None = None,
+) -> str:
+    campaign = campaign or {}
     return value.format(
         account_id=text(env.get("AVITO_ACCOUNT_ID")),
-        campaign_id=text(env.get("AVITO_CAMPAIGN_ID")),
-        campaign_name=text(env.get("AVITO_CAMPAIGN_NAME") or "Дружеский"),
+        campaign_id=text(campaign.get("id") or env.get("AVITO_CAMPAIGN_ID")),
+        campaign_name=text(campaign.get("name") or env.get("AVITO_CAMPAIGN_NAME") or "Дружеский"),
         date_from=date_from,
         date_to=date_to,
         group_by=text(env.get("AVITO_GROUP_BY") or "day"),
     )
 
 
-def avito_stats_request(env: dict[str, str], token: str, date_from: str, date_to: str) -> dict[str, object]:
+def avito_json_request(
+    env: dict[str, str],
+    token: str,
+    method: str,
+    path_template: str,
+    date_from: str = "",
+    date_to: str = "",
+    campaign: dict[str, str] | None = None,
+    body_template: str = "",
+) -> dict[str, object]:
     base_url = (text(env.get("AVITO_BASE_URL")) or "https://api.avito.ru").rstrip("/")
-    path_template = text(env.get("AVITO_STATS_PATH_TEMPLATE")) or DEFAULT_AVITO_STATS_PATH
-    method = (text(env.get("AVITO_STATS_METHOD")) or "POST").upper()
-    url = base_url + format_template(path_template, env, date_from, date_to)
+    method = method.upper()
+    url = base_url + format_template(path_template, env, date_from, date_to, campaign)
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
 
-    body_template = text(env.get("AVITO_STATS_BODY_JSON"))
     body = None
     if body_template:
-        body_text = format_template(body_template, env, date_from, date_to)
+        body_text = format_template(body_template, env, date_from, date_to, campaign)
         body = json.dumps(json.loads(body_text), ensure_ascii=False).encode("utf-8")
-    elif method == "POST":
+    elif method == "POST" and date_from and date_to:
         body = json.dumps({"dateFrom": date_from, "dateTo": date_to}, ensure_ascii=False).encode("utf-8")
     elif method == "GET":
         query = parse.urlencode({"dateFrom": date_from, "dateTo": date_to, "groupBy": text(env.get("AVITO_GROUP_BY") or "day")})
@@ -122,6 +183,19 @@ def avito_stats_request(env: dict[str, str], token: str, date_from: str, date_to
             if balance:
                 data["_api_point_balance"] = balance
         return data
+
+
+def avito_stats_request(env: dict[str, str], token: str, date_from: str, date_to: str, campaign: dict[str, str]) -> dict[str, object]:
+    return avito_json_request(
+        env=env,
+        token=token,
+        method=text(env.get("AVITO_STATS_METHOD")) or "POST",
+        path_template=text(env.get("AVITO_STATS_PATH_TEMPLATE")) or DEFAULT_AVITO_STATS_PATH,
+        date_from=date_from,
+        date_to=date_to,
+        campaign=campaign,
+        body_template=text(env.get("AVITO_STATS_BODY_JSON")),
+    )
 
 
 def first_number(row: dict[str, object], names: tuple[str, ...]) -> float:
@@ -201,7 +275,141 @@ def find_rows(value: object) -> list[dict[str, object]]:
     return []
 
 
-def normalize_avito_response(raw: dict[str, object], env: dict[str, str], date_from: str, date_to: str) -> dict[str, object]:
+def campaign_id_from_item(item: dict[str, object]) -> str:
+    return text(item.get("id") or item.get("campaignId") or item.get("campaignID") or item.get("campaign_id"))
+
+
+def campaign_name_from_item(item: dict[str, object]) -> str:
+    return text(item.get("name") or item.get("title") or item.get("campaignName") or item.get("campaign_name"))
+
+
+def campaign_slug(campaign: dict[str, str]) -> str:
+    if text(campaign.get("slug")):
+        return slugify(campaign.get("slug"), text(campaign.get("id")) or "campaign")
+    if text(campaign.get("id")) == text(campaign.get("legacy_id")) and text(campaign.get("legacy_slug")):
+        return text(campaign.get("legacy_slug"))
+    return slugify(campaign.get("name") or campaign.get("id"), text(campaign.get("id")) or "campaign")
+
+
+def campaign_data_file(campaign: dict[str, str]) -> Path:
+    return AVITO_DATA_DIR / f"{campaign_slug(campaign)}.json"
+
+
+def configured_campaigns(env: dict[str, str]) -> list[dict[str, str]]:
+    campaigns: list[dict[str, str]] = []
+    raw_json = text(env.get("AVITO_CAMPAIGNS_JSON"))
+    if raw_json:
+        try:
+            parsed = json.loads(raw_json)
+        except json.JSONDecodeError:
+            parsed = []
+        for item in parsed if isinstance(parsed, list) else []:
+            if not isinstance(item, dict):
+                continue
+            campaign_id = text(item.get("id") or item.get("campaign_id") or item.get("campaignId"))
+            if not campaign_id:
+                continue
+            campaigns.append(
+                {
+                    "id": campaign_id,
+                    "name": text(item.get("name") or item.get("title") or campaign_id),
+                    "slug": text(item.get("slug")),
+                }
+            )
+
+    ids = split_list(env.get("AVITO_CAMPAIGN_IDS"))
+    if ids:
+        names = split_list(env.get("AVITO_CAMPAIGN_NAMES"))
+        slugs = split_list(env.get("AVITO_CAMPAIGN_SLUGS"))
+        for idx, campaign_id in enumerate(ids):
+            campaigns.append(
+                {
+                    "id": campaign_id,
+                    "name": names[idx] if idx < len(names) else campaign_id,
+                    "slug": slugs[idx] if idx < len(slugs) else "",
+                }
+            )
+
+    legacy_id = text(env.get("AVITO_CAMPAIGN_ID"))
+    if legacy_id:
+        campaigns.append(
+            {
+                "id": legacy_id,
+                "name": text(env.get("AVITO_CAMPAIGN_NAME") or "Дружеский"),
+                "slug": text(env.get("AVITO_CAMPAIGN_SLUG") or "druzheskiy"),
+                "legacy_id": legacy_id,
+                "legacy_slug": "druzheskiy",
+            }
+        )
+
+    result: dict[str, dict[str, str]] = {}
+    for campaign in campaigns:
+        result[campaign["id"]] = {**result.get(campaign["id"], {}), **campaign}
+    return list(result.values())
+
+
+def extract_campaigns(value: object) -> list[dict[str, str]]:
+    candidates: list[dict[str, str]] = []
+    if isinstance(value, list):
+        for item in value:
+            candidates.extend(extract_campaigns(item))
+        return candidates
+    if not isinstance(value, dict):
+        return candidates
+
+    campaign_id = campaign_id_from_item(value)
+    if campaign_id:
+        candidates.append({"id": campaign_id, "name": campaign_name_from_item(value) or campaign_id})
+
+    for key in ("campaigns", "items", "result", "data"):
+        if key in value:
+            candidates.extend(extract_campaigns(value[key]))
+    return candidates
+
+
+def auto_discover_enabled(env: dict[str, str]) -> bool:
+    return text(env.get("AVITO_AUTO_DISCOVER_CAMPAIGNS") or "1").lower() not in {"0", "false", "no", "off"}
+
+
+def discover_campaigns(env: dict[str, str], token: str) -> list[dict[str, str]]:
+    if not auto_discover_enabled(env):
+        return []
+    path = text(env.get("AVITO_CAMPAIGN_LIST_PATH_TEMPLATE")) or DEFAULT_AVITO_CAMPAIGN_LIST_PATH
+    method = text(env.get("AVITO_CAMPAIGN_LIST_METHOD") or "GET")
+    try:
+        raw = avito_json_request(env, token, method, path)
+    except Exception as exc:
+        print(f"Avito campaign list пропущен: {exc}")
+        return []
+
+    result: dict[str, dict[str, str]] = {}
+    for campaign in extract_campaigns(raw):
+        if campaign["id"]:
+            result[campaign["id"]] = campaign
+    if result:
+        print(f"Avito campaign list: найдено кампаний {len(result)}")
+    return list(result.values())
+
+
+def resolve_campaigns(env: dict[str, str], token: str) -> list[dict[str, str]]:
+    configured = configured_campaigns(env)
+    discovered = discover_campaigns(env, token)
+    merged: dict[str, dict[str, str]] = {}
+    for campaign in discovered + configured:
+        campaign_id = text(campaign.get("id"))
+        if not campaign_id:
+            continue
+        merged[campaign_id] = {**merged.get(campaign_id, {}), **campaign}
+    return list(merged.values()) or configured
+
+
+def normalize_avito_response(
+    raw: dict[str, object],
+    env: dict[str, str],
+    date_from: str,
+    date_to: str,
+    campaign: dict[str, str],
+) -> dict[str, object]:
     campaign_node = raw.get("campaign") if isinstance(raw.get("campaign"), dict) else {}
     daily = normalize_data_points(campaign_node.get("data") if isinstance(campaign_node, dict) else [])
     if not daily:
@@ -217,8 +425,8 @@ def normalize_avito_response(raw: dict[str, object], env: dict[str, str], date_f
         "api_point_balance": text(raw.get("_api_point_balance")),
         "period": {"start": date_from, "end": date_to},
         "campaign": {
-            "id": text(campaign_node.get("id") if isinstance(campaign_node, dict) else "") or text(env.get("AVITO_CAMPAIGN_ID") or "druzheskiy"),
-            "name": text(campaign_node.get("name") if isinstance(campaign_node, dict) else "") or text(env.get("AVITO_CAMPAIGN_NAME") or "Дружеский"),
+            "id": text(campaign_node.get("id") if isinstance(campaign_node, dict) else "") or text(campaign.get("id")),
+            "name": text(campaign_node.get("name") if isinstance(campaign_node, dict) else "") or text(campaign.get("name") or campaign.get("id")),
         },
         "daily": daily,
         "groups": normalize_avito_entities(raw.get("groups")),
@@ -232,21 +440,33 @@ def update_avito_cache(force: bool = False) -> bool:
     if text(env.get("AVITO_ENABLE_API")) != "1":
         print("Avito API выключен: поставьте AVITO_ENABLE_API=1 в avito.env")
         return False
-    if not force and cache_is_fresh(AVITO_DATA_FILE):
-        print("Avito API пропущен: данные уже обновлялись сегодня")
-        return False
 
     date_from, date_to = date_range(env)
     token = avito_token(env)
-    raw = avito_stats_request(env, token, date_from, date_to)
+    campaigns = resolve_campaigns(env, token)
+    if not campaigns:
+        raise RuntimeError("Avito: нет кампаний для обновления")
 
     AVITO_DATA_DIR.mkdir(parents=True, exist_ok=True)
     AVITO_RAW_DIR.mkdir(parents=True, exist_ok=True)
-    raw_path = AVITO_RAW_DIR / f"druzheskiy_{now_local().strftime('%Y%m%d_%H%M%S')}.json"
-    raw_path.write_text(json.dumps(raw, ensure_ascii=False, indent=2), encoding="utf-8")
-    AVITO_DATA_FILE.write_text(json.dumps(normalize_avito_response(raw, env, date_from, date_to), ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Avito API обновлен: {AVITO_DATA_FILE}")
-    return True
+    updated = False
+    for campaign in campaigns:
+        path = campaign_data_file(campaign)
+        if not force and cache_is_fresh(path):
+            print(f"Avito API пропущен для {campaign.get('name') or campaign.get('id')}: данные уже обновлялись сегодня")
+            continue
+
+        raw = avito_stats_request(env, token, date_from, date_to, campaign)
+        slug = campaign_slug(campaign)
+        raw_path = AVITO_RAW_DIR / f"{slug}_{now_local().strftime('%Y%m%d_%H%M%S')}.json"
+        raw_path.write_text(json.dumps(raw, ensure_ascii=False, indent=2), encoding="utf-8")
+        path.write_text(
+            json.dumps(normalize_avito_response(raw, env, date_from, date_to, campaign), ensure_ascii=False, indent=2),
+            encoding="utf-8",
+        )
+        print(f"Avito API обновлен: {path}")
+        updated = True
+    return updated
 
 
 def rebuild_report() -> None:

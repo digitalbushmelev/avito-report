@@ -29,7 +29,7 @@ Copy-Item avito.env.example avito.env
 - `AVITO_CLIENT_ID`;
 - `AVITO_CLIENT_SECRET`;
 - `AVITO_ACCOUNT_ID`;
-- `AVITO_CAMPAIGN_ID`.
+- `AVITO_CAMPAIGN_ID` или `AVITO_CAMPAIGN_IDS`.
 
 3. Включите API:
 
@@ -43,7 +43,17 @@ AVITO_ENABLE_API=1
 POST /ads/v1/account/{accountID}/campaigns/{campaignID}/stats
 ```
 
-`update_report.py` сохраняет нормализованные данные в `data/avito/druzheskiy.json`. Если файл уже обновлялся сегодня, повторный запуск не тратит баллы Avito API. Для принудительного обновления:
+Для нескольких кампаний используйте:
+
+```env
+AVITO_CAMPAIGN_IDS=843568278,123456789
+AVITO_CAMPAIGN_NAMES=Дружеский,Новая кампания
+AVITO_CAMPAIGN_SLUGS=druzheskiy,new-campaign
+```
+
+Если `AVITO_AUTO_DISCOVER_CAMPAIGNS=1`, скрипт сначала пробует получить список кампаний аккаунта через `GET /ads/v1/account/{account_id}/campaigns`. Если Avito не отдает список для текущего ключа, используется явный список `AVITO_CAMPAIGN_IDS` или старый `AVITO_CAMPAIGN_ID`.
+
+`update_report.py` сохраняет нормализованные данные по каждой кампании в `data/avito/*.json`. Если файл кампании уже обновлялся сегодня, ручной запуск без `--force` не тратит баллы Avito API. Для принудительного обновления:
 
 ```powershell
 python update_report.py --force
@@ -67,7 +77,10 @@ python update_report.py --force
 - `AVITO_CLIENT_ID`;
 - `AVITO_CLIENT_SECRET`;
 - `AVITO_ACCOUNT_ID`;
-- `AVITO_CAMPAIGN_ID`;
+- `AVITO_CAMPAIGN_ID` или `AVITO_CAMPAIGN_IDS`;
+- `AVITO_CAMPAIGN_NAMES` и `AVITO_CAMPAIGN_SLUGS` — опционально для нескольких кампаний;
+- `AVITO_AUTO_DISCOVER_CAMPAIGNS` — опционально, по умолчанию включено;
+- `AVITO_CAMPAIGN_LIST_PATH_TEMPLATE` — опционально, если Avito изменит endpoint списка кампаний;
 - `BITRIX_WEBHOOK_URL`;
 - `BITRIX_DATE_FIELD`;
 - `BITRIX_DEAL_CATEGORY_ID` — необязательно, если название воронки резолвится через API;

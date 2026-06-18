@@ -24,6 +24,10 @@ jobs:
       AVITO_ACCOUNT_ID: ${{ secrets.AVITO_ACCOUNT_ID }}
       AVITO_CAMPAIGN_ID: ${{ secrets.AVITO_CAMPAIGN_ID }}
       AVITO_CAMPAIGN_NAME: ${{ secrets.AVITO_CAMPAIGN_NAME }}
+      AVITO_CAMPAIGNS_JSON: ${{ secrets.AVITO_CAMPAIGNS_JSON }}
+      AVITO_CAMPAIGN_IDS: ${{ secrets.AVITO_CAMPAIGN_IDS }}
+      AVITO_AUTO_DISCOVER_CAMPAIGNS: ${{ secrets.AVITO_AUTO_DISCOVER_CAMPAIGNS }}
+      AVITO_CAMPAIGN_LIST_PATH_TEMPLATE: ${{ secrets.AVITO_CAMPAIGN_LIST_PATH_TEMPLATE }}
       AVITO_STATS_METHOD: ${{ secrets.AVITO_STATS_METHOD }}
       AVITO_STATS_PATH_TEMPLATE: ${{ secrets.AVITO_STATS_PATH_TEMPLATE }}
       AVITO_STATS_BODY_JSON: ${{ secrets.AVITO_STATS_BODY_JSON }}
@@ -66,8 +70,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html avito_report.html
-          if [ -f data/avito/druzheskiy.json ]; then
-            git add data/avito/druzheskiy.json
+          if compgen -G "data/avito/*.json" > /dev/null; then
+            git add data/avito/*.json
           fi
           if git diff --cached --quiet; then
             echo "No report changes"
