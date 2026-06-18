@@ -83,7 +83,7 @@ python update_report.py --force
 - `AVITO_CAMPAIGN_LIST_PATH_TEMPLATE` — опционально, если Avito изменит endpoint списка кампаний;
 - `BITRIX_WEBHOOK_URL`;
 - `BITRIX_DATE_FIELD`;
-- `BITRIX_CAMPAIGN_UTM_MAP_JSON` — опционально, если нужно раскладывать сделки по конкретным Avito-кампаниям через `utm_campaign`;
+- `BITRIX_CAMPAIGN_DATE_MAP_JSON` — опционально, если нужно раскладывать сделки по Avito-кампаниям через дату создания;
 - `BITRIX_DEAL_CATEGORY_ID` — необязательно, если название воронки резолвится через API;
 - `REPORT_START_DATE`.
 
@@ -110,14 +110,18 @@ python update_report.py --force
   utm_medium = cpc
 ```
 
-В REST API Bitrix эти поля запрашиваются как `UTM_SOURCE`, `UTM_MEDIUM`, `UTM_CAMPAIGN`. Сделка попадает в отчет только по паре `utm_source + utm_medium`; `utm_campaign` не фильтрует сделки и сохраняется отдельно для будущей привязки лида к конкретному креативу.
+В REST API Bitrix эти поля запрашиваются как `UTM_SOURCE`, `UTM_MEDIUM`, `UTM_CAMPAIGN`. Сделка попадает в отчет только по паре `utm_source + utm_medium`; `utm_campaign` не фильтрует сделки и сохраняется отдельно для разбивки по креативам.
 
-Если в отчете несколько Avito-кампаний, сделки можно привязать к конкретной строке кампании через `BITRIX_CAMPAIGN_UTM_MAP_JSON`:
+Если в отчете несколько Avito-кампаний, сделки можно привязать к конкретной строке кампании через дату создания. Текущий принцип: до `14.06.2026` включительно — первая кампания, с `15.06.2026` — расширенная.
 
 ```json
 {
-  "843568278": ["psk_druzheskiy_7na7"],
-  "460053704": ["psk_druzheskiy_7na7_druzh", "psk_druzheskiy_pv332_druzh"]
+  "843568278": {
+    "date_to": "2026-06-14"
+  },
+  "460053704": {
+    "date_from": "2026-06-15"
+  }
 }
 ```
 

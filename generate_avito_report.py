@@ -794,6 +794,63 @@ def bitrix_deal_stage_map(webhook_url: str, category_id: str) -> tuple[dict[str,
     return {}, last_error or None
 
 
+def add_campaign_date_rule(target: list[dict[str, object]], campaign_key: object, rule: object) -> None:
+    if not isinstance(rule, dict):
+        return
+    key = normalize_key(rule.get("campaign_id") or rule.get("id") or rule.get("campaign_name") or rule.get("name") or campaign_key)
+    if not key:
+        return
+    date_from = parse_date(rule.get("date_from") or rule.get("from") or rule.get("start"))
+    date_to = parse_date(rule.get("date_to") or rule.get("to") or rule.get("end"))
+    if not date_from and not date_to:
+        return
+    target.append({"campaign_key": key, "date_from": date_from, "date_to": date_to})
+
+
+def campaign_date_rules_from_json(value: object) -> list[dict[str, object]]:
+    raw = text(value)
+    if not raw:
+        return []
+    try:
+        parsed = json.loads(raw)
+    except json.JSONDecodeError:
+        return []
+
+    rules: list[dict[str, object]] = []
+    if isinstance(parsed, dict):
+        for campaign_key, rule in parsed.items():
+            add_campaign_date_rule(rules, campaign_key, rule)
+    else:
+        for item in parsed if isinstance(parsed, list) else []:
+            add_campaign_date_rule(rules, "", item)
+    return rules
+
+
+def campaign_date_rules_from_config(value: object) -> list[dict[str, object]]:
+    rules: list[dict[str, object]] = []
+    if isinstance(value, dict):
+        for campaign_key, rule in value.items():
+            add_campaign_date_rule(rules, campaign_key, rule)
+    else:
+        for item in value if isinstance(value, list) else []:
+            add_campaign_date_rule(rules, "", item)
+    return rules
+
+
+def campaign_key_for_date(rules: list[dict[str, object]], day: date | None) -> str:
+    if not day:
+        return ""
+    for rule in rules:
+        date_from = rule.get("date_from")
+        date_to = rule.get("date_to")
+        if isinstance(date_from, date) and day < date_from:
+            continue
+        if isinstance(date_to, date) and day > date_to:
+            continue
+        return text(rule.get("campaign_key"))
+    return ""
+
+
 def bitrix_settings_from_env() -> dict[str, object] | None:
     env = read_env_file(BITRIX_ENV_FILE)
     if not env:
@@ -842,6 +899,9 @@ def bitrix_settings_from_env() -> dict[str, object] | None:
         "excluded_stage_names": excluded_stage_names or list(DEFAULT_BITRIX_EXCLUDED_STAGE_NAMES),
         "excluded_comment_phones": excluded_phones or list(DEFAULT_BITRIX_EXCLUDED_COMMENT_PHONES),
         "lead_count_field": text(env.get("BITRIX_LEAD_COUNT_FIELD") or ""),
+        "campaign_date_rules": campaign_date_rules_from_json(
+            env.get("BITRIX_CAMPAIGN_DATE_MAP_JSON") or env.get("REPORT_CAMPAIGN_DATE_MAP_JSON")
+        ),
     }
 
 
@@ -876,6 +936,9 @@ def bitrix_settings_from_config() -> dict[str, object] | None:
         "excluded_stage_names": config.get("excluded_stage_names") or list(DEFAULT_BITRIX_EXCLUDED_STAGE_NAMES),
         "excluded_comment_phones": config.get("excluded_comment_phones") or list(DEFAULT_BITRIX_EXCLUDED_COMMENT_PHONES),
         "lead_count_field": text(config.get("lead_count_field")),
+        "campaign_date_rules": campaign_date_rules_from_config(
+            config.get("campaign_date_map") or config.get("campaign_date_rules")
+        ),
     }
 
 
@@ -945,6 +1008,9 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
         if normalize_phone(value)
     }
     lead_count_field = text(settings.get("lead_count_field"))
+    campaign_date_rules = [
+        rule for rule in settings.get("campaign_date_rules", []) if isinstance(rule, dict)
+    ]
     source = text(settings.get("source") or "Bitrix")
 
     missing = [
@@ -1006,6 +1072,7 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
     seen_deals: set[str] = set()
     utm_campaign_count = 0
     unknown_utm_campaign_count = 0
+    date_mapped_count = 0
     for group in utm_groups:
         filters = {"=CATEGORY_ID": deal_category_id}
         if text(group.get("source")):
@@ -1051,6 +1118,11 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
             stage_name = text(stage_info.get("name") or row_stage_id or "Без стадии")
             add_leads(by_campaign, ALL_LEADS_KEY, date_key, lead_count)
             add_lead_quality(quality_by_campaign, ALL_LEADS_KEY, date_key, quality_key, lead_count)
+            date_campaign_key = campaign_key_for_date(campaign_date_rules, day)
+            if date_campaign_key:
+                add_leads(by_campaign, date_campaign_key, date_key, lead_count)
+                add_lead_quality(quality_by_campaign, date_campaign_key, date_key, quality_key, lead_count)
+                date_mapped_count += lead_count
             if utm_campaign_key:
                 add_leads(by_campaign, utm_campaign_key, date_key, lead_count)
                 add_leads(by_utm_campaign, utm_campaign_key, date_key, lead_count)
@@ -1083,6 +1155,8 @@ def load_leads_from_bitrix(date_from: date | None = None, date_to: date | None =
         status += f"; utm_campaign для креативов: {utm_campaign_count} шт."
         if unknown_utm_campaign_count:
             status += f", без utm_campaign: {unknown_utm_campaign_count} шт."
+    if campaign_date_rules:
+        status += f"; по датам кампаний распределено: {date_mapped_count} шт."
     all_quality = quality_by_campaign.get(ALL_LEADS_KEY, {})
     quality_total = sum(to_int(item.get("quality")) for item in all_quality.values())
     bad_total = sum(to_int(item.get("bad")) for item in all_quality.values())
@@ -1143,68 +1217,6 @@ def campaign_lead_quality(
 ) -> dict[str, dict[str, int]]:
     keys = lead_lookup_keys(info, extra_keys)
     return merge_lead_quality(lead_data.quality_by_campaign, keys, fallback_all)
-
-
-def add_campaign_utm_mapping(target: dict[str, list[str]], campaign_key: object, utm_values: object) -> None:
-    values = [normalize_utm_value(value) for value in as_list(utm_values)]
-    values = [value for value in values if value]
-    if not values:
-        return
-    for key in (normalize_key(campaign_key), normalize_utm_value(campaign_key)):
-        if not key:
-            continue
-        bucket = target.setdefault(key, [])
-        for value in values:
-            if value not in bucket:
-                bucket.append(value)
-
-
-def parse_campaign_utm_map(parsed: object) -> dict[str, list[str]]:
-    result: dict[str, list[str]] = {}
-    if isinstance(parsed, dict):
-        for campaign_key, utm_values in parsed.items():
-            add_campaign_utm_mapping(result, campaign_key, utm_values)
-        return result
-
-    for item in parsed if isinstance(parsed, list) else []:
-        if not isinstance(item, dict):
-            continue
-        utm_values = item.get("utm_campaigns") or item.get("utm_campaign") or item.get("campaigns")
-        for campaign_key in (
-            item.get("campaign_id"),
-            item.get("id"),
-            item.get("campaign_name"),
-            item.get("name"),
-        ):
-            add_campaign_utm_mapping(result, campaign_key, utm_values)
-    return result
-
-
-def campaign_utm_map_from_env() -> dict[str, list[str]]:
-    env = read_env_file(BITRIX_ENV_FILE)
-    raw = text(env.get("BITRIX_CAMPAIGN_UTM_MAP_JSON") or env.get("REPORT_CAMPAIGN_UTM_MAP_JSON"))
-    if raw:
-        try:
-            return parse_campaign_utm_map(json.loads(raw))
-        except json.JSONDecodeError:
-            return {}
-
-    if BITRIX_CONFIG_FILE.exists():
-        try:
-            config = json.loads(BITRIX_CONFIG_FILE.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            return {}
-        return parse_campaign_utm_map(config.get("campaign_utm_map") or config.get("campaign_utm_map_json"))
-    return {}
-
-
-def mapped_utm_keys(info: dict[str, str], campaign_utm_map: dict[str, list[str]]) -> list[str]:
-    result: list[str] = []
-    for key in lead_lookup_keys(info):
-        for value in campaign_utm_map.get(key, []):
-            if value and value not in result:
-                result.append(value)
-    return result
 
 
 def attach_leads(
@@ -1499,13 +1511,11 @@ def campaign_from_api_data(
     payload: dict[str, object],
     lead_data: LeadData,
     owns_all_leads: bool = False,
-    campaign_utm_map: dict[str, list[str]] | None = None,
 ) -> dict[str, object]:
     campaign = payload.get("campaign") if isinstance(payload.get("campaign"), dict) else {}
     campaign_id = text(campaign.get("id") or payload.get("campaign_id") or "druzheskiy")
     campaign_name = text(campaign.get("name") or payload.get("campaign_name") or REPORT_CAMPAIGN_NAME)
     campaign_info = {"campaign_id": campaign_id, "campaign_name": campaign_name}
-    utm_keys = mapped_utm_keys(campaign_info, campaign_utm_map or {})
     daily = []
     for row in payload.get("daily", []) if isinstance(payload.get("daily"), list) else []:
         if not isinstance(row, dict):
@@ -1516,8 +1526,8 @@ def campaign_from_api_data(
         daily.append({"date": day.isoformat(), **normalize_metric_row(row)})
     daily.sort(key=lambda row: text(row.get("date")))
     total = sum_metric_rows(daily)
-    leads_by_day = campaign_leads(campaign_info, lead_data, fallback_all=owns_all_leads, extra_keys=utm_keys)
-    quality_by_day = campaign_lead_quality(campaign_info, lead_data, fallback_all=owns_all_leads, extra_keys=utm_keys)
+    leads_by_day = campaign_leads(campaign_info, lead_data, fallback_all=owns_all_leads)
+    quality_by_day = campaign_lead_quality(campaign_info, lead_data, fallback_all=owns_all_leads)
     attach_leads(daily, total, leads_by_day, lead_data.enabled, quality_by_day)
 
     def normalize_entities(items: object) -> list[dict[str, object]]:
@@ -1604,7 +1614,7 @@ def placeholder_campaign(lead_data: LeadData, date_from: date | None, date_to: d
     }
 
 
-def load_api_campaigns(lead_data: LeadData, campaign_utm_map: dict[str, list[str]]) -> list[dict[str, object]]:
+def load_api_campaigns(lead_data: LeadData) -> list[dict[str, object]]:
     payloads = []
     for path in api_data_files():
         try:
@@ -1614,10 +1624,7 @@ def load_api_campaigns(lead_data: LeadData, campaign_utm_map: dict[str, list[str
         if isinstance(payload, dict):
             payloads.append(payload)
     owns_all_leads = len(payloads) == 1
-    return [
-        campaign_from_api_data(payload, lead_data, owns_all_leads=owns_all_leads, campaign_utm_map=campaign_utm_map)
-        for payload in payloads
-    ]
+    return [campaign_from_api_data(payload, lead_data, owns_all_leads=owns_all_leads) for payload in payloads]
 
 
 def env_report_period() -> tuple[date | None, date | None]:
@@ -1630,7 +1637,7 @@ def env_report_period() -> tuple[date | None, date | None]:
 def build_report() -> dict[str, object]:
     date_from, date_to = env_report_period()
     lead_data = load_leads(date_from, date_to)
-    campaigns = load_api_campaigns(lead_data, campaign_utm_map_from_env())
+    campaigns = load_api_campaigns(lead_data)
     if not campaigns:
         campaigns = [placeholder_campaign(lead_data, date_from, date_to)]
     campaigns.sort(key=lambda item: to_float(item["total"].get("clicks")), reverse=True)

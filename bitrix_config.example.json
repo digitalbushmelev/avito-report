@@ -16,14 +16,13 @@
       "medium": "cpc"
     }
   ],
-  "campaign_utm_map": {
-    "843568278": [
-      "psk_druzheskiy_7na7"
-    ],
-    "460053704": [
-      "psk_druzheskiy_7na7_druzh",
-      "psk_druzheskiy_pv332_druzh"
-    ]
+  "campaign_date_map": {
+    "843568278": {
+      "date_to": "2026-06-14"
+    },
+    "460053704": {
+      "date_from": "2026-06-15"
+    }
   },
   "deal_category_name": "Комфорт: прямые продажи",
   "deal_category_id": "",
