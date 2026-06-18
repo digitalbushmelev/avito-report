@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-06-18T10:02:37.589027+05:00",
-  "api_point_balance": "14930",
+  "updated_at": "2026-06-18T19:30:15.845814+05:00",
+  "api_point_balance": "14910",
   "period": {
     "start": "2026-03-20",
     "end": "2026-06-17"
@@ -40,6 +40,42 @@
     }
   ],
   "creatives": [
+    {
+      "id": "692647978272215",
+      "label": "7 на 7",
+      "group_id": "116945150742",
+      "daily": [
+        {
+          "date": "2026-06-17",
+          "impressions": 24332.0,
+          "clicks": 53.0,
+          "spend": 771.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 24332.0,
+      "clicks": 53.0,
+      "spend": 771.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "686109240057727",
+      "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес",
+      "group_id": "116945150742",
+      "daily": [
+        {
+          "date": "2026-06-17",
+          "impressions": 24298.0,
+          "clicks": 50.0,
+          "spend": 726.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 24298.0,
+      "clicks": 50.0,
+      "spend": 726.0,
+      "bonus_spend": 0.0
+    },
     {
       "id": "305771383370769",
       "label": "1К Легкий старт",
@@ -92,42 +128,6 @@
       "impressions": 23629.0,
       "clicks": 44.0,
       "spend": 646.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "692647978272215",
-      "label": "7 на 7",
-      "group_id": "116945150742",
-      "daily": [
-        {
-          "date": "2026-06-17",
-          "impressions": 24332.0,
-          "clicks": 53.0,
-          "spend": 771.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 24332.0,
-      "clicks": 53.0,
-      "spend": 771.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "686109240057727",
-      "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес",
-      "group_id": "116945150742",
-      "daily": [
-        {
-          "date": "2026-06-17",
-          "impressions": 24298.0,
-          "clicks": 50.0,
-          "spend": 726.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 24298.0,
-      "clicks": 50.0,
-      "spend": 726.0,
       "bonus_spend": 0.0
     }
   ],
