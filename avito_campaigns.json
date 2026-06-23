@@ -4,7 +4,8 @@
       "id": "843568278",
       "name": "Дружеский",
       "slug": "druzheskiy",
-      "lead_date_to": "2026-06-14"
+      "lead_date_to": "2026-06-14",
+      "lead_date_from": "2026-06-09"
     },
     {
       "id": "460053704",
