@@ -74,7 +74,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html avito_report.html
+          git add index.html avito_report.html avito_campaigns.json
           if compgen -G "data/avito/*.json" > /dev/null; then
             git add data/avito/*.json
           fi

@@ -1,0 +1,23 @@
+{
+  "campaigns": [
+    {
+      "id": "843568278",
+      "name": "Дружеский",
+      "slug": "druzheskiy",
+      "lead_date_to": "2026-06-14"
+    },
+    {
+      "id": "460053704",
+      "name": "Дружеский - расширенная",
+      "slug": "druzheskiy-rasshirennaya",
+      "lead_date_from": "2026-06-15",
+      "lead_date_to": "2026-06-21"
+    },
+    {
+      "id": "771269910",
+      "name": "Эклипт",
+      "slug": "eklipt",
+      "lead_date_from": "2026-06-22"
+    }
+  ]
+}

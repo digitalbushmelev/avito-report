@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parent
 OUTPUT_FILE = ROOT / "avito_report.html"
 INDEX_FILE = ROOT / "index.html"
 AVITO_DATA_DIR = ROOT / "data" / "avito"
+AVITO_CAMPAIGN_REGISTRY_FILE = ROOT / "avito_campaigns.json"
 REPORT_CAMPAIGN_NAME = "Дружеский"
 REPORT_CAMPAIGN_SLUG = "druzheskiy"
 LEAD_FILES = (ROOT / "leads.csv", ROOT / "bitrix_leads.csv", ROOT / "data" / "leads.csv")
@@ -846,6 +847,28 @@ def campaign_date_rules_from_config(value: object) -> list[dict[str, object]]:
     return rules
 
 
+def campaign_date_rules_from_registry() -> list[dict[str, object]]:
+    if not AVITO_CAMPAIGN_REGISTRY_FILE.exists():
+        return []
+    try:
+        parsed = json.loads(AVITO_CAMPAIGN_REGISTRY_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+    items = parsed.get("campaigns") if isinstance(parsed, dict) else parsed
+    rules: list[dict[str, object]] = []
+    for item in items if isinstance(items, list) else []:
+        if not isinstance(item, dict):
+            continue
+        rule = {
+            "campaign_id": item.get("id"),
+            "campaign_name": item.get("name"),
+            "date_from": item.get("lead_date_from"),
+            "date_to": item.get("lead_date_to"),
+        }
+        add_campaign_date_rule(rules, "", rule)
+    return rules
+
+
 def campaign_key_for_date(rules: list[dict[str, object]], day: date | None) -> str:
     if not day:
         return ""
@@ -888,6 +911,10 @@ def bitrix_settings_from_env() -> dict[str, object] | None:
     excluded_phones = split_list(env.get("BITRIX_EXCLUDED_COMMENT_PHONES") or env.get("BITRIX_EXCLUDED_PHONE"))
     excluded_stage_names = split_list(env.get("BITRIX_EXCLUDED_STAGE_NAMES"))
     untouched_stage_names = split_list(env.get("BITRIX_UNTOUCHED_STAGE_NAMES"))
+    campaign_date_rules = (
+        campaign_date_rules_from_json(env.get("BITRIX_CAMPAIGN_DATE_MAP_JSON") or env.get("REPORT_CAMPAIGN_DATE_MAP_JSON"))
+        or campaign_date_rules_from_registry()
+    )
     return {
         "source": "bitrix.env",
         "webhook_url": text(env.get("BITRIX_WEBHOOK_URL")),
@@ -910,9 +937,7 @@ def bitrix_settings_from_env() -> dict[str, object] | None:
         "untouched_stage_names": untouched_stage_names or list(DEFAULT_BITRIX_UNTOUCHED_STAGE_NAMES),
         "excluded_comment_phones": excluded_phones or list(DEFAULT_BITRIX_EXCLUDED_COMMENT_PHONES),
         "lead_count_field": text(env.get("BITRIX_LEAD_COUNT_FIELD") or ""),
-        "campaign_date_rules": campaign_date_rules_from_json(
-            env.get("BITRIX_CAMPAIGN_DATE_MAP_JSON") or env.get("REPORT_CAMPAIGN_DATE_MAP_JSON")
-        ),
+        "campaign_date_rules": campaign_date_rules,
     }
 
 
@@ -922,6 +947,9 @@ def bitrix_settings_from_config() -> dict[str, object] | None:
     config = json.loads(BITRIX_CONFIG_FILE.read_text(encoding="utf-8"))
     if not config.get("enabled"):
         return None
+    campaign_date_rules = campaign_date_rules_from_config(
+        config.get("campaign_date_map") or config.get("campaign_date_rules")
+    ) or campaign_date_rules_from_registry()
     return {
         "source": "bitrix_config.json",
         "webhook_url": text(config.get("webhook_url")),
@@ -948,9 +976,7 @@ def bitrix_settings_from_config() -> dict[str, object] | None:
         "untouched_stage_names": config.get("untouched_stage_names") or list(DEFAULT_BITRIX_UNTOUCHED_STAGE_NAMES),
         "excluded_comment_phones": config.get("excluded_comment_phones") or list(DEFAULT_BITRIX_EXCLUDED_COMMENT_PHONES),
         "lead_count_field": text(config.get("lead_count_field")),
-        "campaign_date_rules": campaign_date_rules_from_config(
-            config.get("campaign_date_map") or config.get("campaign_date_rules")
-        ),
+        "campaign_date_rules": campaign_date_rules,
     }
 
 

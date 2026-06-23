@@ -28,8 +28,7 @@ Copy-Item avito.env.example avito.env
 
 - `AVITO_CLIENT_ID`;
 - `AVITO_CLIENT_SECRET`;
-- `AVITO_ACCOUNT_ID`;
-- `AVITO_CAMPAIGN_ID` или `AVITO_CAMPAIGN_IDS`.
+- `AVITO_ACCOUNT_ID`.
 
 3. Включите API:
 
@@ -43,7 +42,19 @@ AVITO_ENABLE_API=1
 POST /ads/v1/account/{accountID}/campaigns/{campaignID}/stats
 ```
 
-Для нескольких кампаний используйте:
+Кампании задаются в `avito_campaigns.json`. Этот файл коммитится в репозиторий и служит fallback-реестром, если Avito API не отдает список кампаний:
+
+```json
+{
+  "campaigns": [
+    {"id": "843568278", "name": "Дружеский", "slug": "druzheskiy", "lead_date_to": "2026-06-14"},
+    {"id": "460053704", "name": "Дружеский - расширенная", "slug": "druzheskiy-rasshirennaya", "lead_date_from": "2026-06-15", "lead_date_to": "2026-06-21"},
+    {"id": "771269910", "name": "Эклипт", "slug": "eklipt", "lead_date_from": "2026-06-22"}
+  ]
+}
+```
+
+Если нужно переопределить кампании через переменные окружения, используйте:
 
 ```env
 AVITO_CAMPAIGN_IDS=843568278,123456789
@@ -51,7 +62,8 @@ AVITO_CAMPAIGN_NAMES=Дружеский,Новая кампания
 AVITO_CAMPAIGN_SLUGS=druzheskiy,new-campaign
 ```
 
-Если `AVITO_AUTO_DISCOVER_CAMPAIGNS=1`, скрипт сначала пробует получить список кампаний аккаунта через `GET /ads/v1/account/{account_id}/campaigns`. Если Avito не отдает список для текущего ключа, используется явный список `AVITO_CAMPAIGN_IDS` или старый `AVITO_CAMPAIGN_ID`.
+Если `AVITO_AUTO_DISCOVER_CAMPAIGNS=1`, скрипт сначала пробует получить список кампаний аккаунта через `GET /ads/v1/account/{account_id}/campaigns`. Если Avito не отдает список для текущего ключа, используется `avito_campaigns.json`, затем явный список `AVITO_CAMPAIGN_IDS` или старый `AVITO_CAMPAIGN_ID`.
+При успешном автообнаружении и `AVITO_WRITE_DISCOVERED_CAMPAIGNS=1` скрипт обновляет `avito_campaigns.json`, а GitHub Actions коммитит этот файл вместе с отчетом.
 
 `update_report.py` сохраняет нормализованные данные по каждой кампании в `data/avito/*.json`. Если файл кампании уже обновлялся сегодня, ручной запуск без `--force` не тратит баллы Avito API. Для принудительного обновления:
 
@@ -77,13 +89,12 @@ python update_report.py --force
 - `AVITO_CLIENT_ID`;
 - `AVITO_CLIENT_SECRET`;
 - `AVITO_ACCOUNT_ID`;
-- `AVITO_CAMPAIGN_ID` или `AVITO_CAMPAIGN_IDS`;
-- `AVITO_CAMPAIGN_NAMES` и `AVITO_CAMPAIGN_SLUGS` — опционально для нескольких кампаний;
+- `AVITO_CAMPAIGN_ID`, `AVITO_CAMPAIGN_IDS`, `AVITO_CAMPAIGN_NAMES`, `AVITO_CAMPAIGN_SLUGS` — опционально, если нужно переопределить `avito_campaigns.json`;
 - `AVITO_AUTO_DISCOVER_CAMPAIGNS` — опционально, по умолчанию включено;
 - `AVITO_CAMPAIGN_LIST_PATH_TEMPLATE` — опционально, если Avito изменит endpoint списка кампаний;
 - `BITRIX_WEBHOOK_URL`;
 - `BITRIX_DATE_FIELD`;
-- `BITRIX_CAMPAIGN_DATE_MAP_JSON` — опционально, если нужно раскладывать сделки по Avito-кампаниям через дату создания;
+- `BITRIX_CAMPAIGN_DATE_MAP_JSON` — опционально, если нужно переопределить даты из `avito_campaigns.json`;
 - `BITRIX_UNTOUCHED_STAGE_NAMES` — опционально, стадии обращений без обработки;
 - `BITRIX_DEAL_CATEGORY_ID` — необязательно, если название воронки резолвится через API;
 - `REPORT_START_DATE`.
@@ -113,7 +124,15 @@ python update_report.py --force
 
 В REST API Bitrix эти поля запрашиваются как `UTM_SOURCE`, `UTM_MEDIUM`, `UTM_CAMPAIGN`. Сделка попадает в отчет только по паре `utm_source + utm_medium`; `utm_campaign` не фильтрует сделки и сохраняется отдельно для разбивки по креативам.
 
-Если в отчете несколько Avito-кампаний, сделки можно привязать к конкретной строке кампании через дату создания. Текущий принцип: до `14.06.2026` включительно — первая кампания, с `15.06.2026` — расширенная.
+Если в отчете несколько Avito-кампаний, сделки привязываются к конкретной строке кампании через дату создания. Основной источник этих границ — поля `lead_date_from` и `lead_date_to` в `avito_campaigns.json`. Если Avito API списка кампаний доступен и появляется новая кампания, скрипт выставляет ей `lead_date_from` по первой активной дате из статистики и закрывает предыдущую открытую кампанию днем раньше.
+
+Текущий принцип:
+
+- до `14.06.2026` включительно — `Дружеский`;
+- `15.06.2026`–`21.06.2026` — `Дружеский - расширенная`;
+- с `22.06.2026` — `Эклипт`.
+
+Для ручного переопределения можно использовать `BITRIX_CAMPAIGN_DATE_MAP_JSON`:
 
 ```json
 {
@@ -121,12 +140,16 @@ python update_report.py --force
     "date_to": "2026-06-14"
   },
   "460053704": {
-    "date_from": "2026-06-15"
+    "date_from": "2026-06-15",
+    "date_to": "2026-06-21"
+  },
+  "771269910": {
+    "date_from": "2026-06-22"
   }
 }
 ```
 
-Без этого маппинга сделки остаются в общем итоге и в разбивке по `utm_campaign`, но не приписываются к конкретной Avito-кампании.
+Если нет ни `avito_campaigns.json`, ни date-map, сделки остаются в общем итоге и в разбивке по `utm_campaign`, но не приписываются к конкретной Avito-кампании.
 
 Не учитываются:
 
