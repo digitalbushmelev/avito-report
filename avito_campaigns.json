@@ -1,24 +1,46 @@
 {
   "campaigns": [
     {
-      "id": "843568278",
-      "name": "Дружеский",
-      "slug": "druzheskiy",
-      "lead_date_to": "2026-06-14",
-      "lead_date_from": "2026-06-09"
+      "id": "771269910",
+      "name": "Эклипт",
+      "slug": "eklipt",
+      "lead_date_from": "2026-06-22",
+      "lead_keys": [
+        "psk-eclipt-studio-275_eklpt",
+        "psk-eclipt-2k-528-pv730_eklpt",
+        "psk-eclipt-2k-497-zero-start_eklpt",
+        "psk-eclipt-2k-54-pv730_eklpt",
+        "psk-eclipt-2e-338-zero-start_eklpt",
+        "psk-eclipt-1k-335-zero-start_eklpt",
+        "psk-eclipt-studio-terrace-395_eklpt",
+        "psk-eclipt-3k-546-pv460_eklpt"
+      ]
     },
     {
       "id": "460053704",
       "name": "Дружеский - расширенная",
       "slug": "druzheskiy-rasshirennaya",
       "lead_date_from": "2026-06-15",
-      "lead_date_to": "2026-06-21"
+      "lead_date_to": "2026-06-21",
+      "lead_keys": [
+        "psk-druzheskiy-pv332_druzh",
+        "psk-druzheskiy-pv367_druzh",
+        "psk-druzheskiy-easy-start_druzh",
+        "psk_druzheskiy_pv1750000_druzh",
+        "psk_druzheskiy_7na7_druzh"
+      ]
     },
     {
-      "id": "771269910",
-      "name": "Эклипт",
-      "slug": "eklipt",
-      "lead_date_from": "2026-06-22"
+      "id": "843568278",
+      "name": "Дружеский",
+      "slug": "druzheskiy",
+      "lead_date_from": "2026-06-09",
+      "lead_date_to": "2026-06-14",
+      "lead_keys": [
+        "psk_druzheskiy_7na7_druzh",
+        "psk_druzheskiy_pv1750000_druzh",
+        "psk_druzheskiy_pv1500000_druzh"
+      ]
     }
   ]
 }

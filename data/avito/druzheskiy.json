@@ -1,14 +1,21 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-06-23T17:47:09.452676+05:00",
-  "api_point_balance": "14939",
+  "updated_at": "2026-06-24T17:10:34.304082+05:00",
+  "api_point_balance": "14827",
   "period": {
-    "start": "2026-03-25",
-    "end": "2026-06-22"
+    "start": "2026-03-26",
+    "end": "2026-06-23"
   },
   "campaign": {
     "id": "843568278",
-    "name": "Дружеский"
+    "name": "Дружеский",
+    "lead_keys": [
+      "psk_druzheskiy_7na7_druzh",
+      "psk_druzheskiy_pv1750000_druzh",
+      "psk_druzheskiy_pv1500000_druzh"
+    ],
+    "lead_date_from": "2026-06-09",
+    "lead_date_to": "2026-06-14"
   },
   "daily": [
     {
