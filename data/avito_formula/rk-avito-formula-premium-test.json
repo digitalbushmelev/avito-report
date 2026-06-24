@@ -1,0 +1,592 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-06-24T12:27:43.589633+05:00",
+  "api_point_balance": "14746",
+  "period": {
+    "start": "2026-03-26",
+    "end": "2026-06-23"
+  },
+  "campaign": {
+    "id": "134813486",
+    "name": "РК_АВИТО_ФОРМУЛА_ПРЕМИУМ_ТЕСТ",
+    "lead_keys": []
+  },
+  "daily": [
+    {
+      "date": "2026-04-16",
+      "impressions": 40547.0,
+      "clicks": 80.0,
+      "spend": 525.0,
+      "bonus_spend": 170.0
+    },
+    {
+      "date": "2026-04-17",
+      "impressions": 38869.0,
+      "clicks": 82.0,
+      "spend": 317.0,
+      "bonus_spend": 317.0
+    },
+    {
+      "date": "2026-04-18",
+      "impressions": 42065.0,
+      "clicks": 101.0,
+      "spend": 585.0,
+      "bonus_spend": 585.0
+    },
+    {
+      "date": "2026-04-19",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-20",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-21",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-22",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-23",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-24",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-25",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-26",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-27",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-28",
+      "impressions": 36364.0,
+      "clicks": 221.0,
+      "spend": 1960.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-29",
+      "impressions": 389.0,
+      "clicks": 3.0,
+      "spend": 6.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "216091851508",
+      "label": "Бизнесмены (ХМАО-ЯНАО)",
+      "group_id": "",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "696869719508",
+      "label": "Бизнесмены (Тюмень)",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 1.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "218387782898",
+      "label": "Интерес к недвижимости (ХМАО-ЯНАО)",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 40105.0,
+          "clicks": 80.0,
+          "spend": 525.0,
+          "bonus_spend": 170.0
+        },
+        {
+          "date": "2026-04-17",
+          "impressions": 38869.0,
+          "clicks": 82.0,
+          "spend": 317.0,
+          "bonus_spend": 317.0
+        },
+        {
+          "date": "2026-04-18",
+          "impressions": 42065.0,
+          "clicks": 101.0,
+          "spend": 585.0,
+          "bonus_spend": 585.0
+        }
+      ],
+      "impressions": 121039.0,
+      "clicks": 263.0,
+      "spend": 1427.0,
+      "bonus_spend": 1072.0
+    },
+    {
+      "id": "294929313968",
+      "label": "Интерес к недвижимости (Тюмень)",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 441.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 441.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "983784731355",
+      "label": "Интерес к недвижимости (Тест)",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-04-28",
+          "impressions": 36364.0,
+          "clicks": 221.0,
+          "spend": 1960.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-29",
+          "impressions": 389.0,
+          "clicks": 3.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 36753.0,
+      "clicks": 224.0,
+      "spend": 1966.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "874545155209392",
+      "label": "Креатив — 3",
+      "group_id": "216091851508",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "192417831773830",
+      "label": "Креатив — 1",
+      "group_id": "696869719508",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 1.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "766504375837945",
+      "label": "Креатив — 3",
+      "group_id": "696869719508",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "742021196696877",
+      "label": "Креатив — 1",
+      "group_id": "218387782898",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 8076.0,
+          "clicks": 16.0,
+          "spend": 100.0,
+          "bonus_spend": 50.0
+        },
+        {
+          "date": "2026-04-17",
+          "impressions": 9308.0,
+          "clicks": 18.0,
+          "spend": 67.0,
+          "bonus_spend": 67.0
+        },
+        {
+          "date": "2026-04-18",
+          "impressions": 13760.0,
+          "clicks": 29.0,
+          "spend": 169.0,
+          "bonus_spend": 169.0
+        }
+      ],
+      "impressions": 31144.0,
+      "clicks": 63.0,
+      "spend": 336.0,
+      "bonus_spend": 286.0
+    },
+    {
+      "id": "106217626898887",
+      "label": "Креатив — 3",
+      "group_id": "218387782898",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 8093.0,
+          "clicks": 5.0,
+          "spend": 30.0,
+          "bonus_spend": 5.0
+        },
+        {
+          "date": "2026-04-17",
+          "impressions": 1630.0,
+          "clicks": 4.0,
+          "spend": 20.0,
+          "bonus_spend": 20.0
+        },
+        {
+          "date": "2026-04-18",
+          "impressions": 6.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 9729.0,
+      "clicks": 9.0,
+      "spend": 50.0,
+      "bonus_spend": 25.0
+    },
+    {
+      "id": "319654745758375",
+      "label": "Креатив — 4",
+      "group_id": "218387782898",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 7909.0,
+          "clicks": 11.0,
+          "spend": 75.0,
+          "bonus_spend": 15.0
+        },
+        {
+          "date": "2026-04-17",
+          "impressions": 9164.0,
+          "clicks": 20.0,
+          "spend": 82.0,
+          "bonus_spend": 82.0
+        },
+        {
+          "date": "2026-04-18",
+          "impressions": 647.0,
+          "clicks": 2.0,
+          "spend": 7.0,
+          "bonus_spend": 7.0
+        }
+      ],
+      "impressions": 17720.0,
+      "clicks": 33.0,
+      "spend": 164.0,
+      "bonus_spend": 104.0
+    },
+    {
+      "id": "233710833041275",
+      "label": "Креатив — 1",
+      "group_id": "216091851508",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "113984735500689",
+      "label": "Креатив — 2",
+      "group_id": "216091851508",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "154186024581193",
+      "label": "Креатив — 1",
+      "group_id": "983784731355",
+      "daily": [
+        {
+          "date": "2026-04-28",
+          "impressions": 26943.0,
+          "clicks": 188.0,
+          "spend": 1666.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-29",
+          "impressions": 288.0,
+          "clicks": 3.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 27231.0,
+      "clicks": 191.0,
+      "spend": 1672.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "969485395469991",
+      "label": "Копия Креатив — 1",
+      "group_id": "983784731355",
+      "daily": [
+        {
+          "date": "2026-04-28",
+          "impressions": 9421.0,
+          "clicks": 33.0,
+          "spend": 294.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-29",
+          "impressions": 101.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 9522.0,
+      "clicks": 33.0,
+      "spend": 294.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "101891527093120",
+      "label": "Креатив — 2",
+      "group_id": "294929313968",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 112.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 112.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "430799099127012",
+      "label": "Креатив — 3",
+      "group_id": "294929313968",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 108.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 108.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "720497411508145",
+      "label": "Креатив — 4",
+      "group_id": "696869719508",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "107308703494454",
+      "label": "Креатив — 4",
+      "group_id": "216091851508",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "705434809178646",
+      "label": "Креатив — 2",
+      "group_id": "696869719508",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "185358592508178",
+      "label": "Креатив — 5",
+      "group_id": "218387782898",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 7876.0,
+          "clicks": 23.0,
+          "spend": 155.0,
+          "bonus_spend": 55.0
+        },
+        {
+          "date": "2026-04-17",
+          "impressions": 9369.0,
+          "clicks": 19.0,
+          "spend": 74.0,
+          "bonus_spend": 74.0
+        },
+        {
+          "date": "2026-04-18",
+          "impressions": 13861.0,
+          "clicks": 32.0,
+          "spend": 184.0,
+          "bonus_spend": 184.0
+        }
+      ],
+      "impressions": 31106.0,
+      "clicks": 74.0,
+      "spend": 413.0,
+      "bonus_spend": 313.0
+    },
+    {
+      "id": "446061711071883",
+      "label": "Креатив — 4",
+      "group_id": "294929313968",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 118.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 118.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "529501801592587",
+      "label": "Креатив — 2",
+      "group_id": "218387782898",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 8151.0,
+          "clicks": 25.0,
+          "spend": 165.0,
+          "bonus_spend": 45.0
+        },
+        {
+          "date": "2026-04-17",
+          "impressions": 9398.0,
+          "clicks": 21.0,
+          "spend": 73.0,
+          "bonus_spend": 73.0
+        },
+        {
+          "date": "2026-04-18",
+          "impressions": 13791.0,
+          "clicks": 38.0,
+          "spend": 225.0,
+          "bonus_spend": 225.0
+        }
+      ],
+      "impressions": 31340.0,
+      "clicks": 84.0,
+      "spend": 464.0,
+      "bonus_spend": 344.0
+    },
+    {
+      "id": "779932838966836",
+      "label": "Креатив — 1",
+      "group_id": "294929313968",
+      "daily": [
+        {
+          "date": "2026-04-16",
+          "impressions": 103.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 103.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}

@@ -2,6 +2,7 @@
 
 `index.html` — основной HTML-отчет для GitHub Pages по кампании `Дружеский`.
 `avito_report.html` генерируется как локальная копия с тем же содержимым.
+`formula/index.html` и `formula_avito_report.html` — отдельная версия отчета для кабинета Формулы.
 
 Данные собираются из двух источников:
 
@@ -15,6 +16,20 @@ python update_report.py --skip-avito
 ```
 
 Команда не дергает Avito API, а только пересобирает отчет по имеющимся данным и Bitrix.
+
+Для второго кабинета Формулы:
+
+```powershell
+python update_formula_report.py --skip-avito
+```
+
+Принудительно обновить кампании и статистику Формулы из Avito API:
+
+```powershell
+python update_formula_report.py --force
+```
+
+Этот запуск использует `avito_second.env`, `bitrix_second.env`, пишет кэш в `data/avito_formula`, реестр кампаний в `avito_formula_campaigns.json`, а HTML — в `formula/index.html` и `formula_avito_report.html`.
 
 ## Avito API
 
@@ -63,6 +78,7 @@ AVITO_CAMPAIGN_SLUGS=druzheskiy,new-campaign
 ```
 
 Если `AVITO_AUTO_DISCOVER_CAMPAIGNS=1`, скрипт сначала пробует получить список кампаний аккаунта через `GET /ads/v1/account/{account_id}/campaigns`. Если Avito не отдает список для текущего ключа, используется `avito_campaigns.json`, затем явный список `AVITO_CAMPAIGN_IDS` или старый `AVITO_CAMPAIGN_ID`.
+Если список кампаний недоступен, скрипт дополнительно ищет campaignID через список креативов `POST /ads/v1/account/{account_id}/creatives` и сохраняет найденные `utm_campaign` как `lead_keys` для атрибуции сделок.
 При успешном автообнаружении и `AVITO_WRITE_DISCOVERED_CAMPAIGNS=1` скрипт обновляет `avito_campaigns.json`, а GitHub Actions коммитит этот файл вместе с отчетом.
 
 `update_report.py` сохраняет нормализованные данные по каждой кампании в `data/avito/*.json`. Если файл кампании уже обновлялся сегодня, ручной запуск без `--force` не тратит баллы Avito API. Для принудительного обновления:
@@ -98,6 +114,19 @@ python update_report.py --force
 - `BITRIX_UNTOUCHED_STAGE_NAMES` — опционально, стадии обращений без обработки;
 - `BITRIX_DEAL_CATEGORY_ID` — необязательно, если название воронки резолвится через API;
 - `REPORT_START_DATE`.
+
+Для отчета Формулы workflow использует отдельные секреты. Если они не заполнены, шаг Формулы пропускается:
+
+- `AVITO_SECOND_ENABLE_API`;
+- `AVITO_SECOND_CLIENT_ID`;
+- `AVITO_SECOND_CLIENT_SECRET`;
+- `AVITO_SECOND_ACCOUNT_ID`;
+- `AVITO_SECOND_TOKEN_URL`, `AVITO_SECOND_BASE_URL` — опционально;
+- `AVITO_SECOND_STATS_METHOD`, `AVITO_SECOND_STATS_PATH_TEMPLATE`, `AVITO_SECOND_STATS_BODY_JSON` — опционально;
+- `AVITO_SECOND_GROUP_BY`, `AVITO_SECOND_LOOKBACK_DAYS` — опционально;
+- `BITRIX_SECOND_WEBHOOK_URL`;
+- `BITRIX_SECOND_DATE_FIELD` — опционально;
+- `REPORT_SECOND_START_DATE` — опционально.
 
 Для GitHub Pages включите публикацию из ветки, где лежит `index.html`, с корнем `/`.
 

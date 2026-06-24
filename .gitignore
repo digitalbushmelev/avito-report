@@ -1,5 +1,4 @@
-bitrix.env
-avito.env
+*.env
 bitrix_config.json
 leads.csv
 bitrix_leads.csv
@@ -7,3 +6,4 @@ data/leads.csv
 *.xlsx
 __pycache__/
 data/avito/raw/
+data/avito_formula/raw/

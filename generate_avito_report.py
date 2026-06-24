@@ -18,16 +18,40 @@ from urllib import parse, request
 from xml.etree import ElementTree as ET
 
 
+def configure_ssl_cert_file() -> None:
+    if os.environ.get("SSL_CERT_FILE"):
+        return
+    try:
+        import certifi  # type: ignore
+    except Exception:
+        return
+    os.environ["SSL_CERT_FILE"] = certifi.where()
+
+
+configure_ssl_cert_file()
+
+
 ROOT = Path(__file__).resolve().parent
-OUTPUT_FILE = ROOT / "avito_report.html"
-INDEX_FILE = ROOT / "index.html"
-AVITO_DATA_DIR = ROOT / "data" / "avito"
-AVITO_CAMPAIGN_REGISTRY_FILE = ROOT / "avito_campaigns.json"
-REPORT_CAMPAIGN_NAME = "Дружеский"
+
+
+def path_from_env(name: str, default: str) -> Path:
+    raw = os.environ.get(name, "").strip()
+    path = Path(raw or default)
+    return path if path.is_absolute() else ROOT / path
+
+
+OUTPUT_FILE = path_from_env("REPORT_OUTPUT_FILE", "avito_report.html")
+INDEX_FILE = path_from_env("REPORT_INDEX_FILE", "index.html")
+AVITO_DATA_DIR = path_from_env("REPORT_AVITO_DATA_DIR", "data/avito")
+AVITO_CAMPAIGN_REGISTRY_FILE = path_from_env("REPORT_AVITO_CAMPAIGN_REGISTRY_FILE", "avito_campaigns.json")
+REPORT_CAMPAIGN_NAME = os.environ.get("REPORT_CAMPAIGN_NAME", "Дружеский")
 REPORT_CAMPAIGN_SLUG = "druzheskiy"
 LEAD_FILES = (ROOT / "leads.csv", ROOT / "bitrix_leads.csv", ROOT / "data" / "leads.csv")
 BITRIX_CONFIG_FILE = ROOT / "bitrix_config.json"
-BITRIX_ENV_FILE = ROOT / "bitrix.env"
+BITRIX_ENV_FILE = path_from_env("REPORT_BITRIX_ENV_FILE", "bitrix.env")
+REPORT_BRAND_NAME = os.environ.get("REPORT_BRAND_NAME", "Авито Реклама")
+REPORT_HEADING = os.environ.get("REPORT_HEADING", "Сводка Авито Реклама")
+REPORT_EYEBROW = os.environ.get("REPORT_EYEBROW", "Внутренний отчет")
 ALL_LEADS_KEY = "__all__"
 BITRIX_AVITO_LEADS_CAMPAIGN = REPORT_CAMPAIGN_NAME
 DEFAULT_BITRIX_UTM_SOURCE = "avito_media"
@@ -869,6 +893,31 @@ def campaign_date_rules_from_registry() -> list[dict[str, object]]:
     return rules
 
 
+def campaign_registry_meta() -> dict[str, dict[str, object]]:
+    if not AVITO_CAMPAIGN_REGISTRY_FILE.exists():
+        return {}
+    try:
+        parsed = json.loads(AVITO_CAMPAIGN_REGISTRY_FILE.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    items = parsed.get("campaigns") if isinstance(parsed, dict) else parsed
+    result: dict[str, dict[str, object]] = {}
+    for item in items if isinstance(items, list) else []:
+        if not isinstance(item, dict):
+            continue
+        campaign_id = text(item.get("id"))
+        if not campaign_id:
+            continue
+        result[campaign_id] = {
+            "id": campaign_id,
+            "name": text(item.get("name") or campaign_id),
+            "lead_keys": as_list(item.get("lead_keys")),
+            "lead_date_from": text(item.get("lead_date_from") or item.get("date_from")),
+            "lead_date_to": text(item.get("lead_date_to") or item.get("date_to")),
+        }
+    return result
+
+
 def campaign_key_for_date(rules: list[dict[str, object]], day: date | None) -> str:
     if not day:
         return ""
@@ -1265,24 +1314,29 @@ def attach_leads(
     leads_by_day: dict[str, int],
     enabled: bool,
     quality_by_day: dict[str, dict[str, int]] | None = None,
+    include_missing_lead_dates: bool = True,
 ) -> None:
     quality_by_day = quality_by_day or {}
-    total_leads = sum(leads_by_day.values())
     existing_dates = {text(row.get("date")) for row in daily}
-    for day in sorted(set(leads_by_day) | set(quality_by_day)):
-        if day and day not in existing_dates:
-            daily.append(
-                {
-                    "date": day,
-                    "impressions": 0.0,
-                    "clicks": 0.0,
-                    "spend": 0.0,
-                    "bonus_spend": 0.0,
-                    "ctr": 0.0,
-                    "cpc": 0.0,
-                    "cpm": 0.0,
-                }
-            )
+    if include_missing_lead_dates:
+        for day in sorted(set(leads_by_day) | set(quality_by_day)):
+            if day and day not in existing_dates:
+                daily.append(
+                    {
+                        "date": day,
+                        "impressions": 0.0,
+                        "clicks": 0.0,
+                        "spend": 0.0,
+                        "bonus_spend": 0.0,
+                        "ctr": 0.0,
+                        "cpc": 0.0,
+                        "cpm": 0.0,
+                    }
+                )
+    else:
+        leads_by_day = {day: count for day, count in leads_by_day.items() if day in existing_dates}
+        quality_by_day = {day: value for day, value in quality_by_day.items() if day in existing_dates}
+    total_leads = sum(leads_by_day.values())
     daily.sort(key=lambda row: text(row.get("date")))
     for row in daily:
         day = text(row.get("date"))
@@ -1558,6 +1612,9 @@ def campaign_from_api_data(
     campaign = payload.get("campaign") if isinstance(payload.get("campaign"), dict) else {}
     campaign_id = text(campaign.get("id") or payload.get("campaign_id") or "druzheskiy")
     campaign_name = text(campaign.get("name") or payload.get("campaign_name") or REPORT_CAMPAIGN_NAME)
+    lead_keys = as_list(campaign.get("lead_keys") or campaign.get("utm_campaigns") or campaign.get("utm_campaign"))
+    lead_date_from = parse_date(campaign.get("lead_date_from"))
+    lead_date_to = parse_date(campaign.get("lead_date_to"))
     campaign_info = {"campaign_id": campaign_id, "campaign_name": campaign_name}
     daily = []
     for row in payload.get("daily", []) if isinstance(payload.get("daily"), list) else []:
@@ -1569,9 +1626,28 @@ def campaign_from_api_data(
         daily.append({"date": day.isoformat(), **normalize_metric_row(row)})
     daily.sort(key=lambda row: text(row.get("date")))
     total = sum_metric_rows(daily)
-    leads_by_day = campaign_leads(campaign_info, lead_data, fallback_all=owns_all_leads)
-    quality_by_day = campaign_lead_quality(campaign_info, lead_data, fallback_all=owns_all_leads)
-    attach_leads(daily, total, leads_by_day, lead_data.enabled, quality_by_day)
+    lead_lookup_info = {"campaign_id": "", "campaign_name": ""} if lead_keys else campaign_info
+    leads_by_day = campaign_leads(lead_lookup_info, lead_data, fallback_all=owns_all_leads, extra_keys=lead_keys)
+    quality_by_day = campaign_lead_quality(lead_lookup_info, lead_data, fallback_all=owns_all_leads, extra_keys=lead_keys)
+    if lead_date_from or lead_date_to:
+        leads_by_day = {
+            day: count
+            for day, count in leads_by_day.items()
+            if in_date_range(parse_date(day), lead_date_from, lead_date_to)
+        }
+        quality_by_day = {
+            day: value
+            for day, value in quality_by_day.items()
+            if in_date_range(parse_date(day), lead_date_from, lead_date_to)
+        }
+    attach_leads(
+        daily,
+        total,
+        leads_by_day,
+        lead_data.enabled,
+        quality_by_day,
+        include_missing_lead_dates=bool(lead_date_from or lead_date_to),
+    )
 
     def normalize_entities(items: object) -> list[dict[str, object]]:
         result = []
@@ -1659,12 +1735,17 @@ def placeholder_campaign(lead_data: LeadData, date_from: date | None, date_to: d
 
 def load_api_campaigns(lead_data: LeadData) -> list[dict[str, object]]:
     payloads = []
+    registry = campaign_registry_meta()
     for path in api_data_files():
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
             continue
         if isinstance(payload, dict):
+            campaign = payload.get("campaign") if isinstance(payload.get("campaign"), dict) else {}
+            campaign_id = text(campaign.get("id") or payload.get("campaign_id"))
+            if campaign_id in registry:
+                payload = {**payload, "campaign": {**registry[campaign_id], **campaign}}
             payloads.append(payload)
     owns_all_leads = len(payloads) == 1
     return [campaign_from_api_data(payload, lead_data, owns_all_leads=owns_all_leads) for payload in payloads]
@@ -2618,7 +2699,7 @@ def render_html(report: dict[str, object]) -> str:
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Авито Реклама</title>
+  <title>{esc(REPORT_BRAND_NAME)}</title>
   <style>
     :root {{
       color-scheme: dark;
@@ -2975,7 +3056,7 @@ def render_html(report: dict[str, object]) -> str:
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#top"><span class="brand__main">Авито Реклама</span></a>
+      <a class="brand" href="#top"><span class="brand__main">{esc(REPORT_BRAND_NAME)}</span></a>
     <nav class="site-nav" aria-label="Разделы">
       <a href="#overview">Обзор</a>
       <a href="#campaigns">Кампании</a>
@@ -2986,8 +3067,8 @@ def render_html(report: dict[str, object]) -> str:
 
   <main id="top">
     <section class="overview-strip section-anchor" id="overview">
-      <p class="eyebrow">Внутренний отчет</p>
-      <h1>Сводка Авито Реклама</h1>
+      <p class="eyebrow">{esc(REPORT_EYEBROW)}</p>
+      <h1>{esc(REPORT_HEADING)}</h1>
       <div class="overview-summary-row" aria-label="Краткая сводка">
         {overview_stat("Кампаний", number(len(campaigns)), "campaigns")}
         {overview_period_stat(report["data_start"], report["data_end"])}
@@ -3021,6 +3102,8 @@ def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")
     report = build_report()
     html_report = render_html(report)
+    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    INDEX_FILE.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_FILE.write_text(html_report, encoding="utf-8")
     INDEX_FILE.write_text(html_report, encoding="utf-8")
     print(f"Готово: {OUTPUT_FILE}")

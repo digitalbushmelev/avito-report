@@ -13,15 +13,37 @@ from urllib import parse, request
 from zoneinfo import ZoneInfo
 
 
+def configure_ssl_cert_file() -> None:
+    if os.environ.get("SSL_CERT_FILE"):
+        return
+    try:
+        import certifi  # type: ignore
+    except Exception:
+        return
+    os.environ["SSL_CERT_FILE"] = certifi.where()
+
+
+configure_ssl_cert_file()
+
+
 ROOT = Path(__file__).resolve().parent
-AVITO_ENV_FILE = ROOT / "avito.env"
-AVITO_CAMPAIGN_REGISTRY_FILE = ROOT / "avito_campaigns.json"
-AVITO_DATA_DIR = ROOT / "data" / "avito"
-AVITO_RAW_DIR = AVITO_DATA_DIR / "raw"
-REPORT_SCRIPT = ROOT / "generate_avito_report.py"
+
+
+def path_from_env(name: str, default: str) -> Path:
+    raw = os.environ.get(name, "").strip()
+    path = Path(raw or default)
+    return path if path.is_absolute() else ROOT / path
+
+
+AVITO_ENV_FILE = path_from_env("REPORT_AVITO_ENV_FILE", "avito.env")
+AVITO_CAMPAIGN_REGISTRY_FILE = path_from_env("REPORT_AVITO_CAMPAIGN_REGISTRY_FILE", "avito_campaigns.json")
+AVITO_DATA_DIR = path_from_env("REPORT_AVITO_DATA_DIR", "data/avito")
+AVITO_RAW_DIR = path_from_env("REPORT_AVITO_RAW_DIR", str(AVITO_DATA_DIR / "raw"))
+REPORT_SCRIPT = path_from_env("REPORT_SCRIPT", "generate_avito_report.py")
 REPORT_TIMEZONE = "Asia/Yekaterinburg"
 DEFAULT_AVITO_STATS_PATH = "/ads/v1/account/{account_id}/campaigns/{campaign_id}/stats"
 DEFAULT_AVITO_CAMPAIGN_LIST_PATH = "/ads/v1/account/{account_id}/campaigns"
+DEFAULT_AVITO_CREATIVE_LIST_PATH = "/ads/v1/account/{account_id}/creatives"
 
 
 def text(value: object) -> str:
@@ -304,15 +326,18 @@ def campaigns_from_items(items: object) -> list[dict[str, str]]:
         campaign_id = text(item.get("id") or item.get("campaign_id") or item.get("campaignId"))
         if not campaign_id:
             continue
-        campaigns.append(
-            {
-                "id": campaign_id,
-                "name": text(item.get("name") or item.get("title") or campaign_id),
-                "slug": text(item.get("slug")),
-                "lead_date_from": text(item.get("lead_date_from") or item.get("date_from")),
-                "lead_date_to": text(item.get("lead_date_to") or item.get("date_to")),
-            }
-        )
+        campaign = {
+            "id": campaign_id,
+            "name": text(item.get("name") or item.get("title") or campaign_id),
+            "slug": text(item.get("slug")),
+            "lead_date_from": text(item.get("lead_date_from") or item.get("date_from")),
+            "lead_date_to": text(item.get("lead_date_to") or item.get("date_to")),
+        }
+        lead_keys = item.get("lead_keys") or item.get("utm_campaigns") or item.get("utm_campaign")
+        keys = split_list(lead_keys) if not isinstance(lead_keys, list) else [text(value) for value in lead_keys if text(value)]
+        if keys:
+            campaign["lead_keys"] = ",".join(dict.fromkeys(keys))
+        campaigns.append(campaign)
     return campaigns
 
 
@@ -408,6 +433,10 @@ def registry_write_enabled(env: dict[str, str]) -> bool:
     return text(env.get("AVITO_WRITE_DISCOVERED_CAMPAIGNS") or "1").lower() not in {"0", "false", "no", "off"}
 
 
+def creative_discovery_enabled(env: dict[str, str]) -> bool:
+    return text(env.get("AVITO_DISCOVER_CAMPAIGNS_FROM_CREATIVES") or "1").lower() not in {"0", "false", "no", "off"}
+
+
 def save_campaign_registry(env: dict[str, str], campaigns: list[dict[str, str]]) -> None:
     if not registry_write_enabled(env):
         return
@@ -430,6 +459,9 @@ def save_campaign_registry(env: dict[str, str], campaigns: list[dict[str, str]])
             row["lead_date_from"] = text(current.get("lead_date_from"))
         if text(current.get("lead_date_to")):
             row["lead_date_to"] = text(current.get("lead_date_to"))
+        lead_keys = split_list(current.get("lead_keys"))
+        if lead_keys:
+            row["lead_keys"] = list(dict.fromkeys(lead_keys))
         rows.append(row)
     if not rows:
         return
@@ -518,17 +550,105 @@ def discover_campaigns(env: dict[str, str], token: str) -> list[dict[str, str]]:
     return list(result.values())
 
 
+def discover_campaigns_from_creatives(env: dict[str, str], token: str) -> list[dict[str, str]]:
+    if not auto_discover_enabled(env) or not creative_discovery_enabled(env):
+        return []
+
+    base_url = (text(env.get("AVITO_BASE_URL")) or "https://api.avito.ru").rstrip("/")
+    path = text(env.get("AVITO_CREATIVE_LIST_PATH_TEMPLATE")) or DEFAULT_AVITO_CREATIVE_LIST_PATH
+    method = text(env.get("AVITO_CREATIVE_LIST_METHOD") or "POST").upper()
+    limit = int(text(env.get("AVITO_CREATIVE_LIST_LIMIT")) or "100")
+    body_template = text(env.get("AVITO_CREATIVE_LIST_BODY_JSON"))
+    page = 1
+    seen_creatives = 0
+    campaigns: dict[str, dict[str, object]] = {}
+
+    while True:
+        url = base_url + format_template(path, env)
+        headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+        body = None
+        if method == "POST":
+            if body_template:
+                body_text = body_template.format(
+                    account_id=text(env.get("AVITO_ACCOUNT_ID")),
+                    page=page,
+                    limit=limit,
+                )
+                body_payload = json.loads(body_text)
+            else:
+                body_payload = {"limit": limit, "page": page}
+            body = json.dumps(body_payload, ensure_ascii=False).encode("utf-8")
+        elif method == "GET":
+            query = parse.urlencode({"limit": limit, "page": page})
+            url += ("&" if "?" in url else "?") + query
+
+        req = request.Request(url, data=body, headers=headers, method=method)
+        try:
+            with request.urlopen(req, timeout=45) as response:
+                raw = json.loads(response.read().decode("utf-8"))
+        except Exception as exc:
+            print(f"Avito creative list пропущен: {exc}")
+            return []
+
+        creatives = raw.get("creatives") if isinstance(raw, dict) else []
+        if not isinstance(creatives, list) or not creatives:
+            break
+
+        seen_creatives += len(creatives)
+        for creative in creatives:
+            if not isinstance(creative, dict):
+                continue
+            campaign_id = text(
+                creative.get("campaignID")
+                or creative.get("campaignId")
+                or creative.get("campaign_id")
+            )
+            if not campaign_id:
+                continue
+            campaign = campaigns.setdefault(
+                campaign_id,
+                {"id": campaign_id, "name": campaign_id, "lead_keys": []},
+            )
+            link = text(creative.get("link"))
+            if link:
+                for value in parse.parse_qs(parse.urlparse(link).query).get("utm_campaign", []):
+                    key = text(value)
+                    if key and "{" not in key and "}" not in key and key not in campaign["lead_keys"]:
+                        campaign["lead_keys"].append(text(value))
+
+        total = int(raw.get("total") or 0) if isinstance(raw, dict) else 0
+        if total and seen_creatives >= total:
+            break
+        page += 1
+
+    result = []
+    for campaign in campaigns.values():
+        row = {
+            "id": text(campaign.get("id")),
+            "name": text(campaign.get("name") or campaign.get("id")),
+        }
+        lead_keys = [text(value) for value in campaign.get("lead_keys", []) if text(value)]
+        if lead_keys:
+            row["lead_keys"] = ",".join(lead_keys)
+        result.append(row)
+
+    if result:
+        print(f"Avito creative list: найдено кампаний {len(result)}")
+    return result
+
+
 def resolve_campaigns(env: dict[str, str], token: str) -> list[dict[str, str]]:
     configured = configured_campaigns(env)
     discovered = discover_campaigns(env, token)
+    creative_discovered = discover_campaigns_from_creatives(env, token)
     merged: dict[str, dict[str, str]] = {}
-    for campaign in discovered + configured:
+    for campaign in discovered + creative_discovered + configured:
         campaign_id = text(campaign.get("id"))
         if not campaign_id:
             continue
         merged[campaign_id] = {**merged.get(campaign_id, {}), **campaign}
     campaigns = list(merged.values()) or configured
-    if discovered:
+    if discovered or creative_discovered:
         save_campaign_registry(env, campaigns)
     return campaigns
 
@@ -557,6 +677,9 @@ def normalize_avito_response(
         "campaign": {
             "id": text(campaign_node.get("id") if isinstance(campaign_node, dict) else "") or text(campaign.get("id")),
             "name": text(campaign_node.get("name") if isinstance(campaign_node, dict) else "") or text(campaign.get("name") or campaign.get("id")),
+            "lead_keys": split_list(campaign.get("lead_keys")),
+            "lead_date_from": text(campaign.get("lead_date_from")),
+            "lead_date_to": text(campaign.get("lead_date_to")),
         },
         "daily": daily,
         "groups": normalize_avito_entities(raw.get("groups")),
@@ -581,6 +704,7 @@ def update_avito_cache(force: bool = False) -> bool:
     AVITO_RAW_DIR.mkdir(parents=True, exist_ok=True)
     updated = False
     active_starts: dict[str, str] = {}
+    normalized_campaigns: list[dict[str, str]] = []
     for campaign in campaigns:
         path = campaign_data_file(campaign)
         if not force and cache_is_fresh(path):
@@ -592,22 +716,40 @@ def update_avito_cache(force: bool = False) -> bool:
         raw_path = AVITO_RAW_DIR / f"{slug}_{now_local().strftime('%Y%m%d_%H%M%S')}.json"
         raw_path.write_text(json.dumps(raw, ensure_ascii=False, indent=2), encoding="utf-8")
         normalized = normalize_avito_response(raw, env, date_from, date_to, campaign)
-        path.write_text(
+        normalized_campaign = normalized.get("campaign") if isinstance(normalized.get("campaign"), dict) else {}
+        normalized_id = text(normalized_campaign.get("id") or campaign.get("id"))
+        normalized_name = text(normalized_campaign.get("name") or campaign.get("name") or campaign.get("id"))
+        normalized_slug = text(campaign.get("slug"))
+        if not normalized_slug or normalized_slug == normalized_id:
+            normalized_slug = campaign_slug({"id": normalized_id, "name": normalized_name})
+        save_campaign = {
+            **campaign,
+            "id": normalized_id,
+            "name": normalized_name,
+            "slug": normalized_slug,
+        }
+        normalized_campaigns.append(save_campaign)
+        save_path = campaign_data_file(save_campaign)
+        if save_path != path and path.exists():
+            path.unlink()
+        save_path.write_text(
             json.dumps(normalized, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
         active_day = first_active_day(normalized)
         if active_day:
             active_starts[text(campaign.get("id"))] = active_day
-        print(f"Avito API обновлен: {path}")
+        print(f"Avito API обновлен: {save_path}")
         updated = True
     if active_starts:
         update_registry_lead_windows(env, active_starts)
+    if normalized_campaigns:
+        save_campaign_registry(env, normalized_campaigns)
     return updated
 
 
 def rebuild_report() -> None:
-    subprocess.run([sys.executable, str(REPORT_SCRIPT)], cwd=ROOT, check=True)
+    subprocess.run([sys.executable, str(REPORT_SCRIPT)], cwd=ROOT, check=True, env=os.environ.copy())
 
 
 def main() -> None:

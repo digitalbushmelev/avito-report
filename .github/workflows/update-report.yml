@@ -70,13 +70,67 @@ jobs:
             python update_report.py
           fi
 
+      - name: Update Formula report
+        env:
+          AVITO_ENABLE_API: ${{ secrets.AVITO_SECOND_ENABLE_API }}
+          AVITO_CLIENT_ID: ${{ secrets.AVITO_SECOND_CLIENT_ID }}
+          AVITO_CLIENT_SECRET: ${{ secrets.AVITO_SECOND_CLIENT_SECRET }}
+          AVITO_ACCOUNT_ID: ${{ secrets.AVITO_SECOND_ACCOUNT_ID }}
+          AVITO_TOKEN_URL: ${{ secrets.AVITO_SECOND_TOKEN_URL }}
+          AVITO_BASE_URL: ${{ secrets.AVITO_SECOND_BASE_URL }}
+          AVITO_STATS_METHOD: ${{ secrets.AVITO_SECOND_STATS_METHOD }}
+          AVITO_STATS_PATH_TEMPLATE: ${{ secrets.AVITO_SECOND_STATS_PATH_TEMPLATE }}
+          AVITO_STATS_BODY_JSON: ${{ secrets.AVITO_SECOND_STATS_BODY_JSON }}
+          AVITO_GROUP_BY: ${{ secrets.AVITO_SECOND_GROUP_BY }}
+          AVITO_LOOKBACK_DAYS: ${{ secrets.AVITO_SECOND_LOOKBACK_DAYS }}
+          BITRIX_WEBHOOK_URL: ${{ secrets.BITRIX_SECOND_WEBHOOK_URL }}
+          BITRIX_DATE_FIELD: ${{ secrets.BITRIX_SECOND_DATE_FIELD }}
+          REPORT_START_DATE: ${{ secrets.REPORT_SECOND_START_DATE }}
+        run: |
+          if [ -z "$AVITO_CLIENT_ID" ] || [ -z "$AVITO_CLIENT_SECRET" ] || [ -z "$AVITO_ACCOUNT_ID" ] || [ -z "$BITRIX_WEBHOOK_URL" ]; then
+            echo "Formula report skipped: second account secrets are not configured"
+            exit 0
+          fi
+          if [ -z "$AVITO_ENABLE_API" ]; then
+            export AVITO_ENABLE_API=1
+          fi
+          if [ -z "$AVITO_GROUP_BY" ]; then
+            export AVITO_GROUP_BY=day
+          fi
+          if [ -z "$AVITO_LOOKBACK_DAYS" ]; then
+            export AVITO_LOOKBACK_DAYS=90
+          fi
+          if [ -z "$BITRIX_DATE_FIELD" ]; then
+            export BITRIX_DATE_FIELD=DATE_CREATE
+          fi
+          if [ -z "$REPORT_START_DATE" ]; then
+            export REPORT_START_DATE=2026-03-01
+          fi
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event.inputs.force_avito }}" = "true" ]; then
+            python update_formula_report.py --force
+          else
+            python update_formula_report.py
+          fi
+
       - name: Commit report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html avito_report.html avito_campaigns.json
+          git add index.html avito_report.html avito_campaigns.json update_formula_report.py
+          if [ -f "formula_avito_report.html" ]; then
+            git add formula_avito_report.html
+          fi
+          if [ -f "formula/index.html" ]; then
+            git add formula/index.html
+          fi
+          if [ -f "avito_formula_campaigns.json" ]; then
+            git add avito_formula_campaigns.json
+          fi
           if compgen -G "data/avito/*.json" > /dev/null; then
             git add data/avito/*.json
+          fi
+          if compgen -G "data/avito_formula/*.json" > /dev/null; then
+            git add data/avito_formula/*.json
           fi
           if git diff --cached --quiet; then
             echo "No report changes"

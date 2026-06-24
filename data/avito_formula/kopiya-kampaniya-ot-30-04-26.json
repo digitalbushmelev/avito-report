@@ -1,0 +1,198 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-06-24T12:27:41.099162+05:00",
+  "api_point_balance": "14786",
+  "period": {
+    "start": "2026-03-26",
+    "end": "2026-06-23"
+  },
+  "campaign": {
+    "id": "732735747",
+    "name": "Копия Кампания от 30.04.26",
+    "lead_keys": [
+      "pv300-odnushka",
+      "pv300-evrodvushka",
+      "pv0-odnushka",
+      "ep-odnushka",
+      "ep-evrodvushka",
+      "ep-si-20k"
+    ]
+  },
+  "daily": [
+    {
+      "date": "2026-06-22",
+      "impressions": 1169.0,
+      "clicks": 2.0,
+      "spend": 6.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-06-23",
+      "impressions": 883.0,
+      "clicks": 2.0,
+      "spend": 6.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "763638310080",
+      "label": "Стандартная ипотека",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 1169.0,
+          "clicks": 2.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 883.0,
+          "clicks": 2.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 2052.0,
+      "clicks": 4.0,
+      "spend": 12.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "326465047788",
+      "label": "Семейка",
+      "group_id": "",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "458843865822514",
+      "label": "ПВ 0 однушка",
+      "group_id": "763638310080",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 382.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 193.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 575.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "474859603153400",
+      "label": "ПВ от 300к евродвушка",
+      "group_id": "763638310080",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 382.0,
+          "clicks": 1.0,
+          "spend": 3.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 168.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 550.0,
+      "clicks": 1.0,
+      "spend": 3.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "353723231166593",
+      "label": "ПВ от 300к однушка",
+      "group_id": "763638310080",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 405.0,
+          "clicks": 1.0,
+          "spend": 3.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 171.0,
+          "clicks": 1.0,
+          "spend": 3.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 576.0,
+      "clicks": 2.0,
+      "spend": 6.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "755327116029272",
+      "label": "ЕП по СИ от 20к",
+      "group_id": "326465047788",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "648667842936086",
+      "label": "ЕП евродвушка 35к",
+      "group_id": "763638310080",
+      "daily": [
+        {
+          "date": "2026-06-23",
+          "impressions": 165.0,
+          "clicks": 1.0,
+          "spend": 3.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 165.0,
+      "clicks": 1.0,
+      "spend": 3.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "772113130132319",
+      "label": "ЕП однушка 35к",
+      "group_id": "763638310080",
+      "daily": [
+        {
+          "date": "2026-06-23",
+          "impressions": 186.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 186.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}

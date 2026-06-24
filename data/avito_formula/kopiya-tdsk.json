@@ -1,0 +1,112 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-06-24T12:27:40.534886+05:00",
+  "api_point_balance": "14796",
+  "period": {
+    "start": "2026-03-26",
+    "end": "2026-06-23"
+  },
+  "campaign": {
+    "id": "246521830",
+    "name": "Копия ТДСК",
+    "lead_keys": [
+      "tdsk"
+    ]
+  },
+  "daily": [
+    {
+      "date": "2026-06-22",
+      "impressions": 48.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-06-23",
+      "impressions": 6502.0,
+      "clicks": 45.0,
+      "spend": 225.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "978428488244",
+      "label": "ТДСК",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 48.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 6502.0,
+          "clicks": 45.0,
+          "spend": 225.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 6550.0,
+      "clicks": 45.0,
+      "spend": 225.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "517523781326139",
+      "label": "Двухкомнатная",
+      "group_id": "978428488244",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 18.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 3280.0,
+          "clicks": 22.0,
+          "spend": 110.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 3298.0,
+      "clicks": 22.0,
+      "spend": 110.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "242686687852626",
+      "label": "Евродвушка",
+      "group_id": "978428488244",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 30.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 3222.0,
+          "clicks": 23.0,
+          "spend": 115.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 3252.0,
+      "clicks": 23.0,
+      "spend": 115.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}

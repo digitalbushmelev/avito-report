@@ -1,0 +1,598 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-06-24T12:27:42.970658+05:00",
+  "api_point_balance": "14756",
+  "period": {
+    "start": "2026-03-26",
+    "end": "2026-06-23"
+  },
+  "campaign": {
+    "id": "673801698",
+    "name": "РК_АВИТО_ФОРМУЛА_ЭКОНОМ_ТЕСТ",
+    "lead_keys": [
+      "frml"
+    ]
+  },
+  "daily": [
+    {
+      "date": "2026-04-21",
+      "impressions": 32999.0,
+      "clicks": 305.0,
+      "spend": 968.0,
+      "bonus_spend": 968.0
+    },
+    {
+      "date": "2026-04-22",
+      "impressions": 65737.0,
+      "clicks": 502.0,
+      "spend": 1411.0,
+      "bonus_spend": 1411.0
+    },
+    {
+      "date": "2026-04-23",
+      "impressions": 58424.0,
+      "clicks": 432.0,
+      "spend": 1229.0,
+      "bonus_spend": 1229.0
+    },
+    {
+      "date": "2026-04-24",
+      "impressions": 27207.0,
+      "clicks": 192.0,
+      "spend": 425.0,
+      "bonus_spend": 319.0
+    },
+    {
+      "date": "2026-04-25",
+      "impressions": 2629.0,
+      "clicks": 30.0,
+      "spend": 30.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-26",
+      "impressions": 2902.0,
+      "clicks": 31.0,
+      "spend": 31.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-27",
+      "impressions": 61751.0,
+      "clicks": 441.0,
+      "spend": 1978.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-28",
+      "impressions": 1601.0,
+      "clicks": 11.0,
+      "spend": 23.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-29",
+      "impressions": 12186.0,
+      "clicks": 126.0,
+      "spend": 360.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-04-30",
+      "impressions": 77469.0,
+      "clicks": 461.0,
+      "spend": 2297.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-05-01",
+      "impressions": 182933.0,
+      "clicks": 1005.0,
+      "spend": 5025.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-05-02",
+      "impressions": 90065.0,
+      "clicks": 459.0,
+      "spend": 2295.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-05-03",
+      "impressions": 283.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-05-04",
+      "impressions": 74.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-05-05",
+      "impressions": 49.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-05-06",
+      "impressions": 36.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "313956335454",
+      "label": "Группа – 1",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-04-21",
+          "impressions": 32999.0,
+          "clicks": 305.0,
+          "spend": 968.0,
+          "bonus_spend": 968.0
+        },
+        {
+          "date": "2026-04-22",
+          "impressions": 65737.0,
+          "clicks": 502.0,
+          "spend": 1411.0,
+          "bonus_spend": 1411.0
+        },
+        {
+          "date": "2026-04-23",
+          "impressions": 58424.0,
+          "clicks": 432.0,
+          "spend": 1229.0,
+          "bonus_spend": 1229.0
+        },
+        {
+          "date": "2026-04-24",
+          "impressions": 27207.0,
+          "clicks": 192.0,
+          "spend": 425.0,
+          "bonus_spend": 319.0
+        },
+        {
+          "date": "2026-04-25",
+          "impressions": 2629.0,
+          "clicks": 30.0,
+          "spend": 30.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-26",
+          "impressions": 2902.0,
+          "clicks": 31.0,
+          "spend": 31.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-27",
+          "impressions": 61751.0,
+          "clicks": 441.0,
+          "spend": 1978.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-28",
+          "impressions": 1601.0,
+          "clicks": 11.0,
+          "spend": 23.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-29",
+          "impressions": 12186.0,
+          "clicks": 126.0,
+          "spend": 360.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-30",
+          "impressions": 77469.0,
+          "clicks": 461.0,
+          "spend": 2297.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-01",
+          "impressions": 182933.0,
+          "clicks": 1005.0,
+          "spend": 5025.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-02",
+          "impressions": 90065.0,
+          "clicks": 459.0,
+          "spend": 2295.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-03",
+          "impressions": 283.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-04",
+          "impressions": 74.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-05",
+          "impressions": 49.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-06",
+          "impressions": 36.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 616345.0,
+      "clicks": 3995.0,
+      "spend": 16072.0,
+      "bonus_spend": 3927.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "299733633137934",
+      "label": "Креатив — 1",
+      "group_id": "313956335454",
+      "daily": [
+        {
+          "date": "2026-04-21",
+          "impressions": 32999.0,
+          "clicks": 305.0,
+          "spend": 968.0,
+          "bonus_spend": 968.0
+        },
+        {
+          "date": "2026-04-22",
+          "impressions": 56845.0,
+          "clicks": 455.0,
+          "spend": 1352.0,
+          "bonus_spend": 1352.0
+        },
+        {
+          "date": "2026-04-23",
+          "impressions": 47158.0,
+          "clicks": 365.0,
+          "spend": 938.0,
+          "bonus_spend": 938.0
+        },
+        {
+          "date": "2026-04-24",
+          "impressions": 27176.0,
+          "clicks": 192.0,
+          "spend": 425.0,
+          "bonus_spend": 319.0
+        },
+        {
+          "date": "2026-04-25",
+          "impressions": 2625.0,
+          "clicks": 29.0,
+          "spend": 29.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-26",
+          "impressions": 2896.0,
+          "clicks": 31.0,
+          "spend": 31.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-27",
+          "impressions": 61748.0,
+          "clicks": 441.0,
+          "spend": 1978.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-28",
+          "impressions": 1601.0,
+          "clicks": 11.0,
+          "spend": 23.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-29",
+          "impressions": 12186.0,
+          "clicks": 126.0,
+          "spend": 360.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-30",
+          "impressions": 38688.0,
+          "clicks": 208.0,
+          "spend": 1036.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-01",
+          "impressions": 91388.0,
+          "clicks": 477.0,
+          "spend": 2385.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-02",
+          "impressions": 45084.0,
+          "clicks": 211.0,
+          "spend": 1055.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-03",
+          "impressions": 151.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-04",
+          "impressions": 39.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-05",
+          "impressions": 31.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-06",
+          "impressions": 17.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 420632.0,
+      "clicks": 2851.0,
+      "spend": 10580.0,
+      "bonus_spend": 3577.0
+    },
+    {
+      "id": "451765613650707",
+      "label": "Креатив — 2",
+      "group_id": "313956335454",
+      "daily": [
+        {
+          "date": "2026-04-22",
+          "impressions": 7996.0,
+          "clicks": 37.0,
+          "spend": 45.0,
+          "bonus_spend": 45.0
+        },
+        {
+          "date": "2026-04-23",
+          "impressions": 11259.0,
+          "clicks": 66.0,
+          "spend": 290.0,
+          "bonus_spend": 290.0
+        },
+        {
+          "date": "2026-04-24",
+          "impressions": 31.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-25",
+          "impressions": 4.0,
+          "clicks": 1.0,
+          "spend": 1.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-26",
+          "impressions": 6.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-27",
+          "impressions": 3.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-28",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-29",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-30",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-01",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 19300.0,
+      "clicks": 104.0,
+      "spend": 337.0,
+      "bonus_spend": 336.0
+    },
+    {
+      "id": "451479084066479",
+      "label": "Копия Креатив — 1",
+      "group_id": "313956335454",
+      "daily": [
+        {
+          "date": "2026-04-22",
+          "impressions": 896.0,
+          "clicks": 10.0,
+          "spend": 14.0,
+          "bonus_spend": 14.0
+        },
+        {
+          "date": "2026-04-23",
+          "impressions": 7.0,
+          "clicks": 1.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-24",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-25",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-26",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-27",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-28",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-29",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-04-30",
+          "impressions": 38781.0,
+          "clicks": 253.0,
+          "spend": 1261.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-01",
+          "impressions": 91544.0,
+          "clicks": 528.0,
+          "spend": 2640.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-02",
+          "impressions": 44981.0,
+          "clicks": 248.0,
+          "spend": 1240.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-03",
+          "impressions": 132.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-04",
+          "impressions": 35.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-05",
+          "impressions": 18.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-05-06",
+          "impressions": 19.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 176413.0,
+      "clicks": 1040.0,
+      "spend": 5155.0,
+      "bonus_spend": 14.0
+    },
+    {
+      "id": "806350484367607",
+      "label": "Копия Креатив — 1",
+      "group_id": "313956335454",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "192551428861862",
+      "label": "Копия Креатив — 1",
+      "group_id": "313956335454",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}

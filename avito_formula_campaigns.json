@@ -1,0 +1,68 @@
+{
+  "campaigns": [
+    {
+      "id": "246521830",
+      "name": "Копия ТДСК",
+      "slug": "kopiya-tdsk",
+      "lead_date_from": "2026-06-22",
+      "lead_keys": [
+        "tdsk"
+      ]
+    },
+    {
+      "id": "732735747",
+      "name": "Копия Кампания от 30.04.26",
+      "slug": "kopiya-kampaniya-ot-30-04-26",
+      "lead_date_from": "2026-06-22",
+      "lead_keys": [
+        "pv300-odnushka",
+        "pv300-evrodvushka",
+        "pv0-odnushka",
+        "ep-odnushka",
+        "ep-evrodvushka",
+        "ep-si-20k"
+      ]
+    },
+    {
+      "id": "696932999",
+      "name": "ТДСК",
+      "slug": "tdsk",
+      "lead_date_from": "2026-06-03",
+      "lead_keys": [
+        "tdsk"
+      ]
+    },
+    {
+      "id": "161085312",
+      "name": "Кампания от 30.04.26",
+      "slug": "kampaniya-ot-30-04-26",
+      "lead_date_from": "2026-06-03",
+      "lead_date_to": "2026-06-21",
+      "lead_keys": [
+        "pv300-evrodvushka",
+        "ep-evrodvushka",
+        "ep-odnushka",
+        "pv0-odnushka",
+        "pv300-odnushka",
+        "ep-si-20k"
+      ]
+    },
+    {
+      "id": "673801698",
+      "name": "РК_АВИТО_ФОРМУЛА_ЭКОНОМ_ТЕСТ",
+      "slug": "rk-avito-formula-ekonom-test",
+      "lead_date_from": "2026-04-21",
+      "lead_date_to": "2026-06-02",
+      "lead_keys": [
+        "frml"
+      ]
+    },
+    {
+      "id": "134813486",
+      "name": "РК_АВИТО_ФОРМУЛА_ПРЕМИУМ_ТЕСТ",
+      "slug": "rk-avito-formula-premium-test",
+      "lead_date_from": "2026-04-16",
+      "lead_date_to": "2026-04-20"
+    }
+  ]
+}
