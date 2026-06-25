@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-06-24T17:10:34.304082+05:00",
-  "api_point_balance": "14827",
+  "updated_at": "2026-06-25T17:06:03.326022+05:00",
+  "api_point_balance": "14796",
   "period": {
-    "start": "2026-03-26",
-    "end": "2026-06-23"
+    "start": "2026-03-27",
+    "end": "2026-06-24"
   },
   "campaign": {
     "id": "843568278",
@@ -118,59 +118,6 @@
   ],
   "creatives": [
     {
-      "id": "406336302007612",
-      "label": "2-евро за 35 973 ₽/мес",
-      "group_id": "483086264750",
-      "daily": [
-        {
-          "date": "2026-06-09",
-          "impressions": 25560.0,
-          "clicks": 38.0,
-          "spend": 475.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-10",
-          "impressions": 52915.0,
-          "clicks": 101.0,
-          "spend": 2035.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-11",
-          "impressions": 46192.0,
-          "clicks": 76.0,
-          "spend": 1160.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-12",
-          "impressions": 43561.0,
-          "clicks": 62.0,
-          "spend": 930.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-13",
-          "impressions": 50774.0,
-          "clicks": 100.0,
-          "spend": 1500.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-14",
-          "impressions": 58620.0,
-          "clicks": 96.0,
-          "spend": 1316.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 277622.0,
-      "clicks": 473.0,
-      "spend": 7416.0,
-      "bonus_spend": 0.0
-    },
-    {
       "id": "404874360426499",
       "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес",
       "group_id": "483086264750",
@@ -274,6 +221,59 @@
       "impressions": 276219.0,
       "clicks": 580.0,
       "spend": 9121.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "406336302007612",
+      "label": "2-евро за 35 973 ₽/мес",
+      "group_id": "483086264750",
+      "daily": [
+        {
+          "date": "2026-06-09",
+          "impressions": 25560.0,
+          "clicks": 38.0,
+          "spend": 475.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-10",
+          "impressions": 52915.0,
+          "clicks": 101.0,
+          "spend": 2035.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-11",
+          "impressions": 46192.0,
+          "clicks": 76.0,
+          "spend": 1160.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-12",
+          "impressions": 43561.0,
+          "clicks": 62.0,
+          "spend": 930.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-13",
+          "impressions": 50774.0,
+          "clicks": 100.0,
+          "spend": 1500.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-14",
+          "impressions": 58620.0,
+          "clicks": 96.0,
+          "spend": 1316.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 277622.0,
+      "clicks": 473.0,
+      "spend": 7416.0,
       "bonus_spend": 0.0
     }
   ],
