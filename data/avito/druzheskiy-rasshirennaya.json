@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-07-03T16:53:20.870171+05:00",
-  "api_point_balance": "14855",
+  "updated_at": "2026-07-04T15:34:34.687665+05:00",
+  "api_point_balance": "14824",
   "period": {
-    "start": "2026-04-04",
-    "end": "2026-07-02"
+    "start": "2026-04-05",
+    "end": "2026-07-03"
   },
   "campaign": {
     "id": "460053704",
@@ -133,6 +133,66 @@
     }
   ],
   "creatives": [
+    {
+      "id": "692647978272215",
+      "label": "7 на 7",
+      "group_id": "116945150742",
+      "daily": [
+        {
+          "date": "2026-06-17",
+          "impressions": 24332.0,
+          "clicks": 53.0,
+          "spend": 771.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-18",
+          "impressions": 36683.0,
+          "clicks": 60.0,
+          "spend": 900.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-19",
+          "impressions": 24651.0,
+          "clicks": 56.0,
+          "spend": 840.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-20",
+          "impressions": 28199.0,
+          "clicks": 47.0,
+          "spend": 705.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-21",
+          "impressions": 34629.0,
+          "clicks": 75.0,
+          "spend": 1115.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-22",
+          "impressions": 27768.0,
+          "clicks": 62.0,
+          "spend": 926.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 21805.0,
+          "clicks": 42.0,
+          "spend": 586.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 198067.0,
+      "clicks": 395.0,
+      "spend": 5843.0,
+      "bonus_spend": 0.0
+    },
     {
       "id": "686109240057727",
       "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес",
@@ -371,66 +431,6 @@
       "impressions": 197499.0,
       "clicks": 401.0,
       "spend": 5949.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "692647978272215",
-      "label": "7 на 7",
-      "group_id": "116945150742",
-      "daily": [
-        {
-          "date": "2026-06-17",
-          "impressions": 24332.0,
-          "clicks": 53.0,
-          "spend": 771.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-18",
-          "impressions": 36683.0,
-          "clicks": 60.0,
-          "spend": 900.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-19",
-          "impressions": 24651.0,
-          "clicks": 56.0,
-          "spend": 840.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-20",
-          "impressions": 28199.0,
-          "clicks": 47.0,
-          "spend": 705.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-21",
-          "impressions": 34629.0,
-          "clicks": 75.0,
-          "spend": 1115.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-22",
-          "impressions": 27768.0,
-          "clicks": 62.0,
-          "spend": 926.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 21805.0,
-          "clicks": 42.0,
-          "spend": 586.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 198067.0,
-      "clicks": 395.0,
-      "spend": 5843.0,
       "bonus_spend": 0.0
     }
   ],
