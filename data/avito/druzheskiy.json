@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-07-07T17:18:00.027605+05:00",
-  "api_point_balance": "14938",
+  "updated_at": "2026-07-08T15:37:46.796771+05:00",
+  "api_point_balance": "14907",
   "period": {
-    "start": "2026-04-08",
-    "end": "2026-07-06"
+    "start": "2026-04-09",
+    "end": "2026-07-07"
   },
   "campaign": {
     "id": "843568278",
