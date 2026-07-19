@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-07-19T10:52:39.565842+05:00",
-  "api_point_balance": "14555",
+  "updated_at": "2026-07-19T14:51:25.134272+05:00",
+  "api_point_balance": "14524",
   "period": {
     "start": "2026-04-20",
     "end": "2026-07-18"
@@ -66,6 +66,81 @@
     }
   ],
   "creatives": [
+    {
+      "id": "190641889993437",
+      "label": "Легкий старт 2Е",
+      "group_id": "675653145489",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 15906.0,
+          "clicks": 26.0,
+          "spend": 285.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 35301.0,
+          "clicks": 70.0,
+          "spend": 840.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 51207.0,
+      "clicks": 96.0,
+      "spend": 1125.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "493229256269401",
+      "label": "2Е супер пв",
+      "group_id": "675653145489",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 15980.0,
+          "clicks": 36.0,
+          "spend": 394.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 35162.0,
+          "clicks": 71.0,
+          "spend": 852.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 51142.0,
+      "clicks": 107.0,
+      "spend": 1246.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "203604784298396",
+      "label": "Легкий старт 2К",
+      "group_id": "675653145489",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 15717.0,
+          "clicks": 26.0,
+          "spend": 297.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 35189.0,
+          "clicks": 54.0,
+          "spend": 648.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 50906.0,
+      "clicks": 80.0,
+      "spend": 945.0,
+      "bonus_spend": 0.0
+    },
     {
       "id": "610373238380254",
       "label": "2К супер пв",
@@ -159,81 +234,6 @@
       "impressions": 51048.0,
       "clicks": 94.0,
       "spend": 1109.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "190641889993437",
-      "label": "Легкий старт 2Е",
-      "group_id": "675653145489",
-      "daily": [
-        {
-          "date": "2026-06-22",
-          "impressions": 15906.0,
-          "clicks": 26.0,
-          "spend": 285.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 35301.0,
-          "clicks": 70.0,
-          "spend": 840.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 51207.0,
-      "clicks": 96.0,
-      "spend": 1125.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "493229256269401",
-      "label": "2Е супер пв",
-      "group_id": "675653145489",
-      "daily": [
-        {
-          "date": "2026-06-22",
-          "impressions": 15980.0,
-          "clicks": 36.0,
-          "spend": 394.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 35162.0,
-          "clicks": 71.0,
-          "spend": 852.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 51142.0,
-      "clicks": 107.0,
-      "spend": 1246.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "203604784298396",
-      "label": "Легкий старт 2К",
-      "group_id": "675653145489",
-      "daily": [
-        {
-          "date": "2026-06-22",
-          "impressions": 15717.0,
-          "clicks": 26.0,
-          "spend": 297.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 35189.0,
-          "clicks": 54.0,
-          "spend": 648.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 50906.0,
-      "clicks": 80.0,
-      "spend": 945.0,
       "bonus_spend": 0.0
     }
   ],
