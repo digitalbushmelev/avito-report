@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-07-20T18:05:53.977448+05:00",
-  "api_point_balance": "14927",
+  "updated_at": "2026-07-21T10:50:19.108800+05:00",
+  "api_point_balance": "14896",
   "period": {
-    "start": "2026-04-21",
-    "end": "2026-07-19"
+    "start": "2026-04-22",
+    "end": "2026-07-20"
   },
   "campaign": {
     "id": "771269910",
@@ -66,41 +66,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "371935217290411",
-      "label": "Легкий старт СТ 27,5",
-      "group_id": "675653145489",
-      "daily": [
-        {
-          "date": "2026-06-22",
-          "impressions": 16144.0,
-          "clicks": 20.0,
-          "spend": 235.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 35310.0,
-          "clicks": 61.0,
-          "spend": 722.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 51454.0,
-      "clicks": 81.0,
-      "spend": 957.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "538152421994733",
-      "label": "Легкий старт СТ 39,5",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "459104082086038",
       "label": "Легкий старт 1К",
@@ -229,6 +194,41 @@
     {
       "id": "531004155625295",
       "label": "3К супер пв",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "371935217290411",
+      "label": "Легкий старт СТ 27,5",
+      "group_id": "675653145489",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 16144.0,
+          "clicks": 20.0,
+          "spend": 235.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 35310.0,
+          "clicks": 61.0,
+          "spend": 722.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 51454.0,
+      "clicks": 81.0,
+      "spend": 957.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "538152421994733",
+      "label": "Легкий старт СТ 39,5",
       "group_id": "675653145489",
       "daily": [],
       "impressions": 0.0,
