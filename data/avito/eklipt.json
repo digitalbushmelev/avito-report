@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-07-31T11:13:31.986504+05:00",
-  "api_point_balance": "14648",
+  "updated_at": "2026-07-31T15:38:10.768966+05:00",
+  "api_point_balance": "14617",
   "period": {
     "start": "2026-05-02",
     "end": "2026-07-30"
@@ -66,31 +66,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "493229256269401",
-      "label": "2Е супер пв",
-      "group_id": "675653145489",
-      "daily": [
-        {
-          "date": "2026-06-22",
-          "impressions": 15980.0,
-          "clicks": 36.0,
-          "spend": 394.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 35162.0,
-          "clicks": 71.0,
-          "spend": 852.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 51142.0,
-      "clicks": 107.0,
-      "spend": 1246.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "203604784298396",
       "label": "Легкий старт 2К",
@@ -234,6 +209,31 @@
       "impressions": 51207.0,
       "clicks": 96.0,
       "spend": 1125.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "493229256269401",
+      "label": "2Е супер пв",
+      "group_id": "675653145489",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 15980.0,
+          "clicks": 36.0,
+          "spend": 394.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 35162.0,
+          "clicks": 71.0,
+          "spend": 852.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 51142.0,
+      "clicks": 107.0,
+      "spend": 1246.0,
       "bonus_spend": 0.0
     }
   ],
