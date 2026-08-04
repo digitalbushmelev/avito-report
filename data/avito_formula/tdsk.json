@@ -1,17 +1,19 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-06-24T12:27:41.638952+05:00",
-  "api_point_balance": "14776",
+  "updated_at": "2026-08-04T11:25:00.700729+05:00",
+  "api_point_balance": "14949",
   "period": {
-    "start": "2026-03-26",
-    "end": "2026-06-23"
+    "start": "2026-05-06",
+    "end": "2026-08-03"
   },
   "campaign": {
     "id": "696932999",
     "name": "ТДСК",
     "lead_keys": [
       "tdsk"
-    ]
+    ],
+    "lead_date_from": "2026-06-03",
+    "lead_date_to": ""
   },
   "daily": [
     {
@@ -65,7 +67,7 @@
     },
     {
       "date": "2026-06-10",
-      "impressions": 139895.0,
+      "impressions": 139911.0,
       "clicks": 1086.0,
       "spend": 3672.0,
       "bonus_spend": 0.0
@@ -191,7 +193,7 @@
         },
         {
           "date": "2026-06-10",
-          "impressions": 139895.0,
+          "impressions": 139911.0,
           "clicks": 1086.0,
           "spend": 3672.0,
           "bonus_spend": 0.0
@@ -260,7 +262,7 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 666139.0,
+      "impressions": 666155.0,
       "clicks": 5563.0,
       "spend": 18979.0,
       "bonus_spend": 0.0
@@ -323,7 +325,7 @@
         },
         {
           "date": "2026-06-10",
-          "impressions": 70051.0,
+          "impressions": 70066.0,
           "clicks": 465.0,
           "spend": 1556.0,
           "bonus_spend": 0.0
@@ -392,7 +394,7 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 336781.0,
+      "impressions": 336796.0,
       "clicks": 2456.0,
       "spend": 8305.0,
       "bonus_spend": 0.0
@@ -453,7 +455,7 @@
         },
         {
           "date": "2026-06-10",
-          "impressions": 69844.0,
+          "impressions": 69845.0,
           "clicks": 621.0,
           "spend": 2115.0,
           "bonus_spend": 0.0
@@ -522,7 +524,7 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 329358.0,
+      "impressions": 329359.0,
       "clicks": 3107.0,
       "spend": 10673.0,
       "bonus_spend": 0.0

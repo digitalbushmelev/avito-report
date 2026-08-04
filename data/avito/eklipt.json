@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-04T10:46:08.196682+05:00",
-  "api_point_balance": "14927",
+  "updated_at": "2026-08-04T11:24:44.400990+05:00",
+  "api_point_balance": "14896",
   "period": {
     "start": "2026-05-06",
     "end": "2026-08-03"
@@ -10,14 +10,14 @@
     "id": "771269910",
     "name": "Эклипт",
     "lead_keys": [
+      "psk-eclipt-studio-terrace-395_eklpt",
       "psk-eclipt-studio-275_eklpt",
+      "psk-eclipt-3k-546-pv460_eklpt",
       "psk-eclipt-2k-528-pv730_eklpt",
       "psk-eclipt-2k-497-zero-start_eklpt",
       "psk-eclipt-2k-54-pv730_eklpt",
       "psk-eclipt-2e-338-zero-start_eklpt",
-      "psk-eclipt-1k-335-zero-start_eklpt",
-      "psk-eclipt-studio-terrace-395_eklpt",
-      "psk-eclipt-3k-546-pv460_eklpt"
+      "psk-eclipt-1k-335-zero-start_eklpt"
     ],
     "lead_date_from": "2026-06-22",
     "lead_date_to": ""
@@ -66,41 +66,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "538152421994733",
-      "label": "Легкий старт СТ 39,5",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "459104082086038",
-      "label": "Легкий старт 1К",
-      "group_id": "675653145489",
-      "daily": [
-        {
-          "date": "2026-06-22",
-          "impressions": 16198.0,
-          "clicks": 28.0,
-          "spend": 317.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 34850.0,
-          "clicks": 66.0,
-          "spend": 792.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 51048.0,
-      "clicks": 94.0,
-      "spend": 1109.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "190641889993437",
       "label": "Легкий старт 2Е",
@@ -234,6 +199,41 @@
       "impressions": 51454.0,
       "clicks": 81.0,
       "spend": 957.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "538152421994733",
+      "label": "Легкий старт СТ 39,5",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "459104082086038",
+      "label": "Легкий старт 1К",
+      "group_id": "675653145489",
+      "daily": [
+        {
+          "date": "2026-06-22",
+          "impressions": 16198.0,
+          "clicks": 28.0,
+          "spend": 317.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-23",
+          "impressions": 34850.0,
+          "clicks": 66.0,
+          "spend": 792.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 51048.0,
+      "clicks": 94.0,
+      "spend": 1109.0,
       "bonus_spend": 0.0
     }
   ],

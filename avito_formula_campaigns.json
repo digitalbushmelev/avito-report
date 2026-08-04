@@ -1,10 +1,10 @@
 {
   "campaigns": [
     {
-      "id": "246521830",
-      "name": "Копия ТДСК",
-      "slug": "kopiya-tdsk",
-      "lead_date_from": "2026-06-22",
+      "id": "707805279",
+      "name": "Копия ТДСК 10.07",
+      "slug": "kopiya-tdsk-10-07",
+      "lead_date_from": "2026-07-30",
       "lead_keys": [
         "tdsk"
       ]
@@ -21,6 +21,25 @@
         "ep-odnushka",
         "ep-evrodvushka",
         "ep-si-20k"
+      ]
+    },
+    {
+      "id": "852304989",
+      "name": "ТДСК 10.07",
+      "slug": "tdsk-10-07",
+      "lead_date_from": "2026-07-15",
+      "lead_date_to": "2026-07-29",
+      "lead_keys": [
+        "tdsk"
+      ]
+    },
+    {
+      "id": "246521830",
+      "name": "Копия ТДСК",
+      "slug": "kopiya-tdsk",
+      "lead_date_from": "2026-06-22",
+      "lead_keys": [
+        "tdsk"
       ]
     },
     {

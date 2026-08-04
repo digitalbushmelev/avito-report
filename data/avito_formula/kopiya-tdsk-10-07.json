@@ -1,0 +1,184 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-08-04T11:24:58.461512+05:00",
+  "api_point_balance": "14989",
+  "period": {
+    "start": "2026-05-06",
+    "end": "2026-08-03"
+  },
+  "campaign": {
+    "id": "707805279",
+    "name": "Копия ТДСК 10.07",
+    "lead_keys": [
+      "tdsk"
+    ],
+    "lead_date_from": "",
+    "lead_date_to": ""
+  },
+  "daily": [
+    {
+      "date": "2026-07-30",
+      "impressions": 1.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-31",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-08-01",
+      "impressions": 49.0,
+      "clicks": 2.0,
+      "spend": 3.0,
+      "bonus_spend": 3.0
+    },
+    {
+      "date": "2026-08-02",
+      "impressions": 26828.0,
+      "clicks": 228.0,
+      "spend": 342.0,
+      "bonus_spend": 342.0
+    },
+    {
+      "date": "2026-08-03",
+      "impressions": 182069.0,
+      "clicks": 1154.0,
+      "spend": 1729.0,
+      "bonus_spend": 1728.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "279661155244",
+      "label": "ТДСК",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-07-30",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-31",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-01",
+          "impressions": 49.0,
+          "clicks": 2.0,
+          "spend": 3.0,
+          "bonus_spend": 3.0
+        },
+        {
+          "date": "2026-08-02",
+          "impressions": 26828.0,
+          "clicks": 228.0,
+          "spend": 342.0,
+          "bonus_spend": 342.0
+        },
+        {
+          "date": "2026-08-03",
+          "impressions": 182069.0,
+          "clicks": 1154.0,
+          "spend": 1729.0,
+          "bonus_spend": 1728.0
+        }
+      ],
+      "impressions": 208947.0,
+      "clicks": 1384.0,
+      "spend": 2074.0,
+      "bonus_spend": 2073.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "317050392006471",
+      "label": "Евродвушка",
+      "group_id": "279661155244",
+      "daily": [
+        {
+          "date": "2026-08-01",
+          "impressions": 19.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-02",
+          "impressions": 13341.0,
+          "clicks": 115.0,
+          "spend": 172.0,
+          "bonus_spend": 172.0
+        },
+        {
+          "date": "2026-08-03",
+          "impressions": 90794.0,
+          "clicks": 509.0,
+          "spend": 762.0,
+          "bonus_spend": 762.0
+        }
+      ],
+      "impressions": 104154.0,
+      "clicks": 624.0,
+      "spend": 935.0,
+      "bonus_spend": 935.0
+    },
+    {
+      "id": "356862240484731",
+      "label": "Двухкомнатная",
+      "group_id": "279661155244",
+      "daily": [
+        {
+          "date": "2026-07-30",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-31",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-01",
+          "impressions": 30.0,
+          "clicks": 2.0,
+          "spend": 3.0,
+          "bonus_spend": 3.0
+        },
+        {
+          "date": "2026-08-02",
+          "impressions": 13487.0,
+          "clicks": 113.0,
+          "spend": 169.0,
+          "bonus_spend": 169.0
+        },
+        {
+          "date": "2026-08-03",
+          "impressions": 91275.0,
+          "clicks": 645.0,
+          "spend": 966.0,
+          "bonus_spend": 966.0
+        }
+      ],
+      "impressions": 104793.0,
+      "clicks": 760.0,
+      "spend": 1138.0,
+      "bonus_spend": 1138.0
+    }
+  ],
+  "raw_saved": true
+}

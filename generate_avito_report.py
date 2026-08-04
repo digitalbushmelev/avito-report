@@ -2160,6 +2160,7 @@ def client_report_payload(report: dict[str, object]) -> dict[str, object]:
         "leadEnabled": bool(report["lead_data"].enabled),
         "dataStart": text(report.get("data_start")),
         "dataEnd": text(report.get("data_end")),
+        "overallDaily": clean_daily(report.get("daily")),
         "leadStages": [
             {
                 "id": text(item.get("id")),
@@ -2443,6 +2444,22 @@ def render_html(report: dict[str, object]) -> str:
       return [...byDate.values()].sort((a, b) => a.date.localeCompare(b.date)).map(complete);
     }
 
+    function applyOverallLeads(daily, from, to) {
+      if (!leadEnabled || !Array.isArray(reportData.overallDaily)) return daily;
+      const overallByDate = new Map(rowsInPeriod(reportData.overallDaily, from, to).map((row) => [row.date, row]));
+      const dates = new Set([...daily.map((row) => row.date), ...overallByDate.keys()]);
+      return [...dates].sort((a, b) => a.localeCompare(b)).map((date) => {
+        const base = daily.find((row) => row.date === date) || { date, impressions: 0, clicks: 0, spend: 0, bonus_spend: 0 };
+        const leads = overallByDate.get(date);
+        return complete({
+          ...base,
+          leads: leads ? toNum(leads.leads) : 0,
+          quality_leads: leads ? toNum(leads.quality_leads) : 0,
+          bad_leads: leads ? toNum(leads.bad_leads) : 0,
+        });
+      });
+    }
+
     function activeRows(rows) {
       return rows.filter((row) => toNum(row.impressions) > 0 || toNum(row.clicks) > 0 || toNum(row.spend) > 0);
     }
@@ -2638,7 +2655,7 @@ def render_html(report: dict[str, object]) -> str:
         const daily = rowsInPeriod(campaign.daily, from, to).map(complete);
         return { ...campaign, filteredDaily: daily, total: sumRows(daily) };
       }).sort((a, b) => toNum(b.total.clicks) - toNum(a.total.clicks));
-      const daily = mergeDaily(reportData.campaigns, from, to);
+      const daily = applyOverallLeads(mergeDaily(reportData.campaigns, from, to), from, to);
       const total = sumRows(daily);
 
       updatePeriodDisplay(from, to, daily);

@@ -1,0 +1,478 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-08-04T11:24:59.648613+05:00",
+  "api_point_balance": "14969",
+  "period": {
+    "start": "2026-05-06",
+    "end": "2026-08-03"
+  },
+  "campaign": {
+    "id": "852304989",
+    "name": "ТДСК 10.07",
+    "lead_keys": [
+      "tdsk"
+    ],
+    "lead_date_from": "",
+    "lead_date_to": ""
+  },
+  "daily": [
+    {
+      "date": "2026-07-15",
+      "impressions": 5097.0,
+      "clicks": 50.0,
+      "spend": 150.0,
+      "bonus_spend": 150.0
+    },
+    {
+      "date": "2026-07-16",
+      "impressions": 231527.0,
+      "clicks": 1581.0,
+      "spend": 5461.0,
+      "bonus_spend": 2357.0
+    },
+    {
+      "date": "2026-07-17",
+      "impressions": 234779.0,
+      "clicks": 1553.0,
+      "spend": 6367.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-18",
+      "impressions": 209793.0,
+      "clicks": 1471.0,
+      "spend": 5812.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-19",
+      "impressions": 199240.0,
+      "clicks": 1435.0,
+      "spend": 5570.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-20",
+      "impressions": 119222.0,
+      "clicks": 934.0,
+      "spend": 2866.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-21",
+      "impressions": 87993.0,
+      "clicks": 778.0,
+      "spend": 2289.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-22",
+      "impressions": 67956.0,
+      "clicks": 623.0,
+      "spend": 1828.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-23",
+      "impressions": 53131.0,
+      "clicks": 487.0,
+      "spend": 1436.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-24",
+      "impressions": 30718.0,
+      "clicks": 276.0,
+      "spend": 808.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-25",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-26",
+      "impressions": 23118.0,
+      "clicks": 182.0,
+      "spend": 523.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-27",
+      "impressions": 131317.0,
+      "clicks": 848.0,
+      "spend": 2432.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-28",
+      "impressions": 79288.0,
+      "clicks": 509.0,
+      "spend": 1468.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-07-29",
+      "impressions": 23521.0,
+      "clicks": 190.0,
+      "spend": 475.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "180727069586",
+      "label": "ТДСК",
+      "group_id": "",
+      "daily": [
+        {
+          "date": "2026-07-15",
+          "impressions": 5097.0,
+          "clicks": 50.0,
+          "spend": 150.0,
+          "bonus_spend": 150.0
+        },
+        {
+          "date": "2026-07-16",
+          "impressions": 231527.0,
+          "clicks": 1581.0,
+          "spend": 5461.0,
+          "bonus_spend": 2357.0
+        },
+        {
+          "date": "2026-07-17",
+          "impressions": 234779.0,
+          "clicks": 1553.0,
+          "spend": 6367.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-18",
+          "impressions": 209793.0,
+          "clicks": 1471.0,
+          "spend": 5812.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-19",
+          "impressions": 199240.0,
+          "clicks": 1435.0,
+          "spend": 5570.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-20",
+          "impressions": 119222.0,
+          "clicks": 934.0,
+          "spend": 2866.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-21",
+          "impressions": 87993.0,
+          "clicks": 778.0,
+          "spend": 2289.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-22",
+          "impressions": 67956.0,
+          "clicks": 623.0,
+          "spend": 1828.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-23",
+          "impressions": 53131.0,
+          "clicks": 487.0,
+          "spend": 1436.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-24",
+          "impressions": 30718.0,
+          "clicks": 276.0,
+          "spend": 808.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-25",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-26",
+          "impressions": 23118.0,
+          "clicks": 182.0,
+          "spend": 523.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-27",
+          "impressions": 131317.0,
+          "clicks": 848.0,
+          "spend": 2432.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-28",
+          "impressions": 79288.0,
+          "clicks": 509.0,
+          "spend": 1468.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-29",
+          "impressions": 23521.0,
+          "clicks": 190.0,
+          "spend": 475.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 1496700.0,
+      "clicks": 10917.0,
+      "spend": 37492.0,
+      "bonus_spend": 2508.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "892379604272928",
+      "label": "Двухкомнатная",
+      "group_id": "180727069586",
+      "daily": [
+        {
+          "date": "2026-07-15",
+          "impressions": 2522.0,
+          "clicks": 23.0,
+          "spend": 67.0,
+          "bonus_spend": 67.0
+        },
+        {
+          "date": "2026-07-16",
+          "impressions": 115620.0,
+          "clicks": 886.0,
+          "spend": 3051.0,
+          "bonus_spend": 1325.0
+        },
+        {
+          "date": "2026-07-17",
+          "impressions": 117529.0,
+          "clicks": 888.0,
+          "spend": 3640.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-18",
+          "impressions": 105248.0,
+          "clicks": 802.0,
+          "spend": 3167.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-19",
+          "impressions": 99912.0,
+          "clicks": 799.0,
+          "spend": 3097.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-20",
+          "impressions": 59419.0,
+          "clicks": 521.0,
+          "spend": 1597.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-21",
+          "impressions": 43981.0,
+          "clicks": 463.0,
+          "spend": 1361.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-22",
+          "impressions": 34049.0,
+          "clicks": 353.0,
+          "spend": 1037.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-23",
+          "impressions": 26475.0,
+          "clicks": 273.0,
+          "spend": 803.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-24",
+          "impressions": 15261.0,
+          "clicks": 151.0,
+          "spend": 444.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-25",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-26",
+          "impressions": 11634.0,
+          "clicks": 112.0,
+          "spend": 322.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-27",
+          "impressions": 65674.0,
+          "clicks": 484.0,
+          "spend": 1386.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-28",
+          "impressions": 39691.0,
+          "clicks": 271.0,
+          "spend": 784.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-29",
+          "impressions": 11871.0,
+          "clicks": 100.0,
+          "spend": 253.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 748886.0,
+      "clicks": 6126.0,
+      "spend": 21016.0,
+      "bonus_spend": 1393.0
+    },
+    {
+      "id": "381053792817264",
+      "label": "Евродвушка",
+      "group_id": "180727069586",
+      "daily": [
+        {
+          "date": "2026-07-15",
+          "impressions": 2575.0,
+          "clicks": 27.0,
+          "spend": 82.0,
+          "bonus_spend": 82.0
+        },
+        {
+          "date": "2026-07-16",
+          "impressions": 115907.0,
+          "clicks": 695.0,
+          "spend": 2410.0,
+          "bonus_spend": 1032.0
+        },
+        {
+          "date": "2026-07-17",
+          "impressions": 117250.0,
+          "clicks": 665.0,
+          "spend": 2726.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-18",
+          "impressions": 104545.0,
+          "clicks": 669.0,
+          "spend": 2645.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-19",
+          "impressions": 99328.0,
+          "clicks": 636.0,
+          "spend": 2472.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-20",
+          "impressions": 59803.0,
+          "clicks": 413.0,
+          "spend": 1269.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-21",
+          "impressions": 44012.0,
+          "clicks": 315.0,
+          "spend": 927.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-22",
+          "impressions": 33907.0,
+          "clicks": 270.0,
+          "spend": 790.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-23",
+          "impressions": 26656.0,
+          "clicks": 214.0,
+          "spend": 632.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-24",
+          "impressions": 15457.0,
+          "clicks": 125.0,
+          "spend": 364.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-25",
+          "impressions": 0.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-26",
+          "impressions": 11484.0,
+          "clicks": 70.0,
+          "spend": 200.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-27",
+          "impressions": 65643.0,
+          "clicks": 364.0,
+          "spend": 1046.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-28",
+          "impressions": 39597.0,
+          "clicks": 238.0,
+          "spend": 684.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-07-29",
+          "impressions": 11650.0,
+          "clicks": 90.0,
+          "spend": 221.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 747814.0,
+      "clicks": 4791.0,
+      "spend": 16475.0,
+      "bonus_spend": 1114.0
+    }
+  ],
+  "raw_saved": true
+}

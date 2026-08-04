@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-06-24T12:27:42.314628+05:00",
-  "api_point_balance": "14766",
+  "updated_at": "2026-08-04T11:25:01.483674+05:00",
+  "api_point_balance": "14939",
   "period": {
-    "start": "2026-03-26",
-    "end": "2026-06-23"
+    "start": "2026-05-06",
+    "end": "2026-08-03"
   },
   "campaign": {
     "id": "161085312",
@@ -16,7 +16,9 @@
       "pv0-odnushka",
       "pv300-odnushka",
       "ep-si-20k"
-    ]
+    ],
+    "lead_date_from": "2026-06-03",
+    "lead_date_to": "2026-06-21"
   },
   "daily": [
     {
@@ -70,7 +72,7 @@
     },
     {
       "date": "2026-06-10",
-      "impressions": 70090.0,
+      "impressions": 70093.0,
       "clicks": 150.0,
       "spend": 862.0,
       "bonus_spend": 0.0
@@ -228,7 +230,7 @@
         },
         {
           "date": "2026-06-10",
-          "impressions": 65909.0,
+          "impressions": 65912.0,
           "clicks": 142.0,
           "spend": 814.0,
           "bonus_spend": 0.0
@@ -248,249 +250,13 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 148391.0,
+      "impressions": 148394.0,
       "clicks": 334.0,
       "spend": 1460.0,
       "bonus_spend": 0.0
     }
   ],
   "creatives": [
-    {
-      "id": "626424164681010",
-      "label": "ЕП по СИ от 20к",
-      "group_id": "382823727439",
-      "daily": [
-        {
-          "date": "2026-06-03",
-          "impressions": 1209.0,
-          "clicks": 2.0,
-          "spend": 6.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-04",
-          "impressions": 4966.0,
-          "clicks": 10.0,
-          "spend": 34.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-05",
-          "impressions": 1107.0,
-          "clicks": 1.0,
-          "spend": 3.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-06",
-          "impressions": 49.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-07",
-          "impressions": 156.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-08",
-          "impressions": 832.0,
-          "clicks": 1.0,
-          "spend": 3.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-09",
-          "impressions": 1176.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-10",
-          "impressions": 4181.0,
-          "clicks": 8.0,
-          "spend": 48.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-11",
-          "impressions": 144.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-12",
-          "impressions": 17.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 13837.0,
-      "clicks": 22.0,
-      "spend": 94.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "748932872928220",
-      "label": "ПВ от 300к однушка",
-      "group_id": "965401653192",
-      "daily": [
-        {
-          "date": "2026-06-03",
-          "impressions": 3175.0,
-          "clicks": 11.0,
-          "spend": 32.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-04",
-          "impressions": 9861.0,
-          "clicks": 29.0,
-          "spend": 97.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-05",
-          "impressions": 2779.0,
-          "clicks": 11.0,
-          "spend": 25.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-06",
-          "impressions": 195.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-07",
-          "impressions": 350.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-08",
-          "impressions": 1726.0,
-          "clicks": 6.0,
-          "spend": 14.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-09",
-          "impressions": 3109.0,
-          "clicks": 7.0,
-          "spend": 35.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-10",
-          "impressions": 16344.0,
-          "clicks": 49.0,
-          "spend": 281.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-11",
-          "impressions": 932.0,
-          "clicks": 4.0,
-          "spend": 21.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-12",
-          "impressions": 42.0,
-          "clicks": 1.0,
-          "spend": 3.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 38513.0,
-      "clicks": 118.0,
-      "spend": 508.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "126892087838106",
-      "label": "ПВ от 300к евродвушка",
-      "group_id": "965401653192",
-      "daily": [
-        {
-          "date": "2026-06-04",
-          "impressions": 6718.0,
-          "clicks": 12.0,
-          "spend": 42.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-05",
-          "impressions": 2748.0,
-          "clicks": 5.0,
-          "spend": 9.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-06",
-          "impressions": 190.0,
-          "clicks": 2.0,
-          "spend": 2.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-07",
-          "impressions": 356.0,
-          "clicks": 1.0,
-          "spend": 1.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-08",
-          "impressions": 1697.0,
-          "clicks": 4.0,
-          "spend": 11.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-09",
-          "impressions": 3079.0,
-          "clicks": 8.0,
-          "spend": 38.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-10",
-          "impressions": 16578.0,
-          "clicks": 35.0,
-          "spend": 200.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-11",
-          "impressions": 899.0,
-          "clicks": 4.0,
-          "spend": 24.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-12",
-          "impressions": 47.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 32312.0,
-      "clicks": 71.0,
-      "spend": 327.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "502832050395464",
       "label": "ПВ 0 однушка",
@@ -638,7 +404,7 @@
         },
         {
           "date": "2026-06-10",
-          "impressions": 16525.0,
+          "impressions": 16527.0,
           "clicks": 23.0,
           "spend": 130.0,
           "bonus_spend": 0.0
@@ -658,7 +424,7 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 38684.0,
+      "impressions": 38686.0,
       "clicks": 61.0,
       "spend": 263.0,
       "bonus_spend": 0.0
@@ -671,6 +437,242 @@
       "impressions": 0.0,
       "clicks": 0.0,
       "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "626424164681010",
+      "label": "ЕП по СИ от 20к",
+      "group_id": "382823727439",
+      "daily": [
+        {
+          "date": "2026-06-03",
+          "impressions": 1209.0,
+          "clicks": 2.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-04",
+          "impressions": 4966.0,
+          "clicks": 10.0,
+          "spend": 34.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-05",
+          "impressions": 1107.0,
+          "clicks": 1.0,
+          "spend": 3.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-06",
+          "impressions": 49.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-07",
+          "impressions": 156.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-08",
+          "impressions": 832.0,
+          "clicks": 1.0,
+          "spend": 3.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-09",
+          "impressions": 1176.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-10",
+          "impressions": 4181.0,
+          "clicks": 8.0,
+          "spend": 48.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-11",
+          "impressions": 144.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-12",
+          "impressions": 17.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 13837.0,
+      "clicks": 22.0,
+      "spend": 94.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "748932872928220",
+      "label": "ПВ от 300к однушка",
+      "group_id": "965401653192",
+      "daily": [
+        {
+          "date": "2026-06-03",
+          "impressions": 3175.0,
+          "clicks": 11.0,
+          "spend": 32.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-04",
+          "impressions": 9861.0,
+          "clicks": 29.0,
+          "spend": 97.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-05",
+          "impressions": 2779.0,
+          "clicks": 11.0,
+          "spend": 25.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-06",
+          "impressions": 195.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-07",
+          "impressions": 350.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-08",
+          "impressions": 1726.0,
+          "clicks": 6.0,
+          "spend": 14.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-09",
+          "impressions": 3109.0,
+          "clicks": 7.0,
+          "spend": 35.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-10",
+          "impressions": 16345.0,
+          "clicks": 49.0,
+          "spend": 281.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-11",
+          "impressions": 932.0,
+          "clicks": 4.0,
+          "spend": 21.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-12",
+          "impressions": 42.0,
+          "clicks": 1.0,
+          "spend": 3.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 38514.0,
+      "clicks": 118.0,
+      "spend": 508.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "126892087838106",
+      "label": "ПВ от 300к евродвушка",
+      "group_id": "965401653192",
+      "daily": [
+        {
+          "date": "2026-06-04",
+          "impressions": 6718.0,
+          "clicks": 12.0,
+          "spend": 42.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-05",
+          "impressions": 2748.0,
+          "clicks": 5.0,
+          "spend": 9.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-06",
+          "impressions": 190.0,
+          "clicks": 2.0,
+          "spend": 2.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-07",
+          "impressions": 356.0,
+          "clicks": 1.0,
+          "spend": 1.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-08",
+          "impressions": 1697.0,
+          "clicks": 4.0,
+          "spend": 11.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-09",
+          "impressions": 3079.0,
+          "clicks": 8.0,
+          "spend": 38.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-10",
+          "impressions": 16578.0,
+          "clicks": 35.0,
+          "spend": 200.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-11",
+          "impressions": 899.0,
+          "clicks": 4.0,
+          "spend": 24.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-06-12",
+          "impressions": 47.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 32312.0,
+      "clicks": 71.0,
+      "spend": 327.0,
       "bonus_spend": 0.0
     }
   ],
