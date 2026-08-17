@@ -1,6 +1,16 @@
 {
   "campaigns": [
     {
+      "id": "712319035",
+      "name": "Эклипт 17.08",
+      "slug": "eklipt-17-08",
+      "lead_date_from": "2026-08-16",
+      "lead_keys": [
+        "psk-eclipt-studio-275_eklpt",
+        "psk-eclipt-studio-terrace-395_eklpt"
+      ]
+    },
+    {
       "id": "771269910",
       "name": "Эклипт",
       "slug": "eklipt",

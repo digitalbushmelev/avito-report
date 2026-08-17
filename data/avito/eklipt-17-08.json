@@ -1,0 +1,63 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-08-17T16:24:32.004802+05:00",
+  "api_point_balance": "14927",
+  "period": {
+    "start": "2026-05-19",
+    "end": "2026-08-16"
+  },
+  "campaign": {
+    "id": "712319035",
+    "name": "Эклипт 17.08",
+    "lead_keys": [
+      "psk-eclipt-studio-275_eklpt",
+      "psk-eclipt-studio-terrace-395_eklpt"
+    ],
+    "lead_date_from": "",
+    "lead_date_to": ""
+  },
+  "daily": [
+    {
+      "date": "2026-08-16",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "339765546535",
+      "label": "Группа – 1",
+      "group_id": "",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "645322669770645",
+      "label": "Легкий старт СТ 39,5",
+      "group_id": "339765546535",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "965052936175116",
+      "label": "Легкий старт СТ 27,5",
+      "group_id": "339765546535",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}
