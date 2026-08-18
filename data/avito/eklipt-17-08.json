@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-17T16:24:32.004802+05:00",
-  "api_point_balance": "14927",
+  "updated_at": "2026-08-18T08:43:23.932067+05:00",
+  "api_point_balance": "14886",
   "period": {
-    "start": "2026-05-19",
-    "end": "2026-08-16"
+    "start": "2026-05-20",
+    "end": "2026-08-17"
   },
   "campaign": {
     "id": "712319035",
@@ -13,12 +13,12 @@
       "psk-eclipt-studio-275_eklpt",
       "psk-eclipt-studio-terrace-395_eklpt"
     ],
-    "lead_date_from": "",
+    "lead_date_from": "2026-08-16",
     "lead_date_to": ""
   },
   "daily": [
     {
-      "date": "2026-08-16",
+      "date": "2026-08-17",
       "impressions": 0.0,
       "clicks": 0.0,
       "spend": 0.0,
@@ -40,7 +40,7 @@
   "creatives": [
     {
       "id": "645322669770645",
-      "label": "Легкий старт СТ 39,5",
+      "label": "2К с ПВ 395 639 ₽",
       "group_id": "339765546535",
       "daily": [],
       "impressions": 0.0,
@@ -50,7 +50,7 @@
     },
     {
       "id": "965052936175116",
-      "label": "Легкий старт СТ 27,5",
+      "label": "2К с ПВ 378 522 ₽",
       "group_id": "339765546535",
       "daily": [],
       "impressions": 0.0,
