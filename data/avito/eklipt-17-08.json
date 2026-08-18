@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-18T13:35:31.459325+05:00",
-  "api_point_balance": "14845",
+  "updated_at": "2026-08-18T16:24:25.828104+05:00",
+  "api_point_balance": "14804",
   "period": {
     "start": "2026-05-20",
     "end": "2026-08-17"
@@ -28,7 +28,7 @@
   "groups": [
     {
       "id": "339765546535",
-      "label": "Группа – 1",
+      "label": "Румбокс",
       "group_id": "",
       "daily": [],
       "impressions": 0.0,
