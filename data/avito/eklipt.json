@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-19T08:45:25.825292+05:00",
-  "api_point_balance": "14753",
+  "updated_at": "2026-08-19T13:36:07.199896+05:00",
+  "api_point_balance": "14712",
   "period": {
     "start": "2026-05-21",
     "end": "2026-08-18"
@@ -66,6 +66,16 @@
     }
   ],
   "creatives": [
+    {
+      "id": "531004155625295",
+      "label": "3К супер пв",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
     {
       "id": "371935217290411",
       "label": "Легкий старт СТ 27,5",
@@ -224,16 +234,6 @@
       "impressions": 51163.0,
       "clicks": 93.0,
       "spend": 1090.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "531004155625295",
-      "label": "3К супер пв",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
       "bonus_spend": 0.0
     }
   ],
