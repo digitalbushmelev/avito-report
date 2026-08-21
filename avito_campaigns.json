@@ -1,6 +1,15 @@
 {
   "campaigns": [
     {
+      "id": "400904549",
+      "name": "Дружеский 21.08",
+      "slug": "druzheskiy-21-08",
+      "lead_date_from": "2026-08-20",
+      "lead_keys": [
+        "psk-druzheskiy-pv376_druzh"
+      ]
+    },
+    {
       "id": "712319035",
       "name": "Эклипт 17.08",
       "slug": "eklipt-17-08",

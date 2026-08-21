@@ -1,0 +1,52 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-08-21T13:38:59.361475+05:00",
+  "api_point_balance": "14476",
+  "period": {
+    "start": "2026-05-23",
+    "end": "2026-08-20"
+  },
+  "campaign": {
+    "id": "400904549",
+    "name": "Дружеский 21.08",
+    "lead_keys": [
+      "psk-druzheskiy-pv376_druzh"
+    ],
+    "lead_date_from": "",
+    "lead_date_to": ""
+  },
+  "daily": [
+    {
+      "date": "2026-08-20",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "804938235201",
+      "label": "Группа – 1",
+      "group_id": "",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "131879600314975",
+      "label": "2е ПВ 376 476 ₽ ₽",
+      "group_id": "804938235201",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}
