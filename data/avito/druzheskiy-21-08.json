@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-21T13:38:59.361475+05:00",
-  "api_point_balance": "14476",
+  "updated_at": "2026-08-21T16:24:41.529930+05:00",
+  "api_point_balance": "14425",
   "period": {
     "start": "2026-05-23",
     "end": "2026-08-20"
@@ -12,7 +12,7 @@
     "lead_keys": [
       "psk-druzheskiy-pv376_druzh"
     ],
-    "lead_date_from": "",
+    "lead_date_from": "2026-08-20",
     "lead_date_to": ""
   },
   "daily": [

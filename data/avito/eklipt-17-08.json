@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-21T13:39:00.045589+05:00",
-  "api_point_balance": "14466",
+  "updated_at": "2026-08-21T16:24:42.370549+05:00",
+  "api_point_balance": "14415",
   "period": {
     "start": "2026-05-23",
     "end": "2026-08-20"
@@ -75,6 +75,38 @@
   ],
   "creatives": [
     {
+      "id": "645322669770645",
+      "label": "2К с ПВ 395 639 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-18",
+          "impressions": 63.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-19",
+          "impressions": 521.0,
+          "clicks": 3.0,
+          "spend": 18.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-20",
+          "impressions": 17858.0,
+          "clicks": 10.0,
+          "spend": 60.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 18442.0,
+      "clicks": 13.0,
+      "spend": 78.0,
+      "bonus_spend": 0.0
+    },
+    {
       "id": "965052936175116",
       "label": "2К с ПВ 378 522 ₽",
       "group_id": "339765546535",
@@ -134,38 +166,6 @@
       "impressions": 0.0,
       "clicks": 0.0,
       "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "645322669770645",
-      "label": "2К с ПВ 395 639 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-18",
-          "impressions": 63.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-19",
-          "impressions": 521.0,
-          "clicks": 3.0,
-          "spend": 18.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-20",
-          "impressions": 17858.0,
-          "clicks": 10.0,
-          "spend": 60.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 18442.0,
-      "clicks": 13.0,
-      "spend": 78.0,
       "bonus_spend": 0.0
     }
   ],
