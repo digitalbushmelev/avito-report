@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-22T13:28:46.969692+05:00",
-  "api_point_balance": "14313",
+  "updated_at": "2026-08-22T16:19:49.466340+05:00",
+  "api_point_balance": "14262",
   "period": {
     "start": "2026-05-24",
     "end": "2026-08-21"
@@ -88,42 +88,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "314688748208148",
-      "label": "2Е со скидкой 790 000 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-21",
-          "impressions": 4693.0,
-          "clicks": 5.0,
-          "spend": 30.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 4693.0,
-      "clicks": 5.0,
-      "spend": 30.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "690058502607214",
-      "label": "2Е со скидкой 820 000 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-21",
-          "impressions": 4656.0,
-          "clicks": 11.0,
-          "spend": 66.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 4656.0,
-      "clicks": 11.0,
-      "spend": 66.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "467167195433709",
       "label": "2Е со скидкой 900 000 ₽",
@@ -218,6 +182,42 @@
       "impressions": 33281.0,
       "clicks": 23.0,
       "spend": 138.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "314688748208148",
+      "label": "2Е со скидкой 790 000 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-21",
+          "impressions": 4693.0,
+          "clicks": 5.0,
+          "spend": 30.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 4693.0,
+      "clicks": 5.0,
+      "spend": 30.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "690058502607214",
+      "label": "2Е со скидкой 820 000 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-21",
+          "impressions": 4656.0,
+          "clicks": 11.0,
+          "spend": 66.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 4656.0,
+      "clicks": 11.0,
+      "spend": 66.0,
       "bonus_spend": 0.0
     }
   ],
