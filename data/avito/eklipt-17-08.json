@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-22T16:19:49.466340+05:00",
-  "api_point_balance": "14262",
+  "updated_at": "2026-08-23T08:50:04.521306+05:00",
+  "api_point_balance": "14211",
   "period": {
-    "start": "2026-05-24",
-    "end": "2026-08-21"
+    "start": "2026-05-25",
+    "end": "2026-08-22"
   },
   "campaign": {
     "id": "712319035",
@@ -44,6 +44,13 @@
       "clicks": 47.0,
       "spend": 282.0,
       "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-08-22",
+      "impressions": 91.0,
+      "clicks": 2.0,
+      "spend": 12.0,
+      "bonus_spend": 0.0
     }
   ],
   "groups": [
@@ -79,33 +86,22 @@
           "clicks": 47.0,
           "spend": 282.0,
           "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 80382.0,
-      "clicks": 71.0,
-      "spend": 426.0,
-      "bonus_spend": 0.0
-    }
-  ],
-  "creatives": [
-    {
-      "id": "467167195433709",
-      "label": "2Е со скидкой 900 000 ₽",
-      "group_id": "339765546535",
-      "daily": [
+        },
         {
-          "date": "2026-08-21",
-          "impressions": 4480.0,
+          "date": "2026-08-22",
+          "impressions": 91.0,
           "clicks": 2.0,
           "spend": 12.0,
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 4480.0,
-      "clicks": 2.0,
-      "spend": 12.0,
+      "impressions": 80473.0,
+      "clicks": 73.0,
+      "spend": 438.0,
       "bonus_spend": 0.0
-    },
+    }
+  ],
+  "creatives": [
     {
       "id": "645322669770645",
       "label": "2К с ПВ 395 639 ₽",
@@ -138,9 +134,16 @@
           "clicks": 17.0,
           "spend": 102.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 34.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 33272.0,
+      "impressions": 33306.0,
       "clicks": 30.0,
       "spend": 180.0,
       "bonus_spend": 0.0
@@ -177,11 +180,18 @@
           "clicks": 12.0,
           "spend": 72.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 24.0,
+          "clicks": 1.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 33281.0,
-      "clicks": 23.0,
-      "spend": 138.0,
+      "impressions": 33305.0,
+      "clicks": 24.0,
+      "spend": 144.0,
       "bonus_spend": 0.0
     },
     {
@@ -195,11 +205,18 @@
           "clicks": 5.0,
           "spend": 30.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 12.0,
+          "clicks": 1.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 4693.0,
-      "clicks": 5.0,
-      "spend": 30.0,
+      "impressions": 4705.0,
+      "clicks": 6.0,
+      "spend": 36.0,
       "bonus_spend": 0.0
     },
     {
@@ -213,11 +230,43 @@
           "clicks": 11.0,
           "spend": 66.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 9.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 4656.0,
+      "impressions": 4665.0,
       "clicks": 11.0,
       "spend": 66.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "467167195433709",
+      "label": "2Е со скидкой 900 000 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-21",
+          "impressions": 4480.0,
+          "clicks": 2.0,
+          "spend": 12.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 12.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 4492.0,
+      "clicks": 2.0,
+      "spend": 12.0,
       "bonus_spend": 0.0
     }
   ],
