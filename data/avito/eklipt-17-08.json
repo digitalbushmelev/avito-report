@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-23T08:50:04.521306+05:00",
-  "api_point_balance": "14211",
+  "updated_at": "2026-08-23T13:28:38.095041+05:00",
+  "api_point_balance": "14160",
   "period": {
     "start": "2026-05-25",
     "end": "2026-08-22"
@@ -102,6 +102,31 @@
     }
   ],
   "creatives": [
+    {
+      "id": "467167195433709",
+      "label": "2Е со скидкой 900 000 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-21",
+          "impressions": 4480.0,
+          "clicks": 2.0,
+          "spend": 12.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 12.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 4492.0,
+      "clicks": 2.0,
+      "spend": 12.0,
+      "bonus_spend": 0.0
+    },
     {
       "id": "645322669770645",
       "label": "2К с ПВ 395 639 ₽",
@@ -242,31 +267,6 @@
       "impressions": 4665.0,
       "clicks": 11.0,
       "spend": 66.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "467167195433709",
-      "label": "2Е со скидкой 900 000 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-21",
-          "impressions": 4480.0,
-          "clicks": 2.0,
-          "spend": 12.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-22",
-          "impressions": 12.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 4492.0,
-      "clicks": 2.0,
-      "spend": 12.0,
       "bonus_spend": 0.0
     }
   ],
