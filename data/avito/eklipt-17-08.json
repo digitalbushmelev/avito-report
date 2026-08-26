@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-08-26T13:41:52.902637+05:00",
-  "api_point_balance": "14632",
+  "updated_at": "2026-08-26T16:28:45.921879+05:00",
+  "api_point_balance": "14581",
   "period": {
     "start": "2026-05-28",
     "end": "2026-08-25"
@@ -144,73 +144,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "645322669770645",
-      "label": "2К с ПВ 395 639 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-18",
-          "impressions": 63.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-19",
-          "impressions": 521.0,
-          "clicks": 3.0,
-          "spend": 18.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-20",
-          "impressions": 17858.0,
-          "clicks": 10.0,
-          "spend": 60.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-21",
-          "impressions": 14830.0,
-          "clicks": 17.0,
-          "spend": 102.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-22",
-          "impressions": 34.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-23",
-          "impressions": 9.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-24",
-          "impressions": 1.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-25",
-          "impressions": 4.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 33320.0,
-      "clicks": 30.0,
-      "spend": 180.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "965052936175116",
       "label": "2К с ПВ 378 522 ₽",
@@ -414,6 +347,73 @@
       "impressions": 4507.0,
       "clicks": 2.0,
       "spend": 12.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "645322669770645",
+      "label": "2К с ПВ 395 639 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-18",
+          "impressions": 63.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-19",
+          "impressions": 521.0,
+          "clicks": 3.0,
+          "spend": 18.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-20",
+          "impressions": 17858.0,
+          "clicks": 10.0,
+          "spend": 60.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-21",
+          "impressions": 14830.0,
+          "clicks": 17.0,
+          "spend": 102.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 34.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-23",
+          "impressions": 9.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-24",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-25",
+          "impressions": 4.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 33320.0,
+      "clicks": 30.0,
+      "spend": 180.0,
       "bonus_spend": 0.0
     }
   ],
