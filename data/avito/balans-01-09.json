@@ -1,0 +1,52 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-09-01T20:23:14.135798+05:00",
+  "api_point_balance": "14826",
+  "period": {
+    "start": "2026-06-03",
+    "end": "2026-08-31"
+  },
+  "campaign": {
+    "id": "354085890",
+    "name": "Баланс 01.09",
+    "lead_keys": [
+      "psk-balance-3e-506-pv549_blnc"
+    ],
+    "lead_date_from": "",
+    "lead_date_to": ""
+  },
+  "daily": [
+    {
+      "date": "2026-08-31",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "640233049962",
+      "label": "Группа – 1",
+      "group_id": "",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "366736792502583",
+      "label": "3е ПВ 549 000 ₽",
+      "group_id": "640233049962",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}

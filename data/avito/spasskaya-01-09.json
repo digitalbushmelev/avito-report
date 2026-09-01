@@ -1,0 +1,52 @@
+{
+  "source": "Avito API",
+  "updated_at": "2026-09-01T20:23:13.572877+05:00",
+  "api_point_balance": "14836",
+  "period": {
+    "start": "2026-06-03",
+    "end": "2026-08-31"
+  },
+  "campaign": {
+    "id": "169876098",
+    "name": "Спасская 01.09",
+    "lead_keys": [
+      "psk-bolshaya-spasskaya-3e-522-pv643_spssk"
+    ],
+    "lead_date_from": "",
+    "lead_date_to": ""
+  },
+  "daily": [
+    {
+      "date": "2026-08-31",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "groups": [
+    {
+      "id": "682737817804",
+      "label": "Группа – 1",
+      "group_id": "",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "creatives": [
+    {
+      "id": "179990343393761",
+      "label": "3е ПВ 643 000 ₽",
+      "group_id": "682737817804",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    }
+  ],
+  "raw_saved": true
+}

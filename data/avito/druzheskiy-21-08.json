@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-01T13:20:11.814968+05:00",
-  "api_point_balance": "14887",
+  "updated_at": "2026-09-01T20:23:14.695328+05:00",
+  "api_point_balance": "14816",
   "period": {
     "start": "2026-06-03",
     "end": "2026-08-31"
@@ -271,6 +271,16 @@
       "impressions": 13676.0,
       "clicks": 14.0,
       "spend": 84.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "166614192084267",
+      "label": "3е ПВ 657 000 ₽",
+      "group_id": "804938235201",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
       "bonus_spend": 0.0
     }
   ],

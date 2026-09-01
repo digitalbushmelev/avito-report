@@ -1,6 +1,24 @@
 {
   "campaigns": [
     {
+      "id": "169876098",
+      "name": "Спасская 01.09",
+      "slug": "spasskaya-01-09",
+      "lead_date_from": "2026-08-31",
+      "lead_keys": [
+        "psk-bolshaya-spasskaya-3e-522-pv643_spssk"
+      ]
+    },
+    {
+      "id": "354085890",
+      "name": "Баланс 01.09",
+      "slug": "balans-01-09",
+      "lead_date_from": "2026-08-31",
+      "lead_keys": [
+        "psk-balance-3e-506-pv549_blnc"
+      ]
+    },
+    {
       "id": "400904549",
       "name": "Дружеский 21.08",
       "slug": "druzheskiy-21-08",
