@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-01T20:23:13.572877+05:00",
-  "api_point_balance": "14836",
+  "updated_at": "2026-09-02T12:40:06.475015+05:00",
+  "api_point_balance": "14765",
   "period": {
-    "start": "2026-06-03",
-    "end": "2026-08-31"
+    "start": "2026-06-04",
+    "end": "2026-09-01"
   },
   "campaign": {
     "id": "169876098",
@@ -12,13 +12,13 @@
     "lead_keys": [
       "psk-bolshaya-spasskaya-3e-522-pv643_spssk"
     ],
-    "lead_date_from": "",
+    "lead_date_from": "2026-08-31",
     "lead_date_to": ""
   },
   "daily": [
     {
-      "date": "2026-08-31",
-      "impressions": 0.0,
+      "date": "2026-09-01",
+      "impressions": 634.0,
       "clicks": 0.0,
       "spend": 0.0,
       "bonus_spend": 0.0
@@ -29,8 +29,16 @@
       "id": "682737817804",
       "label": "Группа – 1",
       "group_id": "",
-      "daily": [],
-      "impressions": 0.0,
+      "daily": [
+        {
+          "date": "2026-09-01",
+          "impressions": 634.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 634.0,
       "clicks": 0.0,
       "spend": 0.0,
       "bonus_spend": 0.0
@@ -41,8 +49,16 @@
       "id": "179990343393761",
       "label": "3е ПВ 643 000 ₽",
       "group_id": "682737817804",
-      "daily": [],
-      "impressions": 0.0,
+      "daily": [
+        {
+          "date": "2026-09-01",
+          "impressions": 634.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 634.0,
       "clicks": 0.0,
       "spend": 0.0,
       "bonus_spend": 0.0
