@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-07T12:58:25.611259+05:00",
-  "api_point_balance": "14969",
+  "updated_at": "2026-09-08T17:38:27.924861+05:00",
+  "api_point_balance": "14806",
   "period": {
-    "start": "2026-06-09",
-    "end": "2026-09-06"
+    "start": "2026-06-10",
+    "end": "2026-09-07"
   },
   "campaign": {
     "id": "400904549",
@@ -134,6 +134,13 @@
       "clicks": 5.0,
       "spend": 35.0,
       "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-09-07",
+      "impressions": 3226.0,
+      "clicks": 5.0,
+      "spend": 35.0,
+      "bonus_spend": 0.0
     }
   ],
   "groups": [
@@ -260,11 +267,18 @@
           "clicks": 5.0,
           "spend": 35.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "impressions": 3226.0,
+          "clicks": 5.0,
+          "spend": 35.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 19142.0,
-      "clicks": 24.0,
-      "spend": 154.0,
+      "impressions": 22368.0,
+      "clicks": 29.0,
+      "spend": 189.0,
       "bonus_spend": 0.0
     }
   ],
@@ -392,11 +406,18 @@
           "clicks": 4.0,
           "spend": 28.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "impressions": 1676.0,
+          "clicks": 4.0,
+          "spend": 28.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 16525.0,
-      "clicks": 21.0,
-      "spend": 133.0,
+      "impressions": 18201.0,
+      "clicks": 25.0,
+      "spend": 161.0,
       "bonus_spend": 0.0
     },
     {
@@ -445,11 +466,18 @@
           "clicks": 1.0,
           "spend": 7.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "impressions": 1550.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 2617.0,
-      "clicks": 3.0,
-      "spend": 21.0,
+      "impressions": 4167.0,
+      "clicks": 4.0,
+      "spend": 28.0,
       "bonus_spend": 0.0
     }
   ],
