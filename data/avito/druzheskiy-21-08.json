@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-08T17:38:27.924861+05:00",
-  "api_point_balance": "14806",
+  "updated_at": "2026-09-09T12:53:58.137959+05:00",
+  "api_point_balance": "14735",
   "period": {
-    "start": "2026-06-10",
-    "end": "2026-09-07"
+    "start": "2026-06-11",
+    "end": "2026-09-08"
   },
   "campaign": {
     "id": "400904549",
@@ -141,6 +141,13 @@
       "clicks": 5.0,
       "spend": 35.0,
       "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-09-08",
+      "impressions": 1541.0,
+      "clicks": 3.0,
+      "spend": 21.0,
+      "bonus_spend": 0.0
     }
   ],
   "groups": [
@@ -274,11 +281,18 @@
           "clicks": 5.0,
           "spend": 35.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-08",
+          "impressions": 1541.0,
+          "clicks": 3.0,
+          "spend": 21.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 22368.0,
-      "clicks": 29.0,
-      "spend": 189.0,
+      "impressions": 23909.0,
+      "clicks": 32.0,
+      "spend": 210.0,
       "bonus_spend": 0.0
     }
   ],
@@ -413,11 +427,18 @@
           "clicks": 4.0,
           "spend": 28.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-08",
+          "impressions": 772.0,
+          "clicks": 3.0,
+          "spend": 21.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 18201.0,
-      "clicks": 25.0,
-      "spend": 161.0,
+      "impressions": 18973.0,
+      "clicks": 28.0,
+      "spend": 182.0,
       "bonus_spend": 0.0
     },
     {
@@ -473,9 +494,16 @@
           "clicks": 1.0,
           "spend": 7.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-08",
+          "impressions": 769.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 4167.0,
+      "impressions": 4936.0,
       "clicks": 4.0,
       "spend": 28.0,
       "bonus_spend": 0.0

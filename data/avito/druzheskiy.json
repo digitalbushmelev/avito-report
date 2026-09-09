@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-08T17:38:30.707417+05:00",
-  "api_point_balance": "14766",
+  "updated_at": "2026-09-09T12:54:00.973040+05:00",
+  "api_point_balance": "14695",
   "period": {
-    "start": "2026-06-10",
-    "end": "2026-09-07"
+    "start": "2026-06-11",
+    "end": "2026-09-08"
   },
   "campaign": {
     "id": "843568278",
@@ -18,13 +18,6 @@
     "lead_date_to": "2026-06-14"
   },
   "daily": [
-    {
-      "date": "2026-06-10",
-      "impressions": 158414.0,
-      "clicks": 330.0,
-      "spend": 6760.0,
-      "bonus_spend": 0.0
-    },
     {
       "date": "2026-06-11",
       "impressions": 137503.0,
@@ -61,13 +54,6 @@
       "group_id": "",
       "daily": [
         {
-          "date": "2026-06-10",
-          "impressions": 158414.0,
-          "clicks": 330.0,
-          "spend": 6760.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-06-11",
           "impressions": 137503.0,
           "clicks": 264.0,
@@ -96,9 +82,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 754793.0,
-      "clicks": 1463.0,
-      "spend": 23415.0,
+      "impressions": 596379.0,
+      "clicks": 1133.0,
+      "spend": 16655.0,
       "bonus_spend": 0.0
     }
   ],
@@ -108,13 +94,6 @@
       "label": "2-евро за 35 973 ₽/мес",
       "group_id": "483086264750",
       "daily": [
-        {
-          "date": "2026-06-10",
-          "impressions": 52916.0,
-          "clicks": 101.0,
-          "spend": 2035.0,
-          "bonus_spend": 0.0
-        },
         {
           "date": "2026-06-11",
           "impressions": 46192.0,
@@ -144,9 +123,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 252063.0,
-      "clicks": 435.0,
-      "spend": 6941.0,
+      "impressions": 199147.0,
+      "clicks": 334.0,
+      "spend": 4906.0,
       "bonus_spend": 0.0
     },
     {
@@ -154,13 +133,6 @@
       "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес",
       "group_id": "483086264750",
       "daily": [
-        {
-          "date": "2026-06-10",
-          "impressions": 52789.0,
-          "clicks": 113.0,
-          "spend": 2335.0,
-          "bonus_spend": 0.0
-        },
         {
           "date": "2026-06-11",
           "impressions": 45732.0,
@@ -190,9 +162,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 251904.0,
-      "clicks": 497.0,
-      "spend": 7985.0,
+      "impressions": 199115.0,
+      "clicks": 384.0,
+      "spend": 5650.0,
       "bonus_spend": 0.0
     },
     {
@@ -200,13 +172,6 @@
       "label": "7 на 7",
       "group_id": "483086264750",
       "daily": [
-        {
-          "date": "2026-06-10",
-          "impressions": 52709.0,
-          "clicks": 116.0,
-          "spend": 2390.0,
-          "bonus_spend": 0.0
-        },
         {
           "date": "2026-06-11",
           "impressions": 45579.0,
@@ -236,9 +201,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 250826.0,
-      "clicks": 531.0,
-      "spend": 8489.0,
+      "impressions": 198117.0,
+      "clicks": 415.0,
+      "spend": 6099.0,
       "bonus_spend": 0.0
     }
   ],
