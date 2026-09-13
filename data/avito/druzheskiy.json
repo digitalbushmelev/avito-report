@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-10T17:43:37.929092+05:00",
-  "api_point_balance": "14482",
+  "updated_at": "2026-09-13T13:01:50.021662+05:00",
+  "api_point_balance": "14237",
   "period": {
-    "start": "2026-06-12",
-    "end": "2026-09-09"
+    "start": "2026-06-15",
+    "end": "2026-09-12"
   },
   "campaign": {
     "id": "843568278",
@@ -19,24 +19,10 @@
   },
   "daily": [
     {
-      "date": "2026-06-12",
-      "impressions": 130315.0,
-      "clicks": 230.0,
-      "spend": 3450.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "date": "2026-06-13",
-      "impressions": 152788.0,
-      "clicks": 318.0,
-      "spend": 4770.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "date": "2026-06-14",
-      "impressions": 175773.0,
-      "clicks": 321.0,
-      "spend": 4385.0,
+      "date": "2026-09-12",
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
       "bonus_spend": 0.0
     }
   ],
@@ -45,32 +31,10 @@
       "id": "483086264750",
       "label": "Группа – 1",
       "group_id": "",
-      "daily": [
-        {
-          "date": "2026-06-12",
-          "impressions": 130315.0,
-          "clicks": 230.0,
-          "spend": 3450.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-13",
-          "impressions": 152788.0,
-          "clicks": 318.0,
-          "spend": 4770.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-14",
-          "impressions": 175773.0,
-          "clicks": 321.0,
-          "spend": 4385.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 458876.0,
-      "clicks": 869.0,
-      "spend": 12605.0,
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
       "bonus_spend": 0.0
     }
   ],
@@ -79,96 +43,30 @@
       "id": "406336302007612",
       "label": "2-евро за 35 973 ₽/мес",
       "group_id": "483086264750",
-      "daily": [
-        {
-          "date": "2026-06-12",
-          "impressions": 43561.0,
-          "clicks": 62.0,
-          "spend": 930.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-13",
-          "impressions": 50774.0,
-          "clicks": 100.0,
-          "spend": 1500.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-14",
-          "impressions": 58620.0,
-          "clicks": 96.0,
-          "spend": 1316.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 152955.0,
-      "clicks": 258.0,
-      "spend": 3746.0,
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
       "bonus_spend": 0.0
     },
     {
       "id": "404874360426499",
       "label": "Евродвушка 32,3 м² с дизайнерским ремонтом и техникой за 34 969 ₽/мес",
       "group_id": "483086264750",
-      "daily": [
-        {
-          "date": "2026-06-12",
-          "impressions": 43152.0,
-          "clicks": 82.0,
-          "spend": 1230.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-13",
-          "impressions": 51351.0,
-          "clicks": 111.0,
-          "spend": 1665.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-14",
-          "impressions": 58880.0,
-          "clicks": 103.0,
-          "spend": 1405.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 153383.0,
-      "clicks": 296.0,
-      "spend": 4300.0,
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
       "bonus_spend": 0.0
     },
     {
       "id": "927364795302213",
       "label": "7 на 7",
       "group_id": "483086264750",
-      "daily": [
-        {
-          "date": "2026-06-12",
-          "impressions": 43602.0,
-          "clicks": 86.0,
-          "spend": 1290.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-13",
-          "impressions": 50663.0,
-          "clicks": 107.0,
-          "spend": 1605.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-14",
-          "impressions": 58273.0,
-          "clicks": 122.0,
-          "spend": 1664.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 152538.0,
-      "clicks": 315.0,
-      "spend": 4559.0,
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
       "bonus_spend": 0.0
     }
   ],
