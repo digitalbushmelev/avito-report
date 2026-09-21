@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-20T13:19:04.829358+05:00",
-  "api_point_balance": "14187",
+  "updated_at": "2026-09-21T21:47:54.642842+05:00",
+  "api_point_balance": "14888",
   "period": {
-    "start": "2026-06-22",
-    "end": "2026-09-19"
+    "start": "2026-06-23",
+    "end": "2026-09-20"
   },
   "campaign": {
     "id": "771269910",
@@ -24,13 +24,6 @@
   },
   "daily": [
     {
-      "date": "2026-06-22",
-      "impressions": 95950.0,
-      "clicks": 165.0,
-      "spend": 1852.0,
-      "bonus_spend": 0.0
-    },
-    {
       "date": "2026-06-23",
       "impressions": 210970.0,
       "clicks": 386.0,
@@ -45,13 +38,6 @@
       "group_id": "",
       "daily": [
         {
-          "date": "2026-06-22",
-          "impressions": 95950.0,
-          "clicks": 165.0,
-          "spend": 1852.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-06-23",
           "impressions": 210970.0,
           "clicks": 386.0,
@@ -59,38 +45,13 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 306920.0,
-      "clicks": 551.0,
-      "spend": 6475.0,
+      "impressions": 210970.0,
+      "clicks": 386.0,
+      "spend": 4622.0,
       "bonus_spend": 0.0
     }
   ],
   "creatives": [
-    {
-      "id": "371935217290411",
-      "label": "Легкий старт СТ 27,5",
-      "group_id": "675653145489",
-      "daily": [
-        {
-          "date": "2026-06-22",
-          "impressions": 16144.0,
-          "clicks": 20.0,
-          "spend": 235.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-06-23",
-          "impressions": 35310.0,
-          "clicks": 61.0,
-          "spend": 722.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 51454.0,
-      "clicks": 81.0,
-      "spend": 957.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "538152421994733",
       "label": "Легкий старт СТ 39,5",
@@ -107,13 +68,6 @@
       "group_id": "675653145489",
       "daily": [
         {
-          "date": "2026-06-22",
-          "impressions": 16198.0,
-          "clicks": 28.0,
-          "spend": 317.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-06-23",
           "impressions": 34850.0,
           "clicks": 66.0,
@@ -121,9 +75,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 51048.0,
-      "clicks": 94.0,
-      "spend": 1109.0,
+      "impressions": 34850.0,
+      "clicks": 66.0,
+      "spend": 792.0,
       "bonus_spend": 0.0
     },
     {
@@ -132,13 +86,6 @@
       "group_id": "675653145489",
       "daily": [
         {
-          "date": "2026-06-22",
-          "impressions": 15906.0,
-          "clicks": 26.0,
-          "spend": 285.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-06-23",
           "impressions": 35301.0,
           "clicks": 70.0,
@@ -146,9 +93,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 51207.0,
-      "clicks": 96.0,
-      "spend": 1125.0,
+      "impressions": 35301.0,
+      "clicks": 70.0,
+      "spend": 840.0,
       "bonus_spend": 0.0
     },
     {
@@ -157,13 +104,6 @@
       "group_id": "675653145489",
       "daily": [
         {
-          "date": "2026-06-22",
-          "impressions": 15980.0,
-          "clicks": 36.0,
-          "spend": 394.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-06-23",
           "impressions": 35162.0,
           "clicks": 71.0,
@@ -171,9 +111,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 51142.0,
-      "clicks": 107.0,
-      "spend": 1246.0,
+      "impressions": 35162.0,
+      "clicks": 71.0,
+      "spend": 852.0,
       "bonus_spend": 0.0
     },
     {
@@ -182,13 +122,6 @@
       "group_id": "675653145489",
       "daily": [
         {
-          "date": "2026-06-22",
-          "impressions": 15717.0,
-          "clicks": 26.0,
-          "spend": 297.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-06-23",
           "impressions": 35189.0,
           "clicks": 54.0,
@@ -196,9 +129,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 50906.0,
-      "clicks": 80.0,
-      "spend": 945.0,
+      "impressions": 35189.0,
+      "clicks": 54.0,
+      "spend": 648.0,
       "bonus_spend": 0.0
     },
     {
@@ -207,13 +140,6 @@
       "group_id": "675653145489",
       "daily": [
         {
-          "date": "2026-06-22",
-          "impressions": 16005.0,
-          "clicks": 29.0,
-          "spend": 322.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-06-23",
           "impressions": 35158.0,
           "clicks": 64.0,
@@ -221,9 +147,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 51163.0,
-      "clicks": 93.0,
-      "spend": 1090.0,
+      "impressions": 35158.0,
+      "clicks": 64.0,
+      "spend": 768.0,
       "bonus_spend": 0.0
     },
     {
@@ -234,6 +160,24 @@
       "impressions": 0.0,
       "clicks": 0.0,
       "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "371935217290411",
+      "label": "Легкий старт СТ 27,5",
+      "group_id": "675653145489",
+      "daily": [
+        {
+          "date": "2026-06-23",
+          "impressions": 35310.0,
+          "clicks": 61.0,
+          "spend": 722.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 35310.0,
+      "clicks": 61.0,
+      "spend": 722.0,
       "bonus_spend": 0.0
     }
   ],

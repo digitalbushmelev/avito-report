@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-20T13:19:04.216093+05:00",
-  "api_point_balance": "14197",
+  "updated_at": "2026-09-21T21:47:54.071830+05:00",
+  "api_point_balance": "14898",
   "period": {
-    "start": "2026-06-22",
-    "end": "2026-09-19"
+    "start": "2026-06-23",
+    "end": "2026-09-20"
   },
   "campaign": {
     "id": "712319035",
@@ -247,6 +247,13 @@
       "clicks": 2.0,
       "spend": 14.0,
       "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-09-20",
+      "impressions": 1883.0,
+      "clicks": 4.0,
+      "spend": 28.0,
+      "bonus_spend": 0.0
     }
   ],
   "groups": [
@@ -485,15 +492,706 @@
           "clicks": 2.0,
           "spend": 14.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-20",
+          "impressions": 1883.0,
+          "clicks": 4.0,
+          "spend": 28.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 347093.0,
-      "clicks": 467.0,
-      "spend": 3195.0,
+      "impressions": 348976.0,
+      "clicks": 471.0,
+      "spend": 3223.0,
       "bonus_spend": 0.0
     }
   ],
   "creatives": [
+    {
+      "id": "314688748208148",
+      "label": "2Е со скидкой 790 000 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-21",
+          "impressions": 4693.0,
+          "clicks": 5.0,
+          "spend": 30.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 12.0,
+          "clicks": 1.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-23",
+          "impressions": 3.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-24",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-25",
+          "impressions": 9.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "impressions": 7.0,
+          "clicks": 1.0,
+          "spend": 6.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "impressions": 8.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "impressions": 9.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-29",
+          "impressions": 32702.0,
+          "clicks": 51.0,
+          "spend": 357.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-30",
+          "impressions": 13850.0,
+          "clicks": 20.0,
+          "spend": 140.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "impressions": 140.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-01",
+          "impressions": 212.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-02",
+          "impressions": 223.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-03",
+          "impressions": 319.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-04",
+          "impressions": 179.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-05",
+          "impressions": 192.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-06",
+          "impressions": 347.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "impressions": 1804.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-08",
+          "impressions": 1272.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-09",
+          "impressions": 52.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-10",
+          "impressions": 13.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-11",
+          "impressions": 30.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-12",
+          "impressions": 3.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-13",
+          "impressions": 23.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-14",
+          "impressions": 43.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-15",
+          "impressions": 6.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-16",
+          "impressions": 195.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-17",
+          "impressions": 1049.0,
+          "clicks": 2.0,
+          "spend": 14.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-18",
+          "impressions": 692.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-19",
+          "impressions": 39.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-20",
+          "impressions": 365.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 58492.0,
+      "clicks": 83.0,
+      "spend": 574.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "690058502607214",
+      "label": "2Е со скидкой 820 000 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-21",
+          "impressions": 4656.0,
+          "clicks": 11.0,
+          "spend": 66.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 9.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-23",
+          "impressions": 4.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-24",
+          "impressions": 2.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-25",
+          "impressions": 6.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "impressions": 8.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "impressions": 8.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "impressions": 11.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-29",
+          "impressions": 32861.0,
+          "clicks": 43.0,
+          "spend": 301.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-30",
+          "impressions": 13667.0,
+          "clicks": 18.0,
+          "spend": 126.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "impressions": 158.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-01",
+          "impressions": 194.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-02",
+          "impressions": 230.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-03",
+          "impressions": 316.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-04",
+          "impressions": 194.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-05",
+          "impressions": 186.0,
+          "clicks": 2.0,
+          "spend": 14.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-06",
+          "impressions": 350.0,
+          "clicks": 2.0,
+          "spend": 14.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "impressions": 1889.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-08",
+          "impressions": 1306.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-09",
+          "impressions": 44.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-10",
+          "impressions": 19.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-11",
+          "impressions": 23.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-12",
+          "impressions": 4.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-13",
+          "impressions": 23.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-14",
+          "impressions": 34.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-15",
+          "impressions": 16.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-16",
+          "impressions": 207.0,
+          "clicks": 2.0,
+          "spend": 14.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-17",
+          "impressions": 961.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-18",
+          "impressions": 736.0,
+          "clicks": 3.0,
+          "spend": 21.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-19",
+          "impressions": 53.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-20",
+          "impressions": 410.0,
+          "clicks": 2.0,
+          "spend": 14.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 58585.0,
+      "clicks": 88.0,
+      "spend": 605.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "467167195433709",
+      "label": "2Е со скидкой 900 000 ₽",
+      "group_id": "339765546535",
+      "daily": [
+        {
+          "date": "2026-08-21",
+          "impressions": 4480.0,
+          "clicks": 2.0,
+          "spend": 12.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-22",
+          "impressions": 12.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-23",
+          "impressions": 7.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-24",
+          "impressions": 1.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-25",
+          "impressions": 7.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "impressions": 7.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "impressions": 7.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "impressions": 8.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-29",
+          "impressions": 32557.0,
+          "clicks": 47.0,
+          "spend": 329.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-30",
+          "impressions": 13524.0,
+          "clicks": 26.0,
+          "spend": 182.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "impressions": 145.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-01",
+          "impressions": 261.0,
+          "clicks": 3.0,
+          "spend": 21.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-02",
+          "impressions": 222.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-03",
+          "impressions": 283.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-04",
+          "impressions": 168.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-05",
+          "impressions": 180.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-06",
+          "impressions": 298.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-07",
+          "impressions": 1882.0,
+          "clicks": 3.0,
+          "spend": 21.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-08",
+          "impressions": 1281.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-09",
+          "impressions": 48.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-10",
+          "impressions": 16.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-11",
+          "impressions": 28.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-12",
+          "impressions": 3.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-13",
+          "impressions": 24.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-14",
+          "impressions": 40.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-15",
+          "impressions": 16.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-16",
+          "impressions": 220.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-17",
+          "impressions": 1044.0,
+          "clicks": 3.0,
+          "spend": 21.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-18",
+          "impressions": 747.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-19",
+          "impressions": 50.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-20",
+          "impressions": 373.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
+        }
+      ],
+      "impressions": 57939.0,
+      "clicks": 89.0,
+      "spend": 621.0,
+      "bonus_spend": 0.0
+    },
     {
       "id": "645322669770645",
       "label": "2К с ПВ 395 639 ₽",
@@ -729,9 +1427,16 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-20",
+          "impressions": 375.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 86669.0,
+      "impressions": 87044.0,
       "clicks": 103.0,
       "spend": 691.0,
       "bonus_spend": 0.0
@@ -971,674 +1676,18 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 86556.0,
-      "clicks": 107.0,
-      "spend": 725.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "314688748208148",
-      "label": "2Е со скидкой 790 000 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-21",
-          "impressions": 4693.0,
-          "clicks": 5.0,
-          "spend": 30.0,
-          "bonus_spend": 0.0
         },
         {
-          "date": "2026-08-22",
-          "impressions": 12.0,
-          "clicks": 1.0,
-          "spend": 6.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-23",
-          "impressions": 3.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-24",
-          "impressions": 1.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-25",
-          "impressions": 9.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-26",
-          "impressions": 7.0,
-          "clicks": 1.0,
-          "spend": 6.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-27",
-          "impressions": 8.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-28",
-          "impressions": 9.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-29",
-          "impressions": 32702.0,
-          "clicks": 51.0,
-          "spend": 357.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-30",
-          "impressions": 13850.0,
-          "clicks": 20.0,
-          "spend": 140.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-31",
-          "impressions": 140.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-01",
-          "impressions": 212.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-02",
-          "impressions": 223.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-03",
-          "impressions": 319.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-04",
-          "impressions": 179.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-05",
-          "impressions": 192.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-06",
-          "impressions": 347.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-07",
-          "impressions": 1804.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-08",
-          "impressions": 1272.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-09",
-          "impressions": 52.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-10",
-          "impressions": 13.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-11",
-          "impressions": 30.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-12",
-          "impressions": 3.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-13",
-          "impressions": 23.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-14",
-          "impressions": 43.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-15",
-          "impressions": 6.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-16",
-          "impressions": 195.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-17",
-          "impressions": 1049.0,
-          "clicks": 2.0,
-          "spend": 14.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-18",
-          "impressions": 692.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-19",
-          "impressions": 39.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 58127.0,
-      "clicks": 82.0,
-      "spend": 567.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "690058502607214",
-      "label": "2Е со скидкой 820 000 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-21",
-          "impressions": 4656.0,
-          "clicks": 11.0,
-          "spend": 66.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-22",
-          "impressions": 9.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-23",
-          "impressions": 4.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-24",
-          "impressions": 2.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-25",
-          "impressions": 6.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-26",
-          "impressions": 8.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-27",
-          "impressions": 8.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-28",
-          "impressions": 11.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-29",
-          "impressions": 32861.0,
-          "clicks": 43.0,
-          "spend": 301.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-30",
-          "impressions": 13667.0,
-          "clicks": 18.0,
-          "spend": 126.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-31",
-          "impressions": 158.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-01",
-          "impressions": 194.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-02",
-          "impressions": 230.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-03",
-          "impressions": 316.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-04",
-          "impressions": 194.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-05",
-          "impressions": 186.0,
-          "clicks": 2.0,
-          "spend": 14.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-06",
-          "impressions": 350.0,
-          "clicks": 2.0,
-          "spend": 14.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-07",
-          "impressions": 1889.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-08",
-          "impressions": 1306.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-09",
-          "impressions": 44.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-10",
-          "impressions": 19.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-11",
-          "impressions": 23.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-12",
-          "impressions": 4.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-13",
-          "impressions": 23.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-14",
-          "impressions": 34.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-15",
-          "impressions": 16.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-16",
-          "impressions": 207.0,
-          "clicks": 2.0,
-          "spend": 14.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-17",
-          "impressions": 961.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-18",
-          "impressions": 736.0,
-          "clicks": 3.0,
-          "spend": 21.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-19",
-          "impressions": 53.0,
+          "date": "2026-09-20",
+          "impressions": 360.0,
           "clicks": 1.0,
           "spend": 7.0,
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 58175.0,
-      "clicks": 86.0,
-      "spend": 591.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "467167195433709",
-      "label": "2Е со скидкой 900 000 ₽",
-      "group_id": "339765546535",
-      "daily": [
-        {
-          "date": "2026-08-21",
-          "impressions": 4480.0,
-          "clicks": 2.0,
-          "spend": 12.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-22",
-          "impressions": 12.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-23",
-          "impressions": 7.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-24",
-          "impressions": 1.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-25",
-          "impressions": 7.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-26",
-          "impressions": 7.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-27",
-          "impressions": 7.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-28",
-          "impressions": 8.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-29",
-          "impressions": 32557.0,
-          "clicks": 47.0,
-          "spend": 329.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-30",
-          "impressions": 13524.0,
-          "clicks": 26.0,
-          "spend": 182.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-08-31",
-          "impressions": 145.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-01",
-          "impressions": 261.0,
-          "clicks": 3.0,
-          "spend": 21.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-02",
-          "impressions": 222.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-03",
-          "impressions": 283.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-04",
-          "impressions": 168.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-05",
-          "impressions": 180.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-06",
-          "impressions": 298.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-07",
-          "impressions": 1882.0,
-          "clicks": 3.0,
-          "spend": 21.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-08",
-          "impressions": 1281.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-09",
-          "impressions": 48.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-10",
-          "impressions": 16.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-11",
-          "impressions": 28.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-12",
-          "impressions": 3.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-13",
-          "impressions": 24.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-14",
-          "impressions": 40.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-15",
-          "impressions": 16.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-16",
-          "impressions": 220.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-17",
-          "impressions": 1044.0,
-          "clicks": 3.0,
-          "spend": 21.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-18",
-          "impressions": 747.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
-          "date": "2026-09-19",
-          "impressions": 50.0,
-          "clicks": 1.0,
-          "spend": 7.0,
-          "bonus_spend": 0.0
-        }
-      ],
-      "impressions": 57566.0,
-      "clicks": 89.0,
-      "spend": 621.0,
+      "impressions": 86916.0,
+      "clicks": 108.0,
+      "spend": 732.0,
       "bonus_spend": 0.0
     }
   ],
