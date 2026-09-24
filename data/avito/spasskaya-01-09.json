@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-22T20:25:36.567466+05:00",
-  "api_point_balance": "14786",
+  "updated_at": "2026-09-24T13:12:35.729772+05:00",
+  "api_point_balance": "14603",
   "period": {
-    "start": "2026-06-24",
-    "end": "2026-09-21"
+    "start": "2026-06-26",
+    "end": "2026-09-23"
   },
   "campaign": {
     "id": "169876098",
@@ -162,6 +162,20 @@
       "clicks": 49.0,
       "spend": 343.0,
       "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-09-22",
+      "impressions": 28746.0,
+      "clicks": 39.0,
+      "spend": 273.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-09-23",
+      "impressions": 344.0,
+      "clicks": 1.0,
+      "spend": 7.0,
+      "bonus_spend": 0.0
     }
   ],
   "groups": [
@@ -316,11 +330,25 @@
           "clicks": 49.0,
           "spend": 343.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-22",
+          "impressions": 28746.0,
+          "clicks": 39.0,
+          "spend": 273.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "impressions": 344.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 62849.0,
-      "clicks": 82.0,
-      "spend": 574.0,
+      "impressions": 91939.0,
+      "clicks": 122.0,
+      "spend": 854.0,
       "bonus_spend": 0.0
     }
   ],
@@ -476,11 +504,25 @@
           "clicks": 49.0,
           "spend": 343.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-22",
+          "impressions": 28746.0,
+          "clicks": 39.0,
+          "spend": 273.0,
+          "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-23",
+          "impressions": 344.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 62849.0,
-      "clicks": 82.0,
-      "spend": 574.0,
+      "impressions": 91939.0,
+      "clicks": 122.0,
+      "spend": 854.0,
       "bonus_spend": 0.0
     }
   ],
