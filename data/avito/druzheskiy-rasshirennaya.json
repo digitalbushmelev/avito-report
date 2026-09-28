@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-28T14:24:35.483433+05:00",
-  "api_point_balance": "14939",
+  "updated_at": "2026-09-28T23:29:25.142288+05:00",
+  "api_point_balance": "14868",
   "period": {
     "start": "2026-06-30",
     "end": "2026-09-27"
@@ -42,16 +42,6 @@
   ],
   "creatives": [
     {
-      "id": "450866263039666",
-      "label": "2е ПВ 367 000 ₽",
-      "group_id": "116945150742",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
       "id": "692647978272215",
       "label": "7 на 7",
       "group_id": "116945150742",
@@ -84,6 +74,16 @@
     {
       "id": "665439280935664",
       "label": "2е ПВ 332 000 ₽",
+      "group_id": "116945150742",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "450866263039666",
+      "label": "2е ПВ 367 000 ₽",
       "group_id": "116945150742",
       "daily": [],
       "impressions": 0.0,
