@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-27T20:31:38.767910+05:00",
-  "api_point_balance": "14166",
+  "updated_at": "2026-09-28T14:24:33.494330+05:00",
+  "api_point_balance": "14969",
   "period": {
-    "start": "2026-06-29",
-    "end": "2026-09-26"
+    "start": "2026-06-30",
+    "end": "2026-09-27"
   },
   "campaign": {
     "id": "400904549",
@@ -274,6 +274,13 @@
       "clicks": 0.0,
       "spend": 0.0,
       "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-09-27",
+      "impressions": 927.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
     }
   ],
   "groups": [
@@ -540,9 +547,16 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 927.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 38542.0,
+      "impressions": 39469.0,
       "clicks": 52.0,
       "spend": 350.0,
       "bonus_spend": 0.0
@@ -812,9 +826,16 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 461.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 26379.0,
+      "impressions": 26840.0,
       "clicks": 38.0,
       "spend": 252.0,
       "bonus_spend": 0.0
@@ -1005,9 +1026,16 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 466.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 12163.0,
+      "impressions": 12629.0,
       "clicks": 14.0,
       "spend": 98.0,
       "bonus_spend": 0.0

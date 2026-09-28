@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-09-27T20:31:39.763386+05:00",
-  "api_point_balance": "14156",
+  "updated_at": "2026-09-28T14:24:34.190373+05:00",
+  "api_point_balance": "14959",
   "period": {
-    "start": "2026-06-29",
-    "end": "2026-09-26"
+    "start": "2026-06-30",
+    "end": "2026-09-27"
   },
   "campaign": {
     "id": "712319035",
@@ -296,6 +296,13 @@
       "clicks": 1.0,
       "spend": 7.0,
       "bonus_spend": 0.0
+    },
+    {
+      "date": "2026-09-27",
+      "impressions": 1713.0,
+      "clicks": 4.0,
+      "spend": 28.0,
+      "bonus_spend": 0.0
     }
   ],
   "groups": [
@@ -583,11 +590,18 @@
           "clicks": 1.0,
           "spend": 7.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 1713.0,
+          "clicks": 4.0,
+          "spend": 28.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 360414.0,
-      "clicks": 493.0,
-      "spend": 3377.0,
+      "impressions": 362127.0,
+      "clicks": 497.0,
+      "spend": 3405.0,
       "bonus_spend": 0.0
     }
   ],
@@ -855,11 +869,18 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 304.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 60809.0,
-      "clicks": 87.0,
-      "spend": 602.0,
+      "impressions": 61113.0,
+      "clicks": 88.0,
+      "spend": 609.0,
       "bonus_spend": 0.0
     },
     {
@@ -1125,11 +1146,18 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 350.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 60831.0,
-      "clicks": 90.0,
-      "spend": 619.0,
+      "impressions": 61181.0,
+      "clicks": 91.0,
+      "spend": 626.0,
       "bonus_spend": 0.0
     },
     {
@@ -1395,11 +1423,18 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 363.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 60256.0,
-      "clicks": 97.0,
-      "spend": 677.0,
+      "impressions": 60619.0,
+      "clicks": 98.0,
+      "spend": 684.0,
       "bonus_spend": 0.0
     },
     {
@@ -1686,9 +1721,16 @@
           "clicks": 0.0,
           "spend": 0.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 337.0,
+          "clicks": 0.0,
+          "spend": 0.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 89330.0,
+      "impressions": 89667.0,
       "clicks": 108.0,
       "spend": 726.0,
       "bonus_spend": 0.0
@@ -1977,11 +2019,18 @@
           "clicks": 1.0,
           "spend": 7.0,
           "bonus_spend": 0.0
+        },
+        {
+          "date": "2026-09-27",
+          "impressions": 359.0,
+          "clicks": 1.0,
+          "spend": 7.0,
+          "bonus_spend": 0.0
         }
       ],
-      "impressions": 89188.0,
-      "clicks": 111.0,
-      "spend": 753.0,
+      "impressions": 89547.0,
+      "clicks": 112.0,
+      "spend": 760.0,
       "bonus_spend": 0.0
     }
   ],
