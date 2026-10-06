@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-10-06T00:31:00.337590+05:00",
-  "api_point_balance": "14878",
+  "updated_at": "2026-10-06T14:48:37.556943+05:00",
+  "api_point_balance": "14807",
   "period": {
     "start": "2026-07-08",
     "end": "2026-10-05"
@@ -44,26 +44,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "538152421994733",
-      "label": "Легкий старт СТ 39,5",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "459104082086038",
-      "label": "Легкий старт 1К",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "190641889993437",
       "label": "Легкий старт 2Е",
@@ -117,6 +97,26 @@
     {
       "id": "371935217290411",
       "label": "Легкий старт СТ 27,5",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "538152421994733",
+      "label": "Легкий старт СТ 39,5",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "459104082086038",
+      "label": "Легкий старт 1К",
       "group_id": "675653145489",
       "daily": [],
       "impressions": 0.0,
