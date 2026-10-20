@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-10-17T16:59:22.376112+05:00",
-  "api_point_balance": "14418",
+  "updated_at": "2026-10-20T20:33:28.117867+05:00",
+  "api_point_balance": "14766",
   "period": {
-    "start": "2026-07-19",
-    "end": "2026-10-16"
+    "start": "2026-07-22",
+    "end": "2026-10-19"
   },
   "campaign": {
     "id": "460053704",
@@ -21,7 +21,7 @@
   },
   "daily": [
     {
-      "date": "2026-10-16",
+      "date": "2026-10-19",
       "impressions": 0.0,
       "clicks": 0.0,
       "spend": 0.0,
@@ -41,26 +41,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "665439280935664",
-      "label": "2е ПВ 332 000 ₽",
-      "group_id": "116945150742",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "450866263039666",
-      "label": "2е ПВ 367 000 ₽",
-      "group_id": "116945150742",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "692647978272215",
       "label": "7 на 7",
@@ -84,6 +64,26 @@
     {
       "id": "305771383370769",
       "label": "1К Легкий старт",
+      "group_id": "116945150742",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "665439280935664",
+      "label": "2е ПВ 332 000 ₽",
+      "group_id": "116945150742",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "450866263039666",
+      "label": "2е ПВ 367 000 ₽",
       "group_id": "116945150742",
       "daily": [],
       "impressions": 0.0,
