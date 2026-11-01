@@ -1,7 +1,7 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-11-01T15:07:21.437705+05:00",
-  "api_point_balance": "14258",
+  "updated_at": "2026-11-01T22:00:02.287387+05:00",
+  "api_point_balance": "14187",
   "period": {
     "start": "2026-08-03",
     "end": "2026-10-31"
@@ -42,6 +42,16 @@
   ],
   "creatives": [
     {
+      "id": "665439280935664",
+      "label": "2е ПВ 332 000 ₽",
+      "group_id": "116945150742",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
       "id": "450866263039666",
       "label": "2е ПВ 367 000 ₽",
       "group_id": "116945150742",
@@ -74,16 +84,6 @@
     {
       "id": "305771383370769",
       "label": "1К Легкий старт",
-      "group_id": "116945150742",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "665439280935664",
-      "label": "2е ПВ 332 000 ₽",
       "group_id": "116945150742",
       "daily": [],
       "impressions": 0.0,
