@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-11-06T15:26:02.257270+05:00",
-  "api_point_balance": "14481",
+  "updated_at": "2026-11-17T01:48:55.695075+05:00",
+  "api_point_balance": "14898",
   "period": {
-    "start": "2026-08-08",
-    "end": "2026-11-05"
+    "start": "2026-08-19",
+    "end": "2026-11-16"
   },
   "campaign": {
     "id": "771269910",
@@ -24,7 +24,7 @@
   },
   "daily": [
     {
-      "date": "2026-11-05",
+      "date": "2026-11-16",
       "impressions": 0.0,
       "clicks": 0.0,
       "spend": 0.0,
@@ -44,36 +44,6 @@
     }
   ],
   "creatives": [
-    {
-      "id": "190641889993437",
-      "label": "Легкий старт 2Е",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "493229256269401",
-      "label": "2Е супер пв",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
-    {
-      "id": "203604784298396",
-      "label": "Легкий старт 2К",
-      "group_id": "675653145489",
-      "daily": [],
-      "impressions": 0.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
     {
       "id": "610373238380254",
       "label": "2К супер пв",
@@ -117,6 +87,36 @@
     {
       "id": "459104082086038",
       "label": "Легкий старт 1К",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "190641889993437",
+      "label": "Легкий старт 2Е",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "493229256269401",
+      "label": "2Е супер пв",
+      "group_id": "675653145489",
+      "daily": [],
+      "impressions": 0.0,
+      "clicks": 0.0,
+      "spend": 0.0,
+      "bonus_spend": 0.0
+    },
+    {
+      "id": "203604784298396",
+      "label": "Легкий старт 2К",
       "group_id": "675653145489",
       "daily": [],
       "impressions": 0.0,
