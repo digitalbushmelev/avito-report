@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-11-18T16:11:44.146874+05:00",
-  "api_point_balance": "14766",
+  "updated_at": "2026-11-19T16:10:28.923386+05:00",
+  "api_point_balance": "14695",
   "period": {
-    "start": "2026-08-20",
-    "end": "2026-11-17"
+    "start": "2026-08-21",
+    "end": "2026-11-18"
   },
   "campaign": {
     "id": "712319035",
@@ -17,13 +17,6 @@
     "lead_date_to": ""
   },
   "daily": [
-    {
-      "date": "2026-08-20",
-      "impressions": 35857.0,
-      "clicks": 20.0,
-      "spend": 120.0,
-      "bonus_spend": 0.0
-    },
     {
       "date": "2026-08-21",
       "impressions": 43372.0,
@@ -410,13 +403,6 @@
       "group_id": "",
       "daily": [
         {
-          "date": "2026-08-20",
-          "impressions": 35857.0,
-          "clicks": 20.0,
-          "spend": 120.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-08-21",
           "impressions": 43372.0,
           "clicks": 47.0,
@@ -795,9 +781,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 373541.0,
-      "clicks": 521.0,
-      "spend": 3577.0,
+      "impressions": 337684.0,
+      "clicks": 501.0,
+      "spend": 3457.0,
       "bonus_spend": 0.0
     }
   ],
@@ -807,13 +793,6 @@
       "label": "2К с ПВ 378 522 ₽",
       "group_id": "339765546535",
       "daily": [
-        {
-          "date": "2026-08-20",
-          "impressions": 17999.0,
-          "clicks": 10.0,
-          "spend": 60.0,
-          "bonus_spend": 0.0
-        },
         {
           "date": "2026-08-21",
           "impressions": 14713.0,
@@ -1172,9 +1151,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 94916.0,
-      "clicks": 127.0,
-      "spend": 866.0,
+      "impressions": 76917.0,
+      "clicks": 117.0,
+      "spend": 806.0,
       "bonus_spend": 0.0
     },
     {
@@ -2294,13 +2273,6 @@
       "group_id": "339765546535",
       "daily": [
         {
-          "date": "2026-08-20",
-          "impressions": 17858.0,
-          "clicks": 10.0,
-          "spend": 60.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-08-21",
           "impressions": 14830.0,
           "clicks": 17.0,
@@ -2651,9 +2623,9 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 90697.0,
-      "clicks": 107.0,
-      "spend": 722.0,
+      "impressions": 72839.0,
+      "clicks": 97.0,
+      "spend": 662.0,
       "bonus_spend": 0.0
     }
   ],
