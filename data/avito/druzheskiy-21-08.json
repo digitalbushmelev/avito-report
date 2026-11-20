@@ -1,10 +1,10 @@
 {
   "source": "Avito API",
-  "updated_at": "2026-11-20T15:57:31.394215+05:00",
-  "api_point_balance": "14634",
+  "updated_at": "2026-11-21T00:00:53.872631+05:00",
+  "api_point_balance": "14563",
   "period": {
-    "start": "2026-08-22",
-    "end": "2026-11-19"
+    "start": "2026-08-23",
+    "end": "2026-11-20"
   },
   "campaign": {
     "id": "400904549",
@@ -16,13 +16,6 @@
     "lead_date_to": ""
   },
   "daily": [
-    {
-      "date": "2026-08-22",
-      "impressions": 182.0,
-      "clicks": 0.0,
-      "spend": 0.0,
-      "bonus_spend": 0.0
-    },
     {
       "date": "2026-08-23",
       "impressions": 210.0,
@@ -360,13 +353,6 @@
       "group_id": "",
       "daily": [
         {
-          "date": "2026-08-22",
-          "impressions": 182.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
-        {
           "date": "2026-08-23",
           "impressions": 210.0,
           "clicks": 1.0,
@@ -696,7 +682,7 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 42009.0,
+      "impressions": 41827.0,
       "clicks": 57.0,
       "spend": 385.0,
       "bonus_spend": 0.0
@@ -708,13 +694,6 @@
       "label": "2е ПВ 376 476 ₽ ₽",
       "group_id": "804938235201",
       "daily": [
-        {
-          "date": "2026-08-22",
-          "impressions": 182.0,
-          "clicks": 0.0,
-          "spend": 0.0,
-          "bonus_spend": 0.0
-        },
         {
           "date": "2026-08-23",
           "impressions": 210.0,
@@ -1031,7 +1010,7 @@
           "bonus_spend": 0.0
         }
       ],
-      "impressions": 27995.0,
+      "impressions": 27813.0,
       "clicks": 39.0,
       "spend": 259.0,
       "bonus_spend": 0.0
